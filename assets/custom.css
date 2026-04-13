@@ -1183,6 +1183,10 @@ select.style-guide__input {
   .banner--content-align-left .banner__content {
     padding-left: 5rem;
   }
+
+  .banner .banner__text {
+    max-width: 88%;
+  }
 }
 
 /* Mobile: bottom-centered */
@@ -1197,15 +1201,16 @@ select.style-guide__input {
     padding-bottom: 3rem;
   }
 
-  .banner .banner__box {
-    text-align: center;
-  }
-
   .banner .banner__heading {
     font-size: clamp(2.5rem, 10vw, 4rem);
     font-weight: 900;
     line-height: 1.08;
     letter-spacing: -0.02em;
+    max-width: 10ch;
+  }
+
+  .banner .banner__text {
+    max-width: 88%;
   }
 }
 

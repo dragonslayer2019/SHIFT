@@ -15,14 +15,21 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Turn your space. Shift your mood.",
+            "heading": "<strong>Make Home A Soft Reset</strong>",
             "heading_size": "h0"
+          }
+        },
+        "text_KNLDU7": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Turn everyday corners into spaces that hold how you feel.</strong>",
+            "text_style": "subtitle"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Start Your Shift",
+            "button_label_1": "Find Your Soft Reset",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
@@ -33,6 +40,7 @@
       },
       "block_order": [
         "heading",
+        "text_KNLDU7",
         "button"
       ],
       "settings": {
