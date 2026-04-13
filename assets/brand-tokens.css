@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════════════════════
+   SHIFT — Brand Design Tokens
+   ─────────────────────────────────────────────────────────────
+   From numb → alive. Cold → bright. Still → shifting.
+   Warm base, bold accents, generous curves.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Color tokens — adapt to whichever Dawn color scheme is active */
+:root,
+[class^='color-'],
+[class*=' color-'] {
+  --brand-bg: rgb(var(--color-background));
+  --brand-surface-1: rgba(var(--color-foreground), 0.04);
+  --brand-surface-2: rgba(var(--color-foreground), 0.07);
+  --brand-text: rgb(var(--color-foreground));
+  --brand-text-muted: rgba(var(--color-foreground), 0.55);
+  --brand-primary: rgb(var(--color-button));
+  --brand-primary-text: rgb(var(--color-button-text));
+  --brand-border: rgba(var(--color-foreground), 0.08);
+  --brand-border-contrast: rgba(var(--color-foreground), 0.18);
+  --brand-outline: rgb(var(--color-foreground));
+}
+
+:root {
+  /* Typography */
+  --brand-font-heading: var(--font-heading-family);
+  --brand-font-body: var(--font-body-family);
+
+  /* Spacing — generous, breathing */
+  --brand-space-xs: 4px;
+  --brand-space-sm: 8px;
+  --brand-space-md: 16px;
+  --brand-space-lg: 24px;
+  --brand-space-xl: 40px;
+  --brand-space-2xl: 64px;
+  --brand-space-3xl: 96px;
+
+  /* Radius — large, friendly, alive */
+  --brand-radius-sm: 10px;
+  --brand-radius-md: 20px;
+  --brand-radius-lg: 32px;
+  --brand-radius-pill: 999px;
+
+  /* Shadow — soft, warm glow */
+  --brand-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --brand-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* Transition */
+  --brand-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── SHIFT mood palette ──────────────────────────────────
+     Vivid accent blocks: the "awakening" colors              */
+  --shift-coral: #E8735A;
+  --shift-sun: #F2B63D;
+  --shift-sky: #5AAFCF;
+  --shift-sage: #7DB07E;
+  --shift-lavender: #9B8EC4;
+  --shift-blush: #E89DB0;
+  --shift-ink: #2C3340;
+  --shift-cream: #FFF8F0;
+
+  /* Feedback */
+  --brand-info-bg: #EAF2F8;
+  --brand-info-border: #A9C8E0;
+  --brand-info-text: #2A5478;
+
+  --brand-success-bg: #EDF6EC;
+  --brand-success-border: #A8D4A4;
+  --brand-success-text: #2B5E28;
+
+  --brand-warning-bg: #FEF6E6;
+  --brand-warning-border: #EDD494;
+  --brand-warning-text: #6B5218;
+
+  --brand-error-bg: #FCEEEB;
+  --brand-error-border: #E8ADA2;
+  --brand-error-text: #8A3226;
+}
