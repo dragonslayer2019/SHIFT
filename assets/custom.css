@@ -15,7 +15,7 @@
 .section-header {
   position: sticky !important;
   top: 0;
-  z-index: 100;
+  z-index: 9999 !important;
   background: transparent !important;
   height: 0;
   overflow: visible;
@@ -1339,4 +1339,30 @@ select.style-guide__input {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none;
+}
+
+/* ==========================================================================
+   HERO → SCENE-SHIFT SCROLL CHOREOGRAPHY
+   Hero uses position:sticky to stay pinned at top while panel scrolls over.
+   Pure CSS — no JS layout needed, no timing flash.
+   ========================================================================== */
+
+/* Hero: sticky so it stays visible while panel scrolls over it */
+.shopify-section:has(.banner) {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Scene-shift shopify-section: above hero, below nav */
+.shopify-section:has(.scene-shift) {
+  position: relative;
+  z-index: 5;
+}
+
+/* All sections after scene-shift also sit above the sticky hero */
+.shopify-section:has(.scene-shift) ~ .shopify-section {
+  position: relative;
+  z-index: 5;
+  background: var(--shift-cream, #FFF8F0);
 }

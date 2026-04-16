@@ -57,6 +57,58 @@
         "show_text_below": false
       }
     },
+    "scene_shift": {
+      "type": "scene-shift",
+      "blocks": {
+        "scene_1": {
+          "type": "scene_card",
+          "settings": {
+            "desktop_base_image": "shopify://shop_images/20260413230131_15_32.jpg",
+            "desktop_shift_image": "shopify://shop_images/20260413230203_16_32.jpg",
+            "scene_title": "A Quiet Bedroom Corner",
+            "scene_caption": "A few soft essentials that turn rest into ritual.",
+            "button_label": "Explore the Space",
+            "button_link": ""
+          }
+        },
+        "scene_2": {
+          "type": "scene_card",
+          "settings": {
+            "scene_title": "A Living Room That Breathes",
+            "scene_caption": "Where the light, the texture, and the warmth finally align.",
+            "button_label": "See the Full Setup",
+            "button_link": ""
+          }
+        },
+        "scene_3": {
+          "type": "scene_card",
+          "settings": {
+            "scene_title": "Your Reading Nook, Awakened",
+            "scene_caption": "The corner you always had — now holding exactly how you feel.",
+            "button_label": "Enter This Mood",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "scene_1",
+        "scene_2",
+        "scene_3"
+      ],
+      "settings": {
+        "heading": "Where the Shift Begins",
+        "subheading": "Small, thoughtful changes that turn everyday corners into spaces that hold how you feel.",
+        "autoplay": true,
+        "autoplay_interval": 8,
+        "initial_pause": 1,
+        "breathe_duration": 2000,
+        "transition_duration": 800,
+        "show_arrows": true,
+        "show_dots": true,
+        "card_radius": 24,
+        "card_shadow": 70
+      }
+    },
     "image_with_text_9NVVk6": {
       "type": "image-with-text",
       "blocks": {
@@ -286,6 +338,7 @@
   },
   "order": [
     "image_banner",
+    "scene_shift",
     "image_with_text_9NVVk6",
     "featured_collection",
     "multirow_Dgynic",
