@@ -7,17 +7,17 @@
         "heading": "Make more room for your life.",
         "text": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>",
         "primary_label": "Shop living spaces",
-        "primary_link": "",
+        "primary_link": "shopify://collections/living-spaces",
         "secondary_label": "Shop desk spaces",
-        "secondary_link": "",
+        "secondary_link": "shopify://collections/desk-spaces",
         "color_scheme": "scheme-1"
       }
     },
     "space_paths": {
       "type": "shift-space-paths",
       "blocks": {
-        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "" } },
-        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "" } }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "shopify://collections/living-spaces" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "shopify://collections/desk-spaces" } }
       },
       "block_order": ["living", "desk"],
       "settings": { "eyebrow": "Start with the space", "heading": "What needs to work better?", "text": "<p>Shop by the part of home you are trying to make clearer, calmer, or easier to share.</p>", "color_scheme": "scheme-2" }
@@ -27,15 +27,15 @@
       "settings": {
         "title": "Useful now. Easy to live with.",
         "heading_size": "h1",
-        "description": "<p>A dedicated SHIFT collection will appear here once launch products are ready.</p>",
-        "show_description": false,
+        "description": "<p>Three practical pieces selected for rental living spaces.</p>",
+        "show_description": true,
         "description_style": "body",
-        "collection": "",
+        "collection": "living-spaces",
         "show_shift_empty_state": true,
         "empty_state_heading": "The first SHIFT edit is being assembled.",
         "empty_state_text": "<p>Products will appear here once a dedicated SHIFT launch collection is selected.</p>",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "products_to_show": 3,
+        "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
@@ -56,8 +56,8 @@
     "fit_notes": {
       "type": "shift-fit-notes",
       "blocks": {
-        "living_use": { "type": "use_case", "settings": { "eyebrow": "Editable living-space use case", "heading": "Show how one piece makes an open room easier to read.", "text": "<p>Replace this placeholder with a real product in a compact rental. Explain how it defines a zone, reduces visible clutter, or supports a second use without permanent installation.</p>", "fits": "Add room type and footprint", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "" } },
-        "desk_use": { "type": "use_case", "settings": { "eyebrow": "Editable desk-space use case", "heading": "Show how the desk resets between work and downtime.", "text": "<p>Replace this placeholder with a real product and a real desk constraint. State what moves, stores, lifts, or stays within reach—and why that matters at the end of the day.</p>", "fits": "Add desk size and clearance", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "" } }
+        "living_use": { "type": "use_case", "settings": { "eyebrow": "Editable living-space use case", "heading": "Show how one piece makes an open room easier to read.", "text": "<p>Replace this placeholder with a real product in a compact rental. Explain how it defines a zone, reduces visible clutter, or supports a second use without permanent installation.</p>", "fits": "Add room type and footprint", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "shopify://collections/living-spaces" } },
+        "desk_use": { "type": "use_case", "settings": { "eyebrow": "Editable desk-space use case", "heading": "Show how the desk resets between work and downtime.", "text": "<p>Replace this placeholder with a real product and a real desk constraint. State what moves, stores, lifts, or stays within reach—and why that matters at the end of the day.</p>", "fits": "Add desk size and clearance", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "shopify://collections/desk-spaces" } }
       },
       "block_order": ["living_use", "desk_use"],
       "settings": { "eyebrow": "See the use, not just the object", "heading": "Built around real small-space friction.", "color_scheme": "scheme-1" }
