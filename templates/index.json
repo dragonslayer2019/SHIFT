@@ -96,7 +96,7 @@
         "scene_3"
       ],
       "settings": {
-        "heading": "Where the Shift Begins",
+        "heading": "Where the SHIFT Begins",
         "subheading": "Small, thoughtful changes that turn everyday corners into spaces that hold how you feel.",
         "autoplay": true,
         "autoplay_interval": 8,
@@ -109,136 +109,69 @@
         "card_shadow": 70
       }
     },
-    "image_with_text_9NVVk6": {
-      "type": "image-with-text",
+    "ugc_mood_qckfpm": {
+      "type": "ugc-mood",
       "blocks": {
-        "heading_khVKc9": {
-          "type": "heading",
+        "mood_card_QhkDzz": {
+          "type": "mood_card",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "card_image": "shopify://shop_images/1.png",
+            "card_title": "Real Time Stress Analytics",
+            "emotion_key": "anxious",
+            "emotion_icon": "😰",
+            "emotion_label": "Anxious",
+            "emotion_color": "#9b8ec4",
+            "button_label": "I feel anxious",
+            "reviewer_name": "Sarah K.",
+            "star_rating": 5,
+            "review_text": "I didn't think a candle could change how a room feels. But lighting it after a long day turned my anxious evenings into something I actually look forward to.",
+            "product_mention": "Calm Evening Candle"
           }
         },
-        "text_VWwARg": {
-          "type": "text",
+        "mood_card_ktJqa9": {
+          "type": "mood_card",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
+            "card_image": "shopify://shop_images/jimeng-2025-10-22-2724-1._LOFT_....png",
+            "card_title": "Real Time Stress Analytics",
+            "emotion_key": "anxious",
+            "emotion_icon": "😰",
+            "emotion_label": "Anxious",
+            "emotion_color": "#9b8ec4",
+            "button_label": "I feel anxious",
+            "reviewer_name": "Sarah K.",
+            "star_rating": 5,
+            "review_text": "I didn't think a candle could change how a room feels. But lighting it after a long day turned my anxious evenings into something I actually look forward to.",
+            "product_mention": "Calm Evening Candle"
           }
         },
-        "button_UUDRHK": {
-          "type": "button",
+        "mood_card_Kix7Ez": {
+          "type": "mood_card",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
+            "card_image": "shopify://shop_images/9022a705161ff42b7879d88f1fd6d0e8_eace46c7-d707-4d5c-817a-4723f5017867.png",
+            "card_title": "Real Time Stress Analytics",
+            "emotion_key": "drained",
+            "emotion_icon": "😮‍💨",
+            "emotion_label": "Drained",
+            "emotion_color": "#5aafcf",
+            "button_label": "I feel drained",
+            "reviewer_name": "Marcus T.",
+            "star_rating": 5,
+            "review_text": "After burning out at work, I rearranged my reading nook with this throw and the softest cushion. Now it's the first place I go — and somehow, I actually rest.",
+            "product_mention": "Cloud Rest Throw"
           }
         }
       },
       "block_order": [
-        "heading_khVKc9",
-        "text_VWwARg",
-        "button_UUDRHK"
+        "mood_card_QhkDzz",
+        "mood_card_ktJqa9",
+        "mood_card_Kix7Ez"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "UGC Mood",
       "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "name": "Scene Card",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "multirow_Dgynic": {
-      "type": "multirow",
-      "blocks": {
-        "row_GX9W3B": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_YaUGhL": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_xGf87F": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_GX9W3B",
-        "row_YaUGhL",
-        "row_xGf87F"
-      ],
-      "name": "UGC",
-      "settings": {
-        "image_height": "medium",
-        "desktop_image_width": "medium",
-        "image_layout": "alternate-left",
-        "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "row_color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "They felt it too.",
+        "subheading": "Real stories from people who shifted their space — and how it shifted them.",
+        "card_radius": 24,
+        "transition_duration": 600
       }
     },
     "featured_collection_m9nAUU": {
@@ -339,9 +272,7 @@
   "order": [
     "image_banner",
     "scene_shift",
-    "image_with_text_9NVVk6",
-    "featured_collection",
-    "multirow_Dgynic",
+    "ugc_mood_qckfpm",
     "featured_collection_m9nAUU",
     "featured_blog_WAeWiz",
     "image_with_text_XpmFMH"

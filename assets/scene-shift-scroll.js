@@ -123,6 +123,69 @@
       panel.dispatchEvent(new CustomEvent('scene-shift:retracted', { bubbles: true }));
     }
 
+    /* ── Pin scene-shift → UGC slides up as drawer ── */
+    const ugcSection = document.querySelector('[data-section-type="ugc-mood"]');
+    if (ugcSection) {
+      console.log('[scene-shift-scroll] UGC section found — setting up pin');
+
+      /* Compute actual dimensions for debugging */
+      const panelRect = panel.getBoundingClientRect();
+      const panelParent = panel.parentElement;
+      console.log('[scene-shift-scroll] panel tag:', panel.tagName, 'id:', panel.id);
+      console.log('[scene-shift-scroll] panel parent tag:', panelParent?.tagName, 'class:', panelParent?.className);
+      console.log('[scene-shift-scroll] panel rect:', JSON.stringify({ top: panelRect.top, height: panelRect.height, bottom: panelRect.bottom }));
+      console.log('[scene-shift-scroll] panel computed position:', getComputedStyle(panel).position);
+      console.log('[scene-shift-scroll] panel computed overflow:', getComputedStyle(panel).overflow);
+      console.log('[scene-shift-scroll] panel computed transform:', getComputedStyle(panel).transform);
+      if (panelParent) {
+        console.log('[scene-shift-scroll] parent computed overflow:', getComputedStyle(panelParent).overflow);
+        console.log('[scene-shift-scroll] parent computed transform:', getComputedStyle(panelParent).transform);
+      }
+
+      /* Pin scene-shift slightly above viewport to hide border-radius */
+      const pinST = ScrollTrigger.create({
+        trigger: panel,
+        start: 'top top+=-60',
+        endTrigger: ugcSection,
+        end: 'top top',
+        pin: true,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+        onToggle: (self) => {
+          console.log('[scene-shift-scroll] PIN toggle — active:', self.isActive, 'progress:', self.progress.toFixed(3));
+        },
+        onUpdate: (self) => {
+          if (Math.round(self.progress * 100) % 25 === 0) {
+            console.log('[scene-shift-scroll] PIN progress:', self.progress.toFixed(3));
+          }
+        },
+      });
+      console.log('[scene-shift-scroll] Pin ScrollTrigger created:', pinST ? 'YES' : 'NO');
+      console.log('[scene-shift-scroll] Pin start/end:', pinST.start, pinST.end);
+
+      /* UGC drawer styling */
+      ugcSection.classList.add('ugc-mood--drawer');
+
+      /* UGC shadow scrub as it rises over pinned scene-shift */
+      gsap.fromTo(
+        ugcSection,
+        { boxShadow: '0 -4px 16px rgba(0,0,0,0.04)' },
+        {
+          boxShadow: '0 -16px 60px rgba(0,0,0,0.22)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: ugcSection,
+            start: 'top bottom',
+            end: 'top 20%',
+            scrub: 0.4,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    } else {
+      console.warn('[scene-shift-scroll] UGC section NOT found — no pin');
+    }
+
     document.addEventListener('shopify:section:unload', () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       panel.classList.remove('scene-shift--drawer', 'scene-shift--rising', 'scene-shift--established');

@@ -1,0 +1,741 @@
+/* ═══════════════════════════════════════════════════════════════
+   UGC Mood — Image-Fade Card Carousel
+   ─────────────────────────────────────────────────────────────
+   Cards: image top (fading to white) → title + excerpt + Read more.
+   Modal opens on button click with full review content.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section Container ── */
+.ugc-mood {
+  position: relative;
+  z-index: 6;
+  padding: clamp(48px, 8vw, 96px) 0 clamp(40px, 6vw, 80px);
+  background: #F3EFF8;
+  color: var(--shift-ink, #2C3340);
+  overflow: visible;
+
+  /* Drawer appearance */
+  border-radius: clamp(24px, 4vw, 48px) clamp(24px, 4vw, 48px) 0 0;
+}
+
+/* ── Header ── */
+.ugc-mood__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(32px, 5vw, 56px);
+  padding: 0 var(--brand-space-lg);
+}
+
+.ugc-mood__heading {
+  margin: 0 0 14px;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--shift-ink, #2C3340);
+}
+
+.ugc-mood__subheading {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  color: rgba(44, 51, 64, 0.6);
+  line-height: 1.55;
+}
+
+/* ── Carousel Layout ── */
+.ugc-mood__carousel {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--brand-space-lg);
+  overflow: visible;
+}
+
+.ugc-mood__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(400px, 55vh, 520px);
+  overflow: visible;
+}
+
+/* ── Card Base ── */
+.ugc-mood__card {
+  position: absolute;
+  width: min(420px, 42vw);
+  height: 100%;
+  border-radius: var(--ugc-mood-radius, 24px);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--ugc-mood-transition-ms, 600ms) cubic-bezier(0.4, 0, 0.15, 1),
+    opacity var(--ugc-mood-transition-ms, 600ms) cubic-bezier(0.4, 0, 0.15, 1),
+    box-shadow var(--ugc-mood-transition-ms, 600ms) ease;
+
+  /* Default: hidden */
+  opacity: 0;
+  transform: translateX(calc(200% + 40px)) scale(0.92);
+  pointer-events: none;
+  z-index: 1;
+
+  /* Clean shadow */
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* State: Previous */
+.ugc-mood__card.is-prev {
+  opacity: 0.92;
+  transform: translateX(calc(-100% - 100px)) scale(0.92);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* State: Next */
+.ugc-mood__card.is-next {
+  opacity: 0.92;
+  transform: translateX(calc(100% + 100px)) scale(0.92);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* State: Active */
+.ugc-mood__card.is-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  z-index: 4;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* State: Far away */
+.ugc-mood__card.is-after {
+  opacity: 0;
+  transform: translateX(calc(200% + 160px)) scale(0.88);
+  z-index: 1;
+}
+
+/* ── Card Image (top half with fade) ── */
+.ugc-mood__card-image {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.ugc-mood__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blurred image copy — only visible in the frost-fade zone */
+.ugc-mood__img-blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: blur(20px) brightness(1.06);
+  transform: scale(1.08);
+  /* Only visible between 50%-75% from top (i.e. the frost-fade zone).
+     At 50% (top of zone) = transparent, at 75% (bottom of zone) = fully visible */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 48%, black 74%);
+  mask-image: linear-gradient(to bottom, transparent 48%, black 74%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ugc-mood__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: rgba(44, 51, 64, 0.04);
+  color: var(--shift-ink, #2C3340);
+}
+
+.ugc-mood__img-placeholder svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* ── Frost Panels — two layers covering bottom 50% of image ── */
+
+/* Upper frost panel: white gradient fading to transparent at top */
+.ugc-mood__card-image .ugc-mood__frost-fade {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  height: 25%;
+  display: block;
+  background: linear-gradient(to top, white 0%, rgba(255,255,255,0.97) 5%, rgba(255,255,255,0.93) 10%, rgba(255,255,255,0.88) 16%, rgba(255,255,255,0.82) 22%, rgba(255,255,255,0.74) 29%, rgba(255,255,255,0.65) 36%, rgba(255,255,255,0.55) 44%, rgba(255,255,255,0.44) 52%, rgba(255,255,255,0.34) 60%, rgba(255,255,255,0.24) 68%, rgba(255,255,255,0.16) 76%, rgba(255,255,255,0.09) 84%, rgba(255,255,255,0.04) 92%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Lower frost panel: solid white */
+.ugc-mood__card-image .ugc-mood__frost-solid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  display: block;
+  background: white;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Card Body — sits below image, solid white ── */
+.ugc-mood__card-body {
+  position: relative;
+  z-index: 3;
+  margin-top: -2px;
+  padding: 0 clamp(20px, 3vw, 32px) clamp(20px, 3vw, 28px);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  background: white;
+}
+
+/* No longer needed */
+.ugc-mood__card-body::before {
+  display: none;
+}
+
+.ugc-mood__card-title {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--shift-ink, #2C3340);
+}
+
+.ugc-mood__card-excerpt {
+  margin: 0;
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.55;
+  color: rgba(44, 51, 64, 0.6);
+  flex: 1;
+}
+
+/* Read More button */
+.ugc-mood__read-more {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  background: var(--shift-ink, #2C3340);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 200ms ease, transform 150ms ease;
+  margin-top: auto;
+}
+
+.ugc-mood__read-more:hover {
+  background: #1a1f28;
+  transform: translateY(-1px);
+}
+
+.ugc-mood__read-more:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ── Navigation Arrows ── */
+.ugc-mood__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--shift-ink, #2C3340);
+  cursor: pointer;
+  box-shadow: none;
+  transition: transform 200ms ease, opacity 200ms ease;
+  opacity: 0.7;
+}
+
+.ugc-mood__nav:hover {
+  transform: translateY(-50%) scale(1.15);
+  opacity: 1;
+}
+
+.ugc-mood__nav:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.ugc-mood__nav svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5;
+}
+
+/* Animated chevron arrows */
+.ugc-mood__arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ugc-mood__arrow--right {
+  transform: rotate(-90deg);
+}
+
+.ugc-mood__arrow--left {
+  transform: rotate(90deg);
+}
+
+.ugc-mood__arrow span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid var(--shift-ink, #2C3340);
+  border-right: 2px solid var(--shift-ink, #2C3340);
+  transform: rotate(45deg);
+  margin: -2px 0;
+  animation: ugcArrowAnimate 2s infinite;
+}
+
+.ugc-mood__arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.ugc-mood__arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes ugcArrowAnimate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+}
+
+.ugc-mood__nav--prev {
+  left: calc(50% - min(210px, 21vw) - 74px);
+}
+
+.ugc-mood__nav--next {
+  right: calc(50% - min(210px, 21vw) - 74px);
+}
+
+.ugc-mood__nav:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.ugc-mood__nav:focus-visible {
+  outline: 2px solid var(--shift-ink, #2C3340);
+  outline-offset: 3px;
+}
+
+/* ── Emotion Trigger Buttons ── */
+.ugc-mood__triggers {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 16px);
+  margin-top: clamp(24px, 4vw, 44px);
+  padding: 0 var(--brand-space-lg);
+  flex-wrap: wrap;
+}
+
+.ugc-mood__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1.5px solid rgba(44, 51, 64, 0.12);
+  border-radius: var(--brand-radius-pill, 999px);
+  background: rgba(44, 51, 64, 0.03);
+  color: rgba(44, 51, 64, 0.55);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease,
+    transform 150ms ease;
+}
+
+.ugc-mood__trigger:hover {
+  background: rgba(44, 51, 64, 0.06);
+  border-color: rgba(44, 51, 64, 0.2);
+  color: rgba(44, 51, 64, 0.85);
+  transform: translateY(-1px);
+}
+
+.ugc-mood__trigger:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.ugc-mood__trigger.is-active {
+  background: #fff;
+  border-color: var(--trigger-color, #9B8EC4);
+  color: var(--shift-ink, #2C3340);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06),
+    0 0 0 1px var(--trigger-color, #9B8EC4) inset;
+}
+
+.ugc-mood__trigger:focus-visible {
+  outline: 2px solid var(--shift-ink, #2C3340);
+  outline-offset: 3px;
+}
+
+.ugc-mood__trigger-icon {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.ugc-mood__trigger-text {
+  white-space: nowrap;
+}
+
+/* ── Empty State ── */
+.ugc-mood__empty {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 300px;
+  color: rgba(44, 51, 64, 0.4);
+  font-size: 1rem;
+}
+
+/* ── Modal ── */
+.ugc-mood__modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.ugc-mood__modal[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ugc-mood__modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.ugc-mood__modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.15, 1);
+}
+
+.ugc-mood__modal[aria-hidden="false"] .ugc-mood__modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.ugc-mood__modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--shift-ink, #2C3340);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 200ms ease, transform 150ms ease;
+}
+
+.ugc-mood__modal-close:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.ugc-mood__modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ugc-mood__modal-image {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+}
+
+.ugc-mood__modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ugc-mood__modal-body {
+  padding: clamp(24px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ugc-mood__modal-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--shift-ink, #2C3340);
+}
+
+.ugc-mood__modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ugc-mood__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ugc-mood__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ugc-mood__modal-reviewer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ugc-mood__reviewer-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--shift-ink, #2C3340);
+}
+
+.ugc-mood__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.ugc-mood__star {
+  width: 14px;
+  height: 14px;
+  color: rgba(44, 51, 64, 0.15);
+}
+
+.ugc-mood__star--filled {
+  color: var(--shift-sun, #F2B63D);
+}
+
+.ugc-mood__modal-quote {
+  margin: 0;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(44, 51, 64, 0.75);
+  font-style: italic;
+  border-left: none;
+  padding-left: 0;
+}
+
+.ugc-mood__modal-quote p {
+  margin: 0;
+}
+
+.ugc-mood__product-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(44, 51, 64, 0.05);
+  border: 1px solid rgba(44, 51, 64, 0.1);
+  font-size: 0.8rem;
+  color: rgba(44, 51, 64, 0.55);
+}
+
+.ugc-mood__product-tag::before {
+  content: '✦';
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+/* ── Mobile ── */
+@media (max-width: 749px) {
+  .ugc-mood {
+    overflow-x: hidden;
+    padding: clamp(36px, 6vw, 64px) 0 clamp(32px, 5vw, 56px);
+  }
+
+  .ugc-mood__header {
+    margin-bottom: clamp(20px, 4vw, 32px);
+  }
+
+  .ugc-mood__carousel {
+    overflow: visible;
+    padding: 0 24px;
+  }
+
+  .ugc-mood__track {
+    height: clamp(380px, 58vh, 480px);
+    overflow: visible;
+    padding-bottom: 24px;
+    margin-bottom: -24px;
+  }
+
+  .ugc-mood__card {
+    width: min(320px, 80vw);
+    transition:
+      transform 500ms cubic-bezier(0.4, 0, 0.15, 1),
+      opacity 500ms cubic-bezier(0.4, 0, 0.15, 1);
+  }
+
+  .ugc-mood__card.is-active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  .ugc-mood__card.is-prev {
+    opacity: 0;
+    transform: translateX(-40%) scale(0.92);
+    pointer-events: none;
+  }
+
+  .ugc-mood__card.is-next {
+    opacity: 0;
+    transform: translateX(40%) scale(0.92);
+    pointer-events: none;
+  }
+
+  .ugc-mood__card.is-after {
+    opacity: 0;
+    transform: translateX(60%) scale(0.88);
+    pointer-events: none;
+  }
+
+  .ugc-mood__nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ugc-mood__nav--prev {
+    left: 6px;
+  }
+
+  .ugc-mood__nav--next {
+    right: 6px;
+  }
+
+  .ugc-mood__triggers {
+    margin-top: clamp(16px, 3vw, 28px);
+  }
+
+  .ugc-mood__trigger {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .ugc-mood__card-body {
+    padding: 0 20px 20px;
+  }
+
+  .ugc-mood__modal-content {
+    max-height: 90vh;
+    border-radius: 20px;
+  }
+}
+
+/* ── Desktop wide ── */
+@media (min-width: 1200px) {
+  .ugc-mood__card {
+    width: 420px;
+  }
+
+  .ugc-mood__card.is-prev {
+    transform: translateX(calc(-100% - 120px)) scale(0.92);
+  }
+
+  .ugc-mood__card.is-next {
+    transform: translateX(calc(100% + 120px)) scale(0.92);
+  }
+
+  .ugc-mood__nav--prev {
+    left: calc(50% - 210px - 84px);
+  }
+
+  .ugc-mood__nav--next {
+    right: calc(50% - 210px - 84px);
+  }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ugc-mood__card {
+    transition: opacity 200ms ease;
+  }
+
+  .ugc-mood__modal-content {
+    transition: none;
+  }
+}

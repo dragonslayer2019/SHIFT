@@ -26,9 +26,8 @@
   z-index: 5;
   border-radius: clamp(24px, 4vw, 48px) clamp(24px, 4vw, 48px) 0 0;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
-  /* GPU-promote for smooth scroll compositing */
-  will-change: transform;
-  transform: translateZ(0);
+  /* No transform here — it breaks GSAP position:fixed pin */
+  will-change: auto;
 }
 
 /* Rising state — shadow intensifies during upward travel */
