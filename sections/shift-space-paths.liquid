@@ -16,8 +16,12 @@
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '400, 600, 900, 1200, 1400', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy', class: 'shift-path__image' }}
               {%- else -%}
-                <div class="shift-path__placeholder" role="img" aria-label="Editable scene image placeholder">
-                  {{ 'lifestyle-1' | placeholder_svg_tag }}
+                <div class="shift-path__placeholder shift-placeholder" role="img" aria-label="{{ block.settings.heading | escape }} image not configured">
+                  <span class="shift-placeholder__label">Image slot 0{{ forloop.index | plus: 1 }}</span>
+                  <div>
+                    <p class="shift-placeholder__title">{{ block.settings.heading | escape }} image</p>
+                    <p class="shift-placeholder__text">Add an original scene photograph before launch.</p>
+                  </div>
                 </div>
               {%- endif -%}
             </div>

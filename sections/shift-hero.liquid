@@ -1,7 +1,7 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
 
-<section class="shift-section color-{{ section.settings.color_scheme }} gradient">
-  <div class="shift-section__inner page-width">
+<section class="shift-section shift-section--hero color-{{ section.settings.color_scheme }} gradient">
+  <div class="shift-section__inner shift-hero__inner page-width">
     <div class="shift-hero__grid">
       <div class="shift-hero__copy">
         {%- if section.settings.eyebrow != blank -%}
@@ -45,8 +45,12 @@
               class: 'shift-hero__image'
           }}
         {%- else -%}
-          <div class="shift-hero__placeholder" role="img" aria-label="Editable lifestyle image placeholder">
-            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          <div class="shift-hero__placeholder shift-placeholder" role="img" aria-label="Lifestyle image not configured">
+            <span class="shift-placeholder__label">Image slot 01</span>
+            <div>
+              <p class="shift-placeholder__title">Rental living room or shared desk</p>
+              <p class="shift-placeholder__text">Add an original SHIFT lifestyle image in the theme editor.</p>
+            </div>
           </div>
         {%- endif -%}
       </div>

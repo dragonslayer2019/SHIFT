@@ -3,6 +3,7 @@
 
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'section-shift-featured-empty.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -92,7 +93,17 @@
       {%- endif -%}
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.collection == blank and section.settings.show_shift_empty_state -%}
+      <div class="shift-featured-empty page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <p class="shift-featured-empty__label">Collection not selected</p>
+        <p class="shift-featured-empty__heading h2">{{ section.settings.empty_state_heading | escape }}</p>
+        <div class="shift-featured-empty__text rte">{{ section.settings.empty_state_text }}</div>
+        {%- if request.design_mode -%}
+          <p class="shift-featured-empty__editor-note">Theme editor: select a dedicated SHIFT collection in this section. Catalog products are intentionally excluded.</p>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
         data-id="{{ section.id }}"
@@ -196,18 +207,19 @@
           </button>
         </div>
       {%- endif -%}
-    </slider-component>
+      </slider-component>
 
-    {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        <a
-          href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
+      {%- if section.settings.show_view_all and more_in_collection -%}
+        <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <a
+            href="{{ section.settings.collection.url }}"
+            class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+            aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
+          >
+            {{ 'sections.featured_collection.view_all' | t }}
+          </a>
+        </div>
+      {%- endif -%}
     {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
@@ -228,6 +240,24 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shift_empty_state",
+      "default": false,
+      "label": "Show SHIFT setup message when no collection is selected"
+    },
+    {
+      "type": "text",
+      "id": "empty_state_heading",
+      "default": "The first SHIFT edit is being assembled.",
+      "label": "Empty-state heading"
+    },
+    {
+      "type": "richtext",
+      "id": "empty_state_text",
+      "default": "<p>Products will appear here once a dedicated SHIFT launch collection is selected.</p>",
+      "label": "Empty-state text"
     },
     {
       "type": "range",

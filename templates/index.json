@@ -27,10 +27,13 @@
       "settings": {
         "title": "Useful now. Easy to live with.",
         "heading_size": "h1",
-        "description": "<p>Featured products appear here from your selected collection. Replace this copy with concrete reasons these pieces earn their footprint.</p>",
-        "show_description": true,
+        "description": "<p>A dedicated SHIFT collection will appear here once launch products are ready.</p>",
+        "show_description": false,
         "description_style": "body",
-        "collection": "all",
+        "collection": "",
+        "show_shift_empty_state": true,
+        "empty_state_heading": "The first SHIFT edit is being assembled.",
+        "empty_state_text": "<p>Products will appear here once a dedicated SHIFT launch collection is selected.</p>",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -63,10 +66,9 @@
       "type": "rich-text",
       "blocks": {
         "heading": { "type": "heading", "settings": { "heading": "A smaller space should still feel like yours.", "heading_size": "h1" } },
-        "text": { "type": "text", "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } },
-        "button": { "type": "button", "settings": { "button_label": "Shop all products", "button_link": "shopify://collections/all", "button_style_secondary": false, "button_label_2": "", "button_link_2": "", "button_style_secondary_2": false } }
+        "text": { "type": "text", "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": ["heading", "text"],
       "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
