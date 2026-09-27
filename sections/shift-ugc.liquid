@@ -1,0 +1,130 @@
+{{ 'section-shift-ugc.css' | asset_url | stylesheet_tag }}
+
+<section class="shift-section shift-ugc color-{{ section.settings.color_scheme }} gradient">
+  <div class="shift-section__inner page-width">
+    <header class="shift-ugc__header">
+      <div class="shift-ugc__heading-group">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="shift-ugc__title">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.intro != blank -%}
+        <div class="shift-ugc__intro rte">{{ section.settings.intro }}</div>
+      {%- endif -%}
+    </header>
+
+    {%- if section.settings.demo_mode -%}
+      <p class="shift-ugc__demo-note">Demo content — replace images, names, and notes before launch.</p>
+    {%- endif -%}
+
+    <div class="shift-ugc__grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign demo_image = 'shift-demo-ugc-living-corner.jpg'
+          case block.settings.demo_image
+            when 'desk'
+              assign demo_image = 'shift-demo-ugc-desk-reset.jpg'
+            when 'entry'
+              assign demo_image = 'shift-demo-ugc-entry-dropzone.jpg'
+          endcase
+        -%}
+        <article class="shift-ugc__card" role="listitem" {{ block.shopify_attributes }}>
+          <div class="shift-ugc__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  widths: '360, 540, 720, 960, 1200, 1400',
+                  sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw',
+                  loading: 'lazy',
+                  class: 'shift-ugc__image',
+                  alt: block.settings.alt_text
+              }}
+            {%- else -%}
+              <img
+                src="{{ demo_image | asset_url }}"
+                alt="{{ block.settings.alt_text | escape }}"
+                class="shift-ugc__image"
+                width="1122"
+                height="1402"
+                loading="lazy"
+              >
+            {%- endif -%}
+            {%- if section.settings.demo_mode -%}
+              <span class="shift-ugc__badge">Demo story</span>
+            {%- endif -%}
+          </div>
+
+          <div class="shift-ugc__content">
+            {%- if block.settings.display_name != blank -%}
+              <p class="shift-ugc__name">{{ block.settings.display_name | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.note != blank -%}
+              <div class="shift-ugc__note rte">{{ block.settings.note }}</div>
+            {%- endif -%}
+            {%- if block.settings.product != blank -%}
+              <a class="shift-ugc__product-link" href="{{ block.settings.product.url }}">
+                Shop {{ block.settings.product.title | escape }}
+                <span aria-hidden="true">→</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT community notes",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Notes from small-space life" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Small spaces, lived in." },
+    { "type": "richtext", "id": "intro", "label": "Introduction", "default": "<p>Quick snapshots of the routines, resets, and little decisions that make limited space work harder.</p>" },
+    { "type": "checkbox", "id": "demo_mode", "label": "Mark content as demo data", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Community note",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "demo_image",
+          "label": "Demo image fallback",
+          "options": [
+            { "value": "living", "label": "Living corner" },
+            { "value": "desk", "label": "Desk reset" },
+            { "value": "entry", "label": "Entry drop zone" }
+          ],
+          "default": "living"
+        },
+        { "type": "text", "id": "alt_text", "label": "Image alternative text", "default": "Demo small rental space" },
+        { "type": "text", "id": "display_name", "label": "Display name", "default": "Demo contributor" },
+        { "type": "richtext", "id": "note", "label": "Short note", "default": "<p>Replace this demo note with a real submission before launch.</p>" },
+        { "type": "product", "id": "product", "label": "Optional product link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SHIFT community notes",
+      "blocks": [
+        { "type": "story", "settings": { "demo_image": "living", "display_name": "Maya R. · Brooklyn rental", "alt_text": "Demo compact studio living corner with a sofa, lamp, and narrow storage", "note": "<p>The sofa finally feels like a room of its own—even when the bed is only a few steps away.</p>" } },
+        { "type": "story", "settings": { "demo_image": "desk", "display_name": "Jordan K. · Chicago studio", "alt_text": "Demo shared desk arranged for work and evening downtime", "note": "<p>Everything for work has a landing spot, so the desk can switch back to music and games after six.</p>" } },
+        { "type": "story", "settings": { "demo_image": "entry", "display_name": "Lena P. · Portland apartment", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

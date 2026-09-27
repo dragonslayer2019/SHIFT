@@ -35,6 +35,7 @@
         "empty_state_heading": "The first SHIFT edit is being assembled.",
         "empty_state_text": "<p>Products will appear here once a dedicated SHIFT launch collection is selected.</p>",
         "products_to_show": 3,
+        "product_order": "collection",
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "full_width": false,
@@ -62,6 +63,48 @@
       "block_order": ["living_use", "desk_use"],
       "settings": { "eyebrow": "See the use, not just the object", "heading": "Built around real small-space friction.", "color_scheme": "scheme-1" }
     },
+    "community_notes": {
+      "type": "shift-ugc",
+      "blocks": {
+        "demo_living": { "type": "story", "settings": { "demo_image": "living", "alt_text": "Demo compact studio living corner with a sofa, lamp, and narrow storage", "display_name": "Maya R. · Brooklyn rental", "note": "<p>The sofa finally feels like a room of its own—even when the bed is only a few steps away.</p>", "product": "the-pocket-tile" } },
+        "demo_desk": { "type": "story", "settings": { "demo_image": "desk", "alt_text": "Demo shared desk arranged for work and evening downtime", "display_name": "Jordan K. · Chicago studio", "note": "<p>Everything for work has a landing spot, so the desk can switch back to music and games after six.</p>", "product": "the-little-horizon" } },
+        "demo_entry": { "type": "story", "settings": { "demo_image": "entry", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "display_name": "Lena P. · Portland apartment", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>", "product": "the-key-perch" } }
+      },
+      "block_order": ["demo_living", "demo_desk", "demo_entry"],
+      "settings": { "eyebrow": "Notes from small-space life", "heading": "Small spaces, lived in.", "intro": "<p>Quick snapshots of the routines, resets, and little decisions that make limited space work harder.</p>", "demo_mode": true, "color_scheme": "scheme-2" }
+    },
+    "top_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Top sellers",
+        "heading_size": "h1",
+        "description": "<p>Three desk-space picks from the current dev catalog.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "desk-spaces",
+        "show_shift_empty_state": true,
+        "empty_state_heading": "Choose a Top sellers collection.",
+        "empty_state_text": "<p>Select a collection in the theme editor to populate this section.</p>",
+        "products_to_show": 3,
+        "product_order": "collection",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "closing": {
       "type": "rich-text",
       "blocks": {
@@ -72,5 +115,5 @@
       "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
-  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "closing"]
+  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers", "closing"]
 }
