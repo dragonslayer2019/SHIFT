@@ -1,0 +1,70 @@
+{{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+
+<section class="shift-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="shift-section__inner page-width">
+    <header class="shift-fit__header">
+      {%- if section.settings.eyebrow != blank -%}<p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="shift-fit__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </header>
+
+    <div class="shift-fit__list">
+      {%- for block in section.blocks -%}
+        <article class="shift-fit__item" {{ block.shopify_attributes }}>
+          <div class="shift-fit__media">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '400, 600, 900, 1200, 1400', sizes: '(min-width: 750px) 42vw, 100vw', loading: 'lazy', class: 'shift-fit__image' }}
+            {%- else -%}
+              <div class="shift-fit__placeholder" role="img" aria-label="Editable product-in-space image placeholder">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="shift-fit__copy">
+            {%- if block.settings.eyebrow != blank -%}<p class="shift-kicker">{{ block.settings.eyebrow | escape }}</p>{%- endif -%}
+            <h3 class="shift-fit__heading">{{ block.settings.heading | escape }}</h3>
+            <div class="shift-fit__text rte">{{ block.settings.text }}</div>
+            <dl class="shift-fit__facts">
+              <div class="shift-fit__fact"><dt>Fits</dt><dd>{{ block.settings.fits | escape }}</dd></div>
+              <div class="shift-fit__fact"><dt>Helps with</dt><dd>{{ block.settings.helps | escape }}</dd></div>
+              <div class="shift-fit__fact"><dt>Feels like</dt><dd>{{ block.settings.feels | escape }}</dd></div>
+            </dl>
+            {%- if block.settings.link_label != blank -%}
+              <div><a class="button button--secondary" {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}>{{ block.settings.link_label | escape }}</a></div>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT fit notes",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "See the use, not just the object" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Built around real small-space friction." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "use_case",
+      "name": "Use case",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Product-in-space image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Editable use case" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Show where the product earns its place." },
+        { "type": "richtext", "id": "text", "label": "Explanation", "default": "<p>Replace this placeholder with a specific product, the inconvenience it solves, and how it changes the everyday experience of the space.</p>" },
+        { "type": "text", "id": "fits", "label": "Fits", "default": "Add room type and footprint" },
+        { "type": "text", "id": "helps", "label": "Helps with", "default": "Add the practical problem" },
+        { "type": "text", "id": "feels", "label": "Feels like", "default": "Add the emotional payoff" },
+        { "type": "text", "id": "link_label", "label": "Button label", "default": "Shop this use case" },
+        { "type": "url", "id": "link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SHIFT fit notes", "blocks": [{ "type": "use_case" }, { "type": "use_case" }] }]
+}
+{% endschema %}

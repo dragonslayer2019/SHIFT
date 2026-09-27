@@ -1,0 +1,28 @@
+/* SHIFT maps brand semantics to Dawn's editable color schemes.
+   Components own their layout; this file does not override Dawn primitives. */
+:root {
+  --shift-space-xs: 0.4rem;
+  --shift-space-sm: 0.8rem;
+  --shift-space-md: 1.2rem;
+  --shift-space-lg: 1.6rem;
+  --shift-space-xl: 2.4rem;
+  --shift-space-2xl: 3.2rem;
+  --shift-space-3xl: 4.8rem;
+  --shift-space-4xl: 6.4rem;
+  --shift-space-5xl: 9.6rem;
+  --shift-radius-sm: 0.8rem;
+  --shift-radius-md: 1.6rem;
+  --shift-rule: rgba(var(--color-foreground), 0.18);
+  --shift-muted: rgba(var(--color-foreground), 0.7);
+  --shift-accent: rgb(var(--color-button));
+  --shift-on-accent: rgb(var(--color-button-text));
+  --shift-surface: rgb(var(--color-background));
+}
+
+.shift-card-note {
+  display: block;
+  margin-top: 0.6rem;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}

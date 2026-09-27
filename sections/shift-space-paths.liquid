@@ -1,0 +1,72 @@
+{{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+
+<section class="shift-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="shift-section__inner page-width">
+    <header class="shift-paths__header">
+      {%- if section.settings.eyebrow != blank -%}<p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="shift-paths__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="shift-lede rte">{{ section.settings.text }}</div>{%- endif -%}
+    </header>
+
+    <div class="shift-paths__grid">
+      {%- for block in section.blocks -%}
+        <article class="shift-path" {{ block.shopify_attributes }}>
+          <a class="shift-path__link" {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}>
+            <div class="shift-path__media">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '400, 600, 900, 1200, 1400', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy', class: 'shift-path__image' }}
+              {%- else -%}
+                <div class="shift-path__placeholder" role="img" aria-label="Editable scene image placeholder">
+                  {{ 'lifestyle-1' | placeholder_svg_tag }}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="shift-path__content">
+              <span class="shift-path__number" aria-hidden="true">0{{ forloop.index }}</span>
+              <h3 class="shift-path__heading">{{ block.settings.heading | escape }}</h3>
+              <p class="shift-path__text">{{ block.settings.text | escape }}</p>
+              <span class="shift-path__cta">{{ block.settings.link_label | escape }} <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT space paths",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Start with the space" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "What needs to work better?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Shop by the part of home you are trying to make clearer, calmer, or easier to share.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "space",
+      "name": "Space",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Living spaces" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Define a lounge zone, add storage, and make one room handle more than one part of the day." },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore living spaces" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SHIFT space paths",
+      "blocks": [
+        { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces" } },
+        { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

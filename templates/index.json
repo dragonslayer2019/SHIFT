@@ -1,280 +1,74 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Make Home A Soft Reset</strong>",
-            "heading_size": "h0"
-          }
-        },
-        "text_KNLDU7": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Turn everyday corners into spaces that hold how you feel.</strong>",
-            "text_style": "subtitle"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Find Your Soft Reset",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text_KNLDU7",
-        "button"
-      ],
+    "shift_hero": {
+      "type": "shift-hero",
       "settings": {
-        "image": "shopify://shop_images/jimeng-2026-01-17-1414-_Kim_Jung_Gi_....png",
-        "image_overlay_opacity": 10,
-        "image_height": "large",
-        "image_behavior": "ambient",
-        "desktop_content_position": "bottom-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "left",
-        "show_text_below": false
+        "eyebrow": "Small-space goods, chosen with purpose",
+        "heading": "Make more room for your life.",
+        "text": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>",
+        "primary_label": "Shop living spaces",
+        "primary_link": "",
+        "secondary_label": "Shop desk spaces",
+        "secondary_link": "",
+        "color_scheme": "scheme-1"
       }
     },
-    "scene_shift": {
-      "type": "scene-shift",
+    "space_paths": {
+      "type": "shift-space-paths",
       "blocks": {
-        "scene_1": {
-          "type": "scene_card",
-          "settings": {
-            "desktop_base_image": "shopify://shop_images/20260413230131_15_32.jpg",
-            "desktop_shift_image": "shopify://shop_images/20260413230203_16_32.jpg",
-            "scene_title": "A Quiet Bedroom Corner",
-            "scene_caption": "A few soft essentials that turn rest into ritual.",
-            "button_label": "Explore the Space",
-            "button_link": ""
-          }
-        },
-        "scene_2": {
-          "type": "scene_card",
-          "settings": {
-            "scene_title": "A Living Room That Breathes",
-            "scene_caption": "Where the light, the texture, and the warmth finally align.",
-            "button_label": "See the Full Setup",
-            "button_link": ""
-          }
-        },
-        "scene_3": {
-          "type": "scene_card",
-          "settings": {
-            "scene_title": "Your Reading Nook, Awakened",
-            "scene_caption": "The corner you always had — now holding exactly how you feel.",
-            "button_label": "Enter This Mood",
-            "button_link": ""
-          }
-        }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "" } }
       },
-      "block_order": [
-        "scene_1",
-        "scene_2",
-        "scene_3"
-      ],
-      "settings": {
-        "heading": "Where the SHIFT Begins",
-        "subheading": "Small, thoughtful changes that turn everyday corners into spaces that hold how you feel.",
-        "autoplay": true,
-        "autoplay_interval": 8,
-        "initial_pause": 1,
-        "breathe_duration": 2000,
-        "transition_duration": 800,
-        "show_arrows": true,
-        "show_dots": true,
-        "card_radius": 24,
-        "card_shadow": 70
-      }
+      "block_order": ["living", "desk"],
+      "settings": { "eyebrow": "Start with the space", "heading": "What needs to work better?", "text": "<p>Shop by the part of home you are trying to make clearer, calmer, or easier to share.</p>", "color_scheme": "scheme-2" }
     },
-    "ugc_mood_qckfpm": {
-      "type": "ugc-mood",
-      "blocks": {
-        "mood_card_QhkDzz": {
-          "type": "mood_card",
-          "settings": {
-            "card_image": "shopify://shop_images/1.png",
-            "card_title": "Real Time Stress Analytics",
-            "emotion_key": "anxious",
-            "emotion_icon": "😰",
-            "emotion_label": "Anxious",
-            "emotion_color": "#9b8ec4",
-            "button_label": "I feel anxious",
-            "reviewer_name": "Sarah K.",
-            "star_rating": 5,
-            "review_text": "I didn't think a candle could change how a room feels. But lighting it after a long day turned my anxious evenings into something I actually look forward to.",
-            "product_mention": "Calm Evening Candle"
-          }
-        },
-        "mood_card_ktJqa9": {
-          "type": "mood_card",
-          "settings": {
-            "card_image": "shopify://shop_images/jimeng-2025-10-22-2724-1._LOFT_....png",
-            "card_title": "Real Time Stress Analytics",
-            "emotion_key": "anxious",
-            "emotion_icon": "😰",
-            "emotion_label": "Anxious",
-            "emotion_color": "#9b8ec4",
-            "button_label": "I feel anxious",
-            "reviewer_name": "Sarah K.",
-            "star_rating": 5,
-            "review_text": "I didn't think a candle could change how a room feels. But lighting it after a long day turned my anxious evenings into something I actually look forward to.",
-            "product_mention": "Calm Evening Candle"
-          }
-        },
-        "mood_card_Kix7Ez": {
-          "type": "mood_card",
-          "settings": {
-            "card_image": "shopify://shop_images/9022a705161ff42b7879d88f1fd6d0e8_eace46c7-d707-4d5c-817a-4723f5017867.png",
-            "card_title": "Real Time Stress Analytics",
-            "emotion_key": "drained",
-            "emotion_icon": "😮‍💨",
-            "emotion_label": "Drained",
-            "emotion_color": "#5aafcf",
-            "button_label": "I feel drained",
-            "reviewer_name": "Marcus T.",
-            "star_rating": 5,
-            "review_text": "After burning out at work, I rearranged my reading nook with this throw and the softest cushion. Now it's the first place I go — and somehow, I actually rest.",
-            "product_mention": "Cloud Rest Throw"
-          }
-        }
-      },
-      "block_order": [
-        "mood_card_QhkDzz",
-        "mood_card_ktJqa9",
-        "mood_card_Kix7Ez"
-      ],
-      "name": "UGC Mood",
-      "settings": {
-        "heading": "They felt it too.",
-        "subheading": "Real stories from people who shifted their space — and how it shifted them.",
-        "card_radius": 24,
-        "transition_duration": 600
-      }
-    },
-    "featured_collection_m9nAUU": {
+    "featured_collection": {
       "type": "featured-collection",
-      "name": "所有商品",
       "settings": {
-        "collection": "",
-        "products_to_show": 4,
-        "title": "Featured collection",
+        "title": "Useful now. Easy to live with.",
         "heading_size": "h1",
-        "description": "",
-        "show_description": false,
+        "description": "<p>Featured products appear here from your selected collection. Replace this copy with concrete reasons these pieces earn their footprint.</p>",
+        "show_description": true,
         "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "",
-        "image_ratio": "adapt",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
-    "featured_blog_WAeWiz": {
-      "type": "featured-blog",
-      "name": "品牌文化宣传",
-      "settings": {
-        "blog": "",
-        "post_limit": 3,
-        "heading": "Blog posts",
-        "heading_size": "h1",
-        "columns_desktop": 3,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_XpmFMH": {
-      "type": "image-with-text",
+    "fit_notes": {
+      "type": "shift-fit-notes",
       "blocks": {
-        "heading_N3K6BC": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_YL6h9J": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_UJGPQD": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
+        "living_use": { "type": "use_case", "settings": { "eyebrow": "Editable living-space use case", "heading": "Show how one piece makes an open room easier to read.", "text": "<p>Replace this placeholder with a real product in a compact rental. Explain how it defines a zone, reduces visible clutter, or supports a second use without permanent installation.</p>", "fits": "Add room type and footprint", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "" } },
+        "desk_use": { "type": "use_case", "settings": { "eyebrow": "Editable desk-space use case", "heading": "Show how the desk resets between work and downtime.", "text": "<p>Replace this placeholder with a real product and a real desk constraint. State what moves, stores, lifts, or stays within reach—and why that matters at the end of the day.</p>", "fits": "Add desk size and clearance", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "" } }
       },
-      "block_order": [
-        "heading_N3K6BC",
-        "text_YL6h9J",
-        "button_UJGPQD"
-      ],
-      "name": "品牌媒体宣传页",
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["living_use", "desk_use"],
+      "settings": { "eyebrow": "See the use, not just the object", "heading": "Built around real small-space friction.", "color_scheme": "scheme-1" }
+    },
+    "closing": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "A smaller space should still feel like yours.", "heading_size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } },
+        "button": { "type": "buttons", "settings": { "button_label_1": "Shop all products", "button_link_1": "shopify://collections/all", "button_style_secondary_1": false, "button_label_2": "", "button_link_2": "", "button_style_secondary_2": false } }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
-  "order": [
-    "image_banner",
-    "scene_shift",
-    "ugc_mood_qckfpm",
-    "featured_collection_m9nAUU",
-    "featured_blog_WAeWiz",
-    "image_with_text_XpmFMH"
-  ]
+  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "closing"]
 }

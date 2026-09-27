@@ -1,0 +1,65 @@
+{{ 'section-shift-commerce.css' | asset_url | stylesheet_tag }}
+
+<section class="shift-commerce color-{{ section.settings.color_scheme }} gradient" aria-labelledby="ShiftProductDetails-{{ section.id }}">
+  <div class="shift-product-details__inner page-width">
+    <header class="shift-product-details__header">
+      <p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>
+      <h2 class="shift-product-details__title" id="ShiftProductDetails-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.intro != blank -%}<p class="shift-product-details__intro">{{ section.settings.intro | escape }}</p>{%- endif -%}
+    </header>
+
+    <dl class="shift-product-details__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign detail_value = blank
+          case block.settings.source
+            when 'dimensions'
+              assign detail_value = product.metafields.custom.dimensions
+            when 'best_for'
+              assign detail_value = product.metafields.custom.best_for
+            when 'helps_with'
+              assign detail_value = product.metafields.custom.helps_with
+            when 'setup'
+              assign detail_value = product.metafields.custom.setup_and_care
+          endcase
+        -%}
+        <div class="shift-product-details__item" {{ block.shopify_attributes }}>
+          <dt class="shift-product-details__label">{{ block.settings.label | escape }}</dt>
+          <dd class="shift-product-details__value{% if detail_value == blank %} shift-product-details__placeholder{% endif %}">
+            {%- if detail_value != blank -%}
+              {{ detail_value | metafield_tag }}
+            {%- else -%}
+              {{ block.settings.placeholder | escape }}
+            {%- endif -%}
+          </dd>
+        </div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT product details",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Know before it arrives" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Will it work in your space?" },
+    { "type": "textarea", "id": "intro", "label": "Introduction", "default": "These fields use product metafields when available. Placeholder text below must be replaced before launch." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "detail",
+      "name": "Detail",
+      "settings": [
+        { "type": "select", "id": "source", "label": "Product metafield", "options": [{ "value": "dimensions", "label": "custom.dimensions" }, { "value": "best_for", "label": "custom.best_for" }, { "value": "helps_with", "label": "custom.helps_with" }, { "value": "setup", "label": "custom.setup_and_care" }], "default": "dimensions" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Dimensions" },
+        { "type": "textarea", "id": "placeholder", "label": "Visible placeholder", "default": "[Add product-specific details before launch]" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SHIFT product details", "blocks": [{ "type": "detail", "settings": { "source": "dimensions", "label": "Dimensions" } }, { "type": "detail", "settings": { "source": "best_for", "label": "Best for" } }, { "type": "detail", "settings": { "source": "helps_with", "label": "Helps with" } }, { "type": "detail", "settings": { "source": "setup", "label": "Setup & care" } }] }]
+}
+{% endschema %}
