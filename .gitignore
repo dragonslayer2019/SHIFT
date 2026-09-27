@@ -1,4 +1,5 @@
 # Impeccable skills (all AI tool config directories)
+.shopify/
 .adal/
 .agents/
 !.agents/
