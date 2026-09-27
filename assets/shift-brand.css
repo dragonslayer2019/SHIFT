@@ -12,8 +12,15 @@
   --shift-space-5xl: 9.6rem;
   --shift-radius-sm: 0.8rem;
   --shift-radius-md: 1.6rem;
-  --shift-rule: rgba(var(--color-foreground), 0.18);
-  --shift-muted: rgba(var(--color-foreground), 0.7);
+}
+
+/* Recompute color semantics where Dawn applies each section's color scheme.
+   Keeping these values on the section root prevents :root's resolved colors
+   from leaking into nested light or dark schemes. */
+.shift-section,
+.shift-commerce {
+  --shift-muted: rgba(var(--color-foreground), 0.78);
+  --shift-rule: rgba(var(--color-foreground), 0.55);
   --shift-accent: rgb(var(--color-button));
   --shift-on-accent: rgb(var(--color-button-text));
   --shift-surface: rgb(var(--color-background));

@@ -62,7 +62,7 @@ Never put login credentials, Theme Access passwords/tokens, cookies, or Admin AP
 
 1. Confirm the target store and active Shopify authorization.
 2. List themes and identify the live theme ID before any upload.
-3. Create exactly one theme named `SHIFT Review — do not publish` with `shopify theme push --unpublished --json` from the clean worktree.
+3. Create exactly one theme from the clean worktree with an explicit non-interactive name and target store: `shopify theme push --unpublished --theme "SHIFT Review — do not publish" --store <store>.myshopify.com --path <clean-worktree> --json --strict`. Do not omit `--theme`; an unnamed unpublished push can wait for interactive input or create an ambiguously named target.
 4. Require the returned theme role to be `unpublished`; abort if it is `main`, `live`, `development`, or unclear.
 5. Save the store, returned theme ID, exact name, role, and timestamp to the local state file.
 
@@ -78,15 +78,23 @@ Never use `--live`, `--allow-live`, `--publish`, `shopify theme publish`, or an 
 
 ## 5. Produce and verify a visitor preview
 
-Use the fresh `preview_url` returned by the successful JSON theme push. Do not report `editor_url`, an `/admin/` URL, or a merchant-session preview as the visitor link.
+Do not treat the `preview_url` returned by `shopify theme push --json` as a no-login visitor link. That value commonly uses the shop domain and `preview_theme_id`; retain it only as a merchant preview locator and never report it as the verified guest URL.
+
+After the upload and unpublished-role checks, generate a fresh Shopify visitor preview using the current supported sharing flow:
+
+1. Open Shopify Admin, go to **Online Store > Themes**, and preview the verified unpublished review theme.
+2. In the theme preview bar, use the share/copy-link control to create a visitor preview. Browser automation may perform these steps only in the already authorized merchant session and only for the verified review theme.
+3. Accept the result only when it is HTTPS and its hostname is `shopifypreview.com` or a subdomain of `shopifypreview.com`. Reject Admin URLs, shop-domain URLs containing `preview_theme_id`, and any URL whose theme cannot be tied back to the recorded theme ID.
+4. If the visitor link cannot be generated automatically, ask the user to copy the visitor link from that Shopify Admin preview bar and paste it into the conversation. Preserve the completed commit, PR, upload, and theme ID while waiting; after the user supplies the link, continue unauthenticated verification and matching screenshots.
+
+Visitor preview links can expire, so create a new one for every handoff rather than reusing a prior link.
 
 Validate the URL in a new unauthenticated browser context with no Shopify Admin cookies:
 
 - Confirm the requested page loads the recorded theme ID and does not redirect to Admin or a login page.
 - Confirm representative assets and page content load.
+- Use the copied link as delivered for reporting. A `pb=0` query parameter may be added to a working copy for clean screenshots, but it does not create or authenticate a visitor preview.
 - If the store password, authentication, expiry, or another barrier prevents guest access, report the blocker and the smallest merchant action needed. Do not fabricate or hand-edit a link and claim it works.
-
-Generate and verify a new visitor URL on every handoff because preview links can expire or change.
 
 ## 6. Capture matching screenshots
 
