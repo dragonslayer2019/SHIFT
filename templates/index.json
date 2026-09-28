@@ -2,14 +2,20 @@
   "sections": {
     "shift_hero": {
       "type": "shift-hero",
+      "blocks": {
+        "demo_product_one": { "type": "product", "settings": { "product": "the-little-horizon" } },
+        "demo_product_two": { "type": "product", "settings": { "product": "the-cloud-rest" } }
+      },
+      "block_order": ["demo_product_one", "demo_product_two"],
       "settings": {
-        "eyebrow": "Small-space goods, chosen with purpose",
-        "heading": "Make more room for your life.",
-        "text": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>",
-        "primary_label": "Shop living spaces",
-        "primary_link": "shopify://collections/living-spaces",
-        "secondary_label": "Shop desk spaces",
-        "secondary_link": "shopify://collections/desk-spaces",
+        "eyebrow": "Small-space goods for everyday resets",
+        "heading": "Useful pieces. Less space friction.",
+        "text": "<p>Shop practical, characterful goods for rental living rooms and desks that work, study, and unwind in the same footprint.</p>",
+        "product_label": "Current demo products",
+        "primary_label": "Shop the catalog",
+        "primary_link": "shopify://collections/catalog",
+        "secondary_label": "Shop living spaces",
+        "secondary_link": "shopify://collections/living-spaces",
         "color_scheme": "scheme-1",
         "image": "shopify://shop_images/shift-home-hero.jpg"
       }
@@ -17,19 +23,19 @@
     "space_paths": {
       "type": "shift-space-paths",
       "blocks": {
-        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
-        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Small goods for clearer zones, easy resets, and rooms that do more than one job.", "context_label": "Room inspiration · furniture not sold", "link_label": "Shop living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Desk companions that give everyday tools a place without taking over the surface.", "context_label": "Desk inspiration · furniture not sold", "link_label": "Shop desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
       },
       "block_order": ["living", "desk"],
-      "settings": { "eyebrow": "Start with the space", "heading": "What needs to work better?", "text": "<p>Shop by the part of home you are trying to make clearer, calmer, or easier to share.</p>", "color_scheme": "scheme-2" }
+      "settings": { "eyebrow": "Shop by space", "heading": "Where could a small shift help?", "text": "<p>The photographs set the room context. Follow each path to shop the smaller goods selected for it.</p>", "color_scheme": "scheme-2" }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Useful now. Easy to live with.",
+        "title": "Start with living spaces",
         "heading_size": "h1",
-        "description": "<p>Three practical pieces selected for rental living spaces.</p>",
-        "show_description": true,
+        "description": "<p>Current demo products for adding character and clearer landing spots to compact rooms.</p>",
+        "show_description": false,
         "description_style": "body",
         "collection": "living-spaces",
         "show_shift_empty_state": true,
@@ -51,8 +57,8 @@
         "show_rating": false,
         "quick_add": "standard",
         "columns_mobile": "2",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 40,
+        "padding_bottom": 48
       }
     },
     "fit_notes": {
@@ -102,8 +108,8 @@
         "show_rating": false,
         "quick_add": "standard",
         "columns_mobile": "2",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 48,
+        "padding_bottom": 56
       }
     },
     "closing": {
@@ -116,5 +122,5 @@
       "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
-  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers", "closing"]
+  "order": ["shift_hero", "featured_collection", "space_paths", "fit_notes", "community_notes", "top_sellers", "closing"]
 }

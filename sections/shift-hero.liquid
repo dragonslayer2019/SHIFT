@@ -1,4 +1,11 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+
+{%- assign product_blocks = section.blocks | where: 'type', 'product' -%}
 
 <section class="shift-section shift-section--hero color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner shift-hero__inner page-width">
@@ -33,23 +40,61 @@
         </div>
       </div>
 
-      <div class="shift-hero__media">
-        {%- if section.settings.image != blank -%}
-          {{
-            section.settings.image
-            | image_url: width: 2000
-            | image_tag:
-              widths: '550, 750, 1100, 1500, 2000',
-              sizes: '(min-width: 1200px) 58vw, (min-width: 750px) 55vw, 100vw',
-              fetchpriority: 'high',
-              class: 'shift-hero__image'
-          }}
+      <div class="shift-hero__merchandise">
+        {%- if section.settings.product_label != blank -%}
+          <p class="shift-hero__product-label shift-kicker">{{ section.settings.product_label | escape }}</p>
+        {%- endif -%}
+
+        {%- if product_blocks.size > 0 -%}
+          <ul class="shift-hero__products" role="list">
+            {%- assign skip_card_product_styles = false -%}
+            {%- for block in product_blocks -%}
+              <li class="shift-hero__product" {{ block.shopify_attributes }}>
+                {%- if block.settings.product != blank -%}
+                  {% render 'card-product',
+                    card_product: block.settings.product,
+                    media_aspect_ratio: 'square',
+                    image_shape: 'default',
+                    lazy_load: false,
+                    show_secondary_image: true,
+                    show_vendor: false,
+                    show_rating: false,
+                    skip_styles: skip_card_product_styles,
+                    section_id: section.id,
+                    quick_add: 'standard',
+                    product_view_context: 'featured'
+                  %}
+                  {%- assign skip_card_product_styles = true -%}
+                {%- else -%}
+                  <div class="shift-hero__product-placeholder shift-placeholder">
+                    <span class="shift-placeholder__label">Product slot {{ forloop.index }}</span>
+                    <div>
+                      <p class="shift-placeholder__title">Choose a product</p>
+                      <p class="shift-placeholder__text">Select a current product in the theme editor.</p>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- elsif section.settings.image != blank -%}
+          <div class="shift-hero__media">
+            {{
+              section.settings.image
+              | image_url: width: 1600
+              | image_tag:
+                widths: '550, 750, 1100, 1500',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                fetchpriority: 'high',
+                class: 'shift-hero__image'
+            }}
+          </div>
         {%- else -%}
-          <div class="shift-hero__placeholder shift-placeholder" role="img" aria-label="Lifestyle image not configured">
-            <span class="shift-placeholder__label">Image slot 01</span>
+          <div class="shift-hero__media shift-hero__placeholder shift-placeholder" role="img" aria-label="Products not configured">
+            <span class="shift-placeholder__label">Merchandise not configured</span>
             <div>
-              <p class="shift-placeholder__title">Rental living room or shared desk</p>
-              <p class="shift-placeholder__text">Add an original SHIFT lifestyle image in the theme editor.</p>
+              <p class="shift-placeholder__title">Show what SHIFT sells.</p>
+              <p class="shift-placeholder__text">Add one or two current products in the theme editor.</p>
             </div>
           </div>
         {%- endif -%}
@@ -63,17 +108,33 @@
   "name": "SHIFT hero",
   "tag": "section",
   "class": "section",
+  "max_blocks": 2,
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Small-space goods, chosen with purpose" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Make more room for your life." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>" },
-    { "type": "image_picker", "id": "image", "label": "Lifestyle image" },
+    { "type": "text", "id": "product_label", "label": "Product area label", "default": "A closer look at the current edit" },
+    { "type": "image_picker", "id": "image", "label": "Fallback image", "info": "Shown only when no product blocks are added." },
     { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop living spaces" },
     { "type": "url", "id": "primary_link", "label": "Primary button link" },
     { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Shop desk spaces" },
     { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
   ],
-  "presets": [{ "name": "SHIFT hero" }]
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SHIFT hero",
+      "blocks": [{ "type": "product" }, { "type": "product" }]
+    }
+  ]
 }
 {% endschema %}

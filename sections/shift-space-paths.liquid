@@ -1,6 +1,6 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
 
-<section class="shift-section color-{{ section.settings.color_scheme }} gradient">
+<section class="shift-section shift-section--paths color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner page-width">
     <header class="shift-paths__header">
       {%- if section.settings.eyebrow != blank -%}<p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
@@ -26,7 +26,7 @@
               {%- endif -%}
             </div>
             <div class="shift-path__content">
-              <span class="shift-path__number" aria-hidden="true">0{{ forloop.index }}</span>
+              <span class="shift-path__number">{{ block.settings.context_label | escape }}</span>
               <h3 class="shift-path__heading">{{ block.settings.heading | escape }}</h3>
               <p class="shift-path__text">{{ block.settings.text | escape }}</p>
               <span class="shift-path__cta">{{ block.settings.link_label | escape }} <span aria-hidden="true">→</span></span>
@@ -58,6 +58,7 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "heading", "label": "Heading", "default": "Living spaces" },
         { "type": "textarea", "id": "text", "label": "Description", "default": "Define a lounge zone, add storage, and make one room handle more than one part of the day." },
+        { "type": "text", "id": "context_label", "label": "Image context label", "default": "Room inspiration · goods sold separately" },
         { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore living spaces" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
