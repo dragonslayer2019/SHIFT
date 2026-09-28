@@ -10,14 +10,15 @@
         "primary_link": "shopify://collections/living-spaces",
         "secondary_label": "Shop desk spaces",
         "secondary_link": "shopify://collections/desk-spaces",
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "image": "shopify://shop_images/shift-home-hero.jpg"
       }
     },
     "space_paths": {
       "type": "shift-space-paths",
       "blocks": {
-        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "shopify://collections/living-spaces" } },
-        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "shopify://collections/desk-spaces" } }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Define a lounge zone, add storage, and make one room handle more than one part of the day.", "link_label": "Explore living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Keep work, study, and downtime within reach—without letting the whole desk feel busy.", "link_label": "Explore desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
       },
       "block_order": ["living", "desk"],
       "settings": { "eyebrow": "Start with the space", "heading": "What needs to work better?", "text": "<p>Shop by the part of home you are trying to make clearer, calmer, or easier to share.</p>", "color_scheme": "scheme-2" }
@@ -57,8 +58,8 @@
     "fit_notes": {
       "type": "shift-fit-notes",
       "blocks": {
-        "living_use": { "type": "use_case", "settings": { "eyebrow": "Editable living-space use case", "heading": "Show how one piece makes an open room easier to read.", "text": "<p>Replace this placeholder with a real product in a compact rental. Explain how it defines a zone, reduces visible clutter, or supports a second use without permanent installation.</p>", "fits": "Add room type and footprint", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "shopify://collections/living-spaces" } },
-        "desk_use": { "type": "use_case", "settings": { "eyebrow": "Editable desk-space use case", "heading": "Show how the desk resets between work and downtime.", "text": "<p>Replace this placeholder with a real product and a real desk constraint. State what moves, stores, lifts, or stays within reach—and why that matters at the end of the day.</p>", "fits": "Add desk size and clearance", "helps": "Add the specific inconvenience", "feels": "Add the everyday payoff", "link_label": "Shop the use case", "link": "shopify://collections/desk-spaces" } }
+        "living_use": { "type": "use_case", "settings": { "eyebrow": "One room, clearer zones", "heading": "Give the living area a boundary—without building one.", "text": "<p>A rug, a movable table, and open storage can help a studio lounge read as its own place while keeping the route to the rest of the room open.</p>", "fits": "Studios and open-plan rentals", "helps": "Visual clutter and blurred room zones", "feels": "Settled, without feeling boxed in", "link_label": "Browse living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-use-case-living.jpg" } },
+        "desk_use": { "type": "use_case", "settings": { "eyebrow": "A desk that changes gears", "heading": "Make room for work—and for what comes after.", "text": "<p>Give everyday tools a reliable landing spot, then clear the center when the laptop closes. The same surface can support study, hobbies, or a quiet end-of-day reset.</p>", "fits": "Shared work, study, and hobby desks", "helps": "A surface that never feels cleared", "feels": "Ready for the next part of the day", "link_label": "Browse desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-use-case-desk.jpg" } }
       },
       "block_order": ["living_use", "desk_use"],
       "settings": { "eyebrow": "See the use, not just the object", "heading": "Built around real small-space friction.", "color_scheme": "scheme-1" }
@@ -66,9 +67,9 @@
     "community_notes": {
       "type": "shift-ugc",
       "blocks": {
-        "demo_living": { "type": "story", "settings": { "demo_image": "living", "alt_text": "Demo compact studio living corner with a sofa, lamp, and narrow storage", "display_name": "Maya R. · Brooklyn rental", "note": "<p>The sofa finally feels like a room of its own—even when the bed is only a few steps away.</p>", "product": "the-pocket-tile" } },
-        "demo_desk": { "type": "story", "settings": { "demo_image": "desk", "alt_text": "Demo shared desk arranged for work and evening downtime", "display_name": "Jordan K. · Chicago studio", "note": "<p>Everything for work has a landing spot, so the desk can switch back to music and games after six.</p>", "product": "the-little-horizon" } },
-        "demo_entry": { "type": "story", "settings": { "demo_image": "entry", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "display_name": "Lena P. · Portland apartment", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>", "product": "the-key-perch" } }
+        "demo_living": { "type": "story", "settings": { "demo_image": "living", "alt_text": "Demo compact studio living corner with a sofa, lamp, and narrow storage", "display_name": "Maya R. · Brooklyn rental", "note": "<p>The sofa finally feels like a room of its own—even when the bed is only a few steps away.</p>", "product": "" } },
+        "demo_desk": { "type": "story", "settings": { "demo_image": "desk", "alt_text": "Demo shared desk arranged for work and evening downtime", "display_name": "Jordan K. · Chicago studio", "note": "<p>Everything for work has a landing spot, so the desk can switch back to music and games after six.</p>", "product": "" } },
+        "demo_entry": { "type": "story", "settings": { "demo_image": "entry", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "display_name": "Lena P. · Portland apartment", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>", "product": "" } }
       },
       "block_order": ["demo_living", "demo_desk", "demo_entry"],
       "settings": { "eyebrow": "Notes from small-space life", "heading": "Small spaces, lived in.", "intro": "<p>Quick snapshots of the routines, resets, and little decisions that make limited space work harder.</p>", "demo_mode": true, "color_scheme": "scheme-2" }
