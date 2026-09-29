@@ -213,7 +213,7 @@
   align-items: center;
   gap: var(--shift-space-sm);
   padding: 0.8rem 1.6rem;
-  background: rgb(var(--color-background));
+  background-color: rgb(var(--color-background));
   font-weight: 700;
 }
 
