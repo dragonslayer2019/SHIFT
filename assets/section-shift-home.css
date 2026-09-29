@@ -166,8 +166,6 @@
 }
 
 .shift-path {
-  display: grid;
-  gap: var(--shift-space-xl);
   min-width: 0;
 }
 
@@ -232,6 +230,8 @@
 }
 
 .shift-path__link {
+  display: grid;
+  gap: var(--shift-space-xl);
   color: inherit;
   text-decoration: none;
 }
