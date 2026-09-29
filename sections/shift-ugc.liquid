@@ -23,13 +23,19 @@
           >
             <span aria-hidden="true">←</span>
           </button>
-          <p class="shift-ugc__position" aria-live="polite" aria-atomic="true">
-            <span class="visually-hidden">Community note </span>
-            <span data-carousel-current>1</span>
-            <span aria-hidden="true"> / </span>
-            <span class="visually-hidden"> of </span>
-            <span>{{ section.blocks.size }}</span>
-          </p>
+          <div class="shift-ugc__dots" role="group" aria-label="Choose a community note">
+            {%- for block in section.blocks -%}
+              <button
+                class="shift-ugc__dot"
+                type="button"
+                data-carousel-dot
+                data-slide-index="{{ forloop.index0 }}"
+                aria-controls="ShiftCommunityTrack-{{ section.id }}"
+                aria-label="Show community note {{ forloop.index }} of {{ forloop.length }}"
+                {% if forloop.first %}aria-current="true"{% endif %}
+              ></button>
+            {%- endfor -%}
+          </div>
           <button
             class="shift-ugc__control"
             type="button"
@@ -39,6 +45,19 @@
           >
             <span aria-hidden="true">→</span>
           </button>
+          <button
+            class="shift-ugc__control shift-ugc__autoplay"
+            type="button"
+            data-carousel-autoplay
+            aria-label="Pause community notes autoplay"
+            aria-pressed="false"
+          >
+            <span data-carousel-pause-icon aria-hidden="true">Ⅱ</span>
+            <span data-carousel-play-icon aria-hidden="true" hidden>▶</span>
+          </button>
+          <span class="visually-hidden" data-carousel-status aria-live="polite" aria-atomic="true">
+            Community note 1 of {{ section.blocks.size }}
+          </span>
         </div>
       {%- endif -%}
     </header>

@@ -28,8 +28,9 @@
 .shift-ugc__controls {
   display: flex;
   flex: 0 0 auto;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--shift-space-md);
+  gap: var(--shift-space-sm);
 }
 
 .shift-ugc__control {
@@ -64,13 +65,74 @@
   outline-offset: 0.4rem;
 }
 
-.shift-ugc__position {
-  min-width: 4.8rem;
-  margin: 0;
-  text-align: center;
+.shift-ugc__dots {
+  display: flex;
+  align-items: center;
+}
+
+.shift-ugc__dot {
+  --shift-carousel-progress: 0;
+  position: relative;
+  display: inline-grid;
+  width: 4rem;
+  height: 4.4rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  color: rgb(var(--color-foreground));
+  background: transparent;
+  cursor: pointer;
+}
+
+.shift-ugc__dot::before,
+.shift-ugc__dot::after {
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+}
+
+.shift-ugc__dot::before {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: conic-gradient(
+    currentColor calc(var(--shift-carousel-progress) * 1turn),
+    color-mix(in srgb, currentColor 18%, transparent) 0
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 0.15rem), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 0.15rem), #000 0);
+  opacity: 0.5;
+}
+
+.shift-ugc__dot::after {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: color-mix(in srgb, currentColor 40%, transparent);
+  transition: width 160ms ease, height 160ms ease, background-color 160ms ease;
+}
+
+.shift-ugc__dot[aria-current='true']::before {
+  opacity: 1;
+}
+
+.shift-ugc__dot[aria-current='true']::after {
+  width: 0.9rem;
+  height: 0.9rem;
+  background: currentColor;
+}
+
+.shift-ugc__dot:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: -0.2rem;
+  border-radius: 50%;
+}
+
+.shift-ugc__autoplay {
+  margin-left: var(--shift-space-xs);
   font-size: 1.4rem;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
+}
+
+.shift-ugc__autoplay [data-carousel-play-icon] {
+  padding-left: 0.15rem;
 }
 
 .shift-ugc__viewport {
@@ -221,6 +283,17 @@
   .shift-ugc__image,
   .shift-ugc__card,
   .shift-ugc__control {
+    transition: none;
+  }
+
+  .shift-ugc__dot::before {
+    background: transparent;
+    border: 0.1rem solid color-mix(in srgb, currentColor 35%, transparent);
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .shift-ugc__dot::after {
     transition: none;
   }
 }
