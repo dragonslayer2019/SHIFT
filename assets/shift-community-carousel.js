@@ -162,6 +162,8 @@ if (!customElements.get('shift-community-carousel')) {
         if (this.pauseReasons.has('user') || this.pauseReasons.has('reduced-motion')) {
           this.pauseReasons.delete('user');
           this.pauseReasons.delete('reduced-motion');
+          this.pauseReasons.delete('hover');
+          this.pauseReasons.delete('focus');
           this.startTimer();
         } else {
           this.pause('user');
