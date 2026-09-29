@@ -10,11 +10,6 @@ if (!customElements.get('shift-community-carousel')) {
 
         this.slides = Array.from(this.querySelectorAll('[data-carousel-slide]'));
         this.dots = Array.from(this.querySelectorAll('[data-carousel-dot]'));
-        this.previousButton = this.querySelector('[data-carousel-previous]');
-        this.nextButton = this.querySelector('[data-carousel-next]');
-        this.autoplayButton = this.querySelector('[data-carousel-autoplay]');
-        this.pauseIcon = this.querySelector('[data-carousel-pause-icon]');
-        this.playIcon = this.querySelector('[data-carousel-play-icon]');
         this.status = this.querySelector('[data-carousel-status]');
         this.viewport = this.querySelector('[data-carousel-viewport]');
         this.currentIndex = Math.max(0, this.slides.findIndex((slide) => slide.classList.contains('is-active')));
@@ -25,10 +20,7 @@ if (!customElements.get('shift-community-carousel')) {
 
         if (this.slides.length < 2 || !this.viewport) return;
 
-        this.previousButton?.addEventListener('click', () => this.show(this.currentIndex - 1));
-        this.nextButton?.addEventListener('click', () => this.show(this.currentIndex + 1));
-        this.dots.forEach((dot, index) => dot.addEventListener('click', () => this.show(index)));
-        this.autoplayButton?.addEventListener('click', () => this.toggleAutoplay());
+        this.dots.forEach((dot, index) => dot.addEventListener('click', () => this.onDotClick(index)));
         this.viewport.addEventListener('keydown', (event) => this.onKeydown(event));
         this.viewport.addEventListener('touchstart', (event) => this.onTouchStart(event), { passive: true });
         this.viewport.addEventListener('touchend', (event) => this.onTouchEnd(event), { passive: true });
@@ -53,7 +45,7 @@ if (!customElements.get('shift-community-carousel')) {
           } else {
             this.resume('reduced-motion');
           }
-          this.updateAutoplayControl();
+          this.updateDotControls();
         };
         document.addEventListener('visibilitychange', this.onVisibilityChange);
         this.motionPreference.addEventListener('change', this.onMotionPreferenceChange);
@@ -69,7 +61,7 @@ if (!customElements.get('shift-community-carousel')) {
         }
 
         this.show(this.currentIndex, false);
-        this.updateAutoplayControl();
+        this.updateDotControls();
         this.startTimer();
       }
 
@@ -97,6 +89,7 @@ if (!customElements.get('shift-community-carousel')) {
         });
 
         this.currentIndex = nextIndex;
+        this.updateDotControls();
         if (this.status) {
           this.status.textContent = `Community note ${nextIndex + 1} of ${this.slides.length}`;
           if (!announce) this.status.setAttribute('aria-live', 'off');
@@ -153,6 +146,15 @@ if (!customElements.get('shift-community-carousel')) {
         this.startTimer();
       }
 
+      onDotClick(index) {
+        if (index === this.currentIndex) {
+          this.toggleAutoplay();
+          return;
+        }
+
+        this.show(index);
+      }
+
       toggleAutoplay() {
         if (this.pauseReasons.has('user') || this.pauseReasons.has('reduced-motion')) {
           this.pauseReasons.delete('user');
@@ -161,19 +163,25 @@ if (!customElements.get('shift-community-carousel')) {
         } else {
           this.pause('user');
         }
-        this.updateAutoplayControl();
+        this.updateDotControls();
       }
 
-      updateAutoplayControl() {
-        if (!this.autoplayButton) return;
+      updateDotControls() {
         const isUserPaused = this.pauseReasons.has('user') || this.pauseReasons.has('reduced-motion');
-        this.autoplayButton.setAttribute('aria-pressed', String(isUserPaused));
-        this.autoplayButton.setAttribute(
-          'aria-label',
-          isUserPaused ? 'Play community notes autoplay' : 'Pause community notes autoplay'
-        );
-        if (this.pauseIcon) this.pauseIcon.hidden = isUserPaused;
-        if (this.playIcon) this.playIcon.hidden = !isUserPaused;
+        this.classList.toggle('is-user-paused', isUserPaused);
+        this.dots.forEach((dot, index) => {
+          const isCurrent = index === this.currentIndex;
+          if (isCurrent) {
+            dot.setAttribute('aria-pressed', String(isUserPaused));
+            dot.setAttribute(
+              'aria-label',
+              `${isUserPaused ? 'Resume' : 'Pause'} community notes autoplay; current note ${index + 1} of ${this.slides.length}`
+            );
+          } else {
+            dot.removeAttribute('aria-pressed');
+            dot.setAttribute('aria-label', `Show community note ${index + 1} of ${this.slides.length}`);
+          }
+        });
       }
 
       onKeydown(event) {

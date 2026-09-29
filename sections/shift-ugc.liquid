@@ -14,15 +14,6 @@
       </div>
       {%- if section.blocks.size > 1 -%}
         <div class="shift-ugc__controls" aria-label="Community note carousel controls">
-          <button
-            class="shift-ugc__control"
-            type="button"
-            data-carousel-previous
-            aria-controls="ShiftCommunityTrack-{{ section.id }}"
-            aria-label="Show previous community note"
-          >
-            <span aria-hidden="true">←</span>
-          </button>
           <div class="shift-ugc__dots" role="group" aria-label="Choose a community note">
             {%- for block in section.blocks -%}
               <button
@@ -31,30 +22,11 @@
                 data-carousel-dot
                 data-slide-index="{{ forloop.index0 }}"
                 aria-controls="ShiftCommunityTrack-{{ section.id }}"
-                aria-label="Show community note {{ forloop.index }} of {{ forloop.length }}"
-                {% if forloop.first %}aria-current="true"{% endif %}
+                aria-label="{% if forloop.first %}Pause community notes autoplay; current note {{ forloop.index }} of {{ forloop.length }}{% else %}Show community note {{ forloop.index }} of {{ forloop.length }}{% endif %}"
+                {% if forloop.first %}aria-current="true" aria-pressed="false"{% endif %}
               ></button>
             {%- endfor -%}
           </div>
-          <button
-            class="shift-ugc__control"
-            type="button"
-            data-carousel-next
-            aria-controls="ShiftCommunityTrack-{{ section.id }}"
-            aria-label="Show next community note"
-          >
-            <span aria-hidden="true">→</span>
-          </button>
-          <button
-            class="shift-ugc__control shift-ugc__autoplay"
-            type="button"
-            data-carousel-autoplay
-            aria-label="Pause community notes autoplay"
-            aria-pressed="false"
-          >
-            <span data-carousel-pause-icon aria-hidden="true">Ⅱ</span>
-            <span data-carousel-play-icon aria-hidden="true" hidden>▶</span>
-          </button>
           <span class="visually-hidden" data-carousel-status aria-live="polite" aria-atomic="true">
             Community note 1 of {{ section.blocks.size }}
           </span>

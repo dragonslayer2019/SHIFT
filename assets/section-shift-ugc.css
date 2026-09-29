@@ -28,41 +28,7 @@
 .shift-ugc__controls {
   display: flex;
   flex: 0 0 auto;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--shift-space-sm);
-}
-
-.shift-ugc__control {
-  display: inline-grid;
-  width: 4.4rem;
-  height: 4.4rem;
-  padding: 0;
-  place-items: center;
-  border: 0.1rem solid color-mix(in srgb, rgb(var(--color-foreground)) 35%, transparent);
-  border-radius: 50%;
-  color: rgb(var(--color-foreground));
-  background: rgb(var(--color-background));
-  font: inherit;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.shift-ugc__control:hover {
-  border-color: rgb(var(--color-foreground));
-  background: color-mix(in srgb, rgb(var(--color-foreground)) 7%, rgb(var(--color-background)));
-}
-
-.shift-ugc__control:active {
-  transform: translateY(0.1rem);
-}
-
-.shift-ugc__control:focus-visible,
-.shift-ugc__viewport:focus-visible {
-  outline: 0.2rem solid currentColor;
-  outline-offset: 0.4rem;
 }
 
 .shift-ugc__dots {
@@ -74,7 +40,7 @@
   --shift-carousel-progress: 0;
   position: relative;
   display: inline-grid;
-  width: 4rem;
+  width: 4.4rem;
   height: 4.4rem;
   padding: 0;
   place-items: center;
@@ -115,9 +81,26 @@
 }
 
 .shift-ugc__dot[aria-current='true']::after {
-  width: 0.9rem;
-  height: 0.9rem;
-  background: currentColor;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.1rem;
+  background: linear-gradient(
+    90deg,
+    currentColor 0 32%,
+    transparent 32% 68%,
+    currentColor 68% 100%
+  );
+}
+
+.shift-ugc.is-user-paused .shift-ugc__dot[aria-current='true']::after {
+  width: 0;
+  height: 0;
+  border-top: 0.55rem solid transparent;
+  border-bottom: 0.55rem solid transparent;
+  border-left: 0.85rem solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  transform: translateX(0.1rem);
 }
 
 .shift-ugc__dot:focus-visible {
@@ -126,13 +109,9 @@
   border-radius: 50%;
 }
 
-.shift-ugc__autoplay {
-  margin-left: var(--shift-space-xs);
-  font-size: 1.4rem;
-}
-
-.shift-ugc__autoplay [data-carousel-play-icon] {
-  padding-left: 0.15rem;
+.shift-ugc__viewport:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: 0.4rem;
 }
 
 .shift-ugc__viewport {
@@ -281,8 +260,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .shift-ugc__image,
-  .shift-ugc__card,
-  .shift-ugc__control {
+  .shift-ugc__card {
     transition: none;
   }
 
