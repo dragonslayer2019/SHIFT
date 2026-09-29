@@ -8,7 +8,7 @@
 }
 
 .shift-hero__inner {
-  padding-block: clamp(var(--shift-space-2xl), 5vw, var(--shift-space-4xl));
+  padding-block: clamp(var(--shift-space-lg), 3vw, var(--shift-space-2xl));
 }
 
 .shift-kicker {
@@ -21,11 +21,11 @@
 }
 
 .shift-display {
-  max-width: 13ch;
+  max-width: 15ch;
   margin: 0;
-  font-size: clamp(4rem, 5.6vw, 7.2rem);
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  font-size: clamp(3.6rem, 4.5vw, 5.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
 .shift-lede {
@@ -38,8 +38,7 @@
 
 .shift-hero__grid {
   display: grid;
-  gap: var(--shift-space-2xl);
-  align-items: center;
+  gap: var(--shift-space-lg);
 }
 
 .shift-hero__merchandise {
@@ -48,9 +47,12 @@
 
 .shift-hero__copy {
   display: grid;
-  gap: var(--shift-space-xl);
+  gap: var(--shift-space-lg);
   position: relative;
   z-index: 1;
+  padding: var(--shift-space-xl);
+  border-radius: var(--shift-radius-sm);
+  background: rgb(var(--color-background));
 }
 
 .shift-hero__actions {
@@ -60,7 +62,7 @@
 }
 
 .shift-hero__media {
-  min-height: 34rem;
+  min-height: 32rem;
   overflow: hidden;
   border-radius: var(--shift-radius-md);
   background: color-mix(in srgb, rgb(var(--color-foreground)) 7%, rgb(var(--color-background)));
@@ -280,15 +282,23 @@
 
 @media screen and (min-width: 750px) {
   .shift-hero__grid {
-    grid-template-columns: minmax(31rem, 0.72fr) minmax(48rem, 1.28fr);
+    grid-template: minmax(46rem, min(68vh, 66rem)) / minmax(0, 1fr);
   }
 
   .shift-hero__copy {
-    padding-block: var(--shift-space-xl);
+    grid-area: 1 / 1;
+    width: min(46rem, calc(100% - 6.4rem));
+    align-self: end;
+    margin: var(--shift-space-2xl);
+    padding: var(--shift-space-2xl);
+  }
+
+  .shift-hero__merchandise {
+    grid-area: 1 / 1;
   }
 
   .shift-hero__media {
-    height: clamp(42rem, min(52vw, 64vh), 60rem);
+    height: 100%;
     min-height: 0;
   }
 
@@ -330,18 +340,27 @@
 
 @media screen and (max-width: 749px) {
   .shift-hero__inner {
-    padding-block: var(--shift-space-3xl);
+    padding-block: var(--shift-space-lg) var(--shift-space-2xl);
+  }
+
+  .shift-hero__media {
+    height: clamp(25rem, 72vw, 31rem);
+    min-height: 0;
+  }
+
+  .shift-hero__copy {
+    gap: var(--shift-space-md);
+    padding: var(--shift-space-lg);
   }
 
   .shift-display {
-    font-size: clamp(3.8rem, 12vw, 5.4rem);
+    font-size: clamp(3.2rem, 10vw, 4.2rem);
   }
 
   .shift-hero__actions .button {
     width: 100%;
     min-height: 4.8rem;
   }
-
 }
 
 .shift-section--paths .shift-section__inner {
@@ -392,17 +411,14 @@
     padding-block: var(--shift-space-2xl);
   }
 
-  .shift-display {
-    font-size: clamp(4.8rem, 6vw, 7.2rem);
-  }
-
   .shift-hero__copy {
     gap: var(--shift-space-lg);
-    padding-block: var(--shift-space-md);
+    margin: var(--shift-space-xl);
+    padding: var(--shift-space-xl);
   }
 
   .shift-hero__media {
-    height: clamp(38rem, 58vh, 50rem);
+    height: 100%;
   }
 }
 
