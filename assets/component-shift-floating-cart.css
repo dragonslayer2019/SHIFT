@@ -4,6 +4,7 @@
   bottom: max(9rem, calc(env(safe-area-inset-bottom) + 7rem));
   z-index: 4;
   color: rgb(var(--color-foreground));
+  background: transparent;
   transition: opacity 160ms ease-out, visibility 160ms ease-out;
 }
 
