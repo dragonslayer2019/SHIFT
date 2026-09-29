@@ -20,7 +20,9 @@ if (!customElements.get('shift-community-carousel')) {
 
         if (this.slides.length < 2 || !this.viewport) return;
 
-        this.dots.forEach((dot, index) => dot.addEventListener('click', () => this.onDotClick(index)));
+        this.dots.forEach((dot, index) =>
+          dot.addEventListener('click', (event) => this.onDotClick(index, event))
+        );
         this.viewport.addEventListener('keydown', (event) => this.onKeydown(event));
         this.viewport.addEventListener('touchstart', (event) => this.onTouchStart(event), { passive: true });
         this.viewport.addEventListener('touchend', (event) => this.onTouchEnd(event), { passive: true });
@@ -146,9 +148,10 @@ if (!customElements.get('shift-community-carousel')) {
         this.startTimer();
       }
 
-      onDotClick(index) {
+      onDotClick(index, event) {
         if (index === this.currentIndex) {
           this.toggleAutoplay();
+          if (event.detail > 0) event.currentTarget.blur();
           return;
         }
 
