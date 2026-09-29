@@ -26,18 +26,6 @@ if (!customElements.get('shift-community-carousel')) {
         this.viewport.addEventListener('keydown', (event) => this.onKeydown(event));
         this.viewport.addEventListener('touchstart', (event) => this.onTouchStart(event), { passive: true });
         this.viewport.addEventListener('touchend', (event) => this.onTouchEnd(event), { passive: true });
-        this.addEventListener('pointerenter', (event) => {
-          if (event.pointerType === 'mouse') this.pause('hover');
-        });
-        this.addEventListener('pointerleave', (event) => {
-          if (event.pointerType === 'mouse') this.resume('hover');
-        });
-        this.addEventListener('focusin', () => this.pause('focus'));
-        this.addEventListener('focusout', () => {
-          requestAnimationFrame(() => {
-            if (!this.contains(document.activeElement)) this.resume('focus');
-          });
-        });
 
         this.onVisibilityChange = () => (document.hidden ? this.pause('visibility') : this.resume('visibility'));
         this.onMotionPreferenceChange = (event) => {
@@ -162,8 +150,6 @@ if (!customElements.get('shift-community-carousel')) {
         if (this.pauseReasons.has('user') || this.pauseReasons.has('reduced-motion')) {
           this.pauseReasons.delete('user');
           this.pauseReasons.delete('reduced-motion');
-          this.pauseReasons.delete('hover');
-          this.pauseReasons.delete('focus');
           this.startTimer();
         } else {
           this.pause('user');
