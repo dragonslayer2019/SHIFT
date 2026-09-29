@@ -199,11 +199,17 @@
 
 @media screen and (max-width: 749px) {
   .shift-ugc__header {
-    align-items: center;
+    display: grid;
+    align-items: start;
+    gap: var(--shift-space-lg);
   }
 
   .shift-ugc__title {
     font-size: clamp(3.2rem, 10vw, 4.4rem);
+  }
+
+  .shift-ugc__controls {
+    justify-self: end;
   }
 
   .shift-ugc__media {
