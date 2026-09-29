@@ -43,48 +43,7 @@
 }
 
 .shift-hero__merchandise {
-  display: grid;
   min-width: 0;
-  gap: var(--shift-space-md);
-}
-
-.shift-hero__product-label {
-  color: var(--shift-muted);
-}
-
-.shift-hero__products {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(var(--shift-space-md), 2vw, var(--shift-space-xl));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.shift-hero__product {
-  min-width: 0;
-}
-
-.shift-hero__product:nth-child(2) {
-  margin-top: clamp(var(--shift-space-lg), 3vw, var(--shift-space-3xl));
-}
-
-.shift-hero__product .card__information {
-  padding-top: var(--shift-space-md);
-}
-
-.shift-hero__product .card__heading {
-  font-size: clamp(1.6rem, 1.6vw, 2rem);
-}
-
-.shift-hero__product .quick-add {
-  margin-bottom: 0;
-}
-
-.shift-hero__product-placeholder {
-  min-height: 30rem;
-  border-radius: var(--shift-radius-sm);
-  background: color-mix(in srgb, rgb(var(--color-foreground)) 7%, rgb(var(--color-background)));
 }
 
 .shift-hero__copy {
@@ -322,7 +281,7 @@
 
 @media screen and (min-width: 750px) {
   .shift-hero__grid {
-    grid-template-columns: minmax(32rem, 0.84fr) minmax(44rem, 1.16fr);
+    grid-template-columns: minmax(31rem, 0.72fr) minmax(48rem, 1.28fr);
   }
 
   .shift-hero__copy {
@@ -330,7 +289,7 @@
   }
 
   .shift-hero__media {
-    height: clamp(38rem, min(48vw, 58vh), 54rem);
+    height: clamp(42rem, min(52vw, 64vh), 60rem);
     min-height: 0;
   }
 
@@ -370,19 +329,6 @@
     min-height: 4.8rem;
   }
 
-  .shift-hero__products {
-    gap: var(--shift-space-md);
-  }
-
-  .shift-hero__product:nth-child(2) {
-    margin-top: var(--shift-space-xl);
-  }
-
-  .shift-hero__product .quick-add__submit {
-    min-width: 0;
-    padding-inline: var(--shift-space-sm);
-  }
-
 }
 
 .shift-section--paths .shift-section__inner {
@@ -398,12 +344,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .shift-hero__product .card__media {
+  .shift-hero__media {
     animation: shift-image-settle 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .shift-hero__product:nth-child(2) .card__media {
-    animation-delay: 100ms;
   }
 
   @supports (animation-timeline: view()) {
@@ -455,7 +397,7 @@
   .shift-path__image,
   .shift-path__media,
   .shift-fit__media,
-  .shift-hero__product .card__media {
+  .shift-hero__media {
     animation: none;
     transition: none;
   }

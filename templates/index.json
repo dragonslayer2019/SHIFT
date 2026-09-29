@@ -2,22 +2,17 @@
   "sections": {
     "shift_hero": {
       "type": "shift-hero",
-      "blocks": {
-        "demo_product_one": { "type": "product", "settings": { "product": "the-little-horizon" } },
-        "demo_product_two": { "type": "product", "settings": { "product": "the-cloud-rest" } }
-      },
-      "block_order": ["demo_product_one", "demo_product_two"],
       "settings": {
         "eyebrow": "",
         "heading": "Useful pieces. Less space friction.",
         "text": "<p>Practical, characterful goods for rental living rooms and hardworking desks.</p>",
-        "product_label": "",
         "primary_label": "Shop the catalog",
         "primary_link": "shopify://collections/catalog",
-        "secondary_label": "Shop living spaces",
-        "secondary_link": "shopify://collections/living-spaces",
+        "secondary_label": "",
+        "secondary_link": "",
         "color_scheme": "scheme-1",
-        "image": "shopify://shop_images/shift-home-hero.jpg"
+        "image": "shopify://shop_images/shift-home-hero.jpg",
+        "image_alt": "Warm compact apartment arranged for everyday living"
       }
     },
     "space_paths": {
@@ -122,5 +117,5 @@
       "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
-  "order": ["shift_hero", "featured_collection", "space_paths", "fit_notes", "community_notes", "top_sellers", "closing"]
+  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers", "closing"]
 }

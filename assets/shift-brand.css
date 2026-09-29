@@ -12,6 +12,7 @@
   --shift-space-5xl: 9.6rem;
   --shift-radius-sm: 0.8rem;
   --shift-radius-md: 1.6rem;
+  --shift-control-radius: 0.9rem;
 }
 
 /* Recompute color semantics where Dawn applies each section's color scheme.
@@ -34,41 +35,61 @@
   line-height: 1.4;
 }
 
-/* Tactile controls stay inside SHIFT-owned storefront sections. Dawn continues
-   to own button sizing, colors, disabled states, and form behavior. */
-.shift-section .button,
-.shift-commerce .button,
+/* Shared storefront button surface. Dawn retains semantic button colors and
+   all product/cart behavior; SHIFT supplies one shape and depth model. */
+.button:not(.button--tertiary),
+.shopify-payment-button__button--unbranded,
 .shift-tactile {
-  --shift-button-depth: 0.3rem;
-  border: 0.1rem solid rgb(var(--color-foreground));
-  box-shadow: var(--shift-button-depth) var(--shift-button-depth) 0 rgb(var(--color-foreground));
-  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.42);
+  border-radius: var(--shift-control-radius);
+  background-image:
+    radial-gradient(circle at 50% 38%, rgba(var(--color-button-text), 0.16), transparent 58%),
+    linear-gradient(to bottom, rgba(var(--color-button-text), 0.04), rgba(var(--color-foreground), 0.08));
+  box-shadow:
+    inset 0 0.1rem 0 rgba(var(--color-button-text), 0.24),
+    inset 0 -0.12rem 0 rgba(var(--color-foreground), 0.14),
+    0 0.2rem 0.45rem rgba(var(--color-shadow), 0.2);
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 140ms cubic-bezier(0.22, 1, 0.36, 1), filter 140ms ease-out;
 }
 
-.shift-section .button:not([disabled], [aria-disabled='true']):hover,
-.shift-commerce .button:not([disabled], [aria-disabled='true']):hover,
+.button:not(.button--tertiary, [disabled], [aria-disabled='true']):hover,
+.shopify-payment-button__button--unbranded:not([disabled]):hover,
 .shift-tactile:hover {
-  transform: translate(-0.1rem, -0.1rem);
-  box-shadow: calc(var(--shift-button-depth) + 0.1rem) calc(var(--shift-button-depth) + 0.1rem) 0 rgb(var(--color-foreground));
+  transform: translateY(-0.1rem);
+  filter: brightness(1.025);
+  box-shadow:
+    inset 0 0.1rem 0 rgba(var(--color-button-text), 0.3),
+    inset 0 -0.12rem 0 rgba(var(--color-foreground), 0.16),
+    0 0.3rem 0.65rem rgba(var(--color-shadow), 0.22);
 }
 
-.shift-section .button:not([disabled], [aria-disabled='true']):active,
-.shift-commerce .button:not([disabled], [aria-disabled='true']):active,
+.button:not(.button--tertiary, [disabled], [aria-disabled='true']):active,
+.shopify-payment-button__button--unbranded:not([disabled]):active,
 .shift-tactile:active {
-  transform: translate(var(--shift-button-depth), var(--shift-button-depth));
-  box-shadow: 0 0 0 rgb(var(--color-foreground));
+  transform: translateY(0.1rem);
+  filter: brightness(0.98);
+  box-shadow:
+    inset 0 0.12rem 0.25rem rgba(var(--color-foreground), 0.16),
+    0 0.05rem 0.15rem rgba(var(--color-shadow), 0.16);
 }
 
-.shift-section .button:focus-visible,
-.shift-commerce .button:focus-visible,
+.button:not(.button--tertiary):focus-visible,
+.shopify-payment-button__button--unbranded:focus-visible,
 .shift-tactile:focus-visible {
   outline: 0.2rem solid rgb(var(--color-foreground));
-  outline-offset: 0.5rem;
+  outline-offset: 0.3rem;
+}
+
+.button:not(.button--tertiary)[disabled],
+.button:not(.button--tertiary)[aria-disabled='true'],
+.shopify-payment-button__button--unbranded[disabled] {
+  filter: saturate(0.55);
+  box-shadow: inset 0 0.1rem 0 rgba(var(--color-button-text), 0.12);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shift-section .button,
-  .shift-commerce .button,
+  .button:not(.button--tertiary),
+  .shopify-payment-button__button--unbranded,
   .shift-tactile {
     transition: none;
   }
