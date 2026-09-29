@@ -61,11 +61,17 @@
 }
 
 .button--secondary:not(.button--tertiary)::after {
-  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.28);
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.72);
+}
+
+.button--secondary:not(.button--tertiary),
+.shift-tactile {
+  color: rgb(var(--color-background));
+  background-color: rgb(var(--color-foreground));
 }
 
 .shift-tactile {
-  border: 0.1rem solid rgba(var(--color-foreground), 0.28);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.72);
 }
 
 .button:not(.button--tertiary, [disabled], [aria-disabled='true']):hover,
@@ -82,7 +88,7 @@
 }
 
 .button--secondary:not(.button--tertiary, [disabled], [aria-disabled='true']):hover::after {
-  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.36);
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
 }
 
 .button:not(.button--tertiary, [disabled], [aria-disabled='true']):active,
