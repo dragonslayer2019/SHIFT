@@ -8,10 +8,10 @@
       },
       "block_order": ["demo_product_one", "demo_product_two"],
       "settings": {
-        "eyebrow": "Small-space goods for everyday resets",
+        "eyebrow": "",
         "heading": "Useful pieces. Less space friction.",
-        "text": "<p>Shop practical, characterful goods for rental living rooms and desks that work, study, and unwind in the same footprint.</p>",
-        "product_label": "Current demo products",
+        "text": "<p>Practical, characterful goods for rental living rooms and hardworking desks.</p>",
+        "product_label": "",
         "primary_label": "Shop the catalog",
         "primary_link": "shopify://collections/catalog",
         "secondary_label": "Shop living spaces",
@@ -23,11 +23,11 @@
     "space_paths": {
       "type": "shift-space-paths",
       "blocks": {
-        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Small goods for clearer zones, easy resets, and rooms that do more than one job.", "context_label": "Room inspiration · furniture not sold", "link_label": "Shop living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
-        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Desk companions that give everyday tools a place without taking over the surface.", "context_label": "Desk inspiration · furniture not sold", "link_label": "Shop desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Shop the smaller goods; the room image is inspiration, not furniture for sale.", "context_label": "", "link_label": "Shop living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Find useful companions for work, study, and whatever comes after.", "context_label": "", "link_label": "Shop desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
       },
       "block_order": ["living", "desk"],
-      "settings": { "eyebrow": "Shop by space", "heading": "Where could a small shift help?", "text": "<p>The photographs set the room context. Follow each path to shop the smaller goods selected for it.</p>", "color_scheme": "scheme-2" }
+      "settings": { "eyebrow": "", "heading": "Shop by space", "text": "", "color_scheme": "scheme-2" }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -64,11 +64,11 @@
     "fit_notes": {
       "type": "shift-fit-notes",
       "blocks": {
-        "living_use": { "type": "use_case", "settings": { "eyebrow": "One room, clearer zones", "heading": "Give the living area a boundary—without building one.", "text": "<p>A rug, a movable table, and open storage can help a studio lounge read as its own place while keeping the route to the rest of the room open.</p>", "fits": "Studios and open-plan rentals", "helps": "Visual clutter and blurred room zones", "feels": "Settled, without feeling boxed in", "link_label": "Browse living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-use-case-living.jpg" } },
-        "desk_use": { "type": "use_case", "settings": { "eyebrow": "A desk that changes gears", "heading": "Make room for work—and for what comes after.", "text": "<p>Give everyday tools a reliable landing spot, then clear the center when the laptop closes. The same surface can support study, hobbies, or a quiet end-of-day reset.</p>", "fits": "Shared work, study, and hobby desks", "helps": "A surface that never feels cleared", "feels": "Ready for the next part of the day", "link_label": "Browse desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-use-case-desk.jpg" } }
+        "living_use": { "type": "use_case", "settings": { "eyebrow": "", "heading": "A clearer place to land.", "text": "<p>Small goods help an open room feel settled without closing it in.</p>", "fits": "", "helps": "", "feels": "", "link_label": "Browse living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-use-case-living.jpg" } },
+        "desk_use": { "type": "use_case", "settings": { "eyebrow": "", "heading": "Clear the center. Change gears.", "text": "<p>Give everyday tools a landing spot, then reclaim the desk when work ends.</p>", "fits": "", "helps": "", "feels": "", "link_label": "Browse desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-use-case-desk.jpg" } }
       },
       "block_order": ["living_use", "desk_use"],
-      "settings": { "eyebrow": "See the use, not just the object", "heading": "Built around real small-space friction.", "color_scheme": "scheme-1" }
+      "settings": { "eyebrow": "", "heading": "Made for rooms that change gears.", "color_scheme": "scheme-1" }
     },
     "community_notes": {
       "type": "shift-ugc",
@@ -78,7 +78,7 @@
         "demo_entry": { "type": "story", "settings": { "demo_image": "entry", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "display_name": "Lena P. · Portland apartment", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>", "product": "" } }
       },
       "block_order": ["demo_living", "demo_desk", "demo_entry"],
-      "settings": { "eyebrow": "Notes from small-space life", "heading": "Small spaces, lived in.", "intro": "<p>Quick snapshots of the routines, resets, and little decisions that make limited space work harder.</p>", "demo_mode": true, "color_scheme": "scheme-2" }
+      "settings": { "eyebrow": "", "heading": "Community notes", "intro": "", "demo_mode": true, "color_scheme": "scheme-2" }
     },
     "top_sellers": {
       "type": "featured-collection",
@@ -116,7 +116,7 @@
       "type": "rich-text",
       "blocks": {
         "heading": { "type": "heading", "settings": { "heading": "A smaller space should still feel like yours.", "heading_size": "h1" } },
-        "text": { "type": "text", "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } }
+        "text": { "type": "text", "disabled": true, "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } }
       },
       "block_order": ["heading", "text"],
       "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }

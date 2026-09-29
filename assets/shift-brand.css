@@ -33,3 +33,43 @@
   font-size: 1.3rem;
   line-height: 1.4;
 }
+
+/* Tactile controls stay inside SHIFT-owned storefront sections. Dawn continues
+   to own button sizing, colors, disabled states, and form behavior. */
+.shift-section .button,
+.shift-commerce .button,
+.shift-tactile {
+  --shift-button-depth: 0.3rem;
+  border: 0.1rem solid rgb(var(--color-foreground));
+  box-shadow: var(--shift-button-depth) var(--shift-button-depth) 0 rgb(var(--color-foreground));
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 140ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shift-section .button:not([disabled], [aria-disabled='true']):hover,
+.shift-commerce .button:not([disabled], [aria-disabled='true']):hover,
+.shift-tactile:hover {
+  transform: translate(-0.1rem, -0.1rem);
+  box-shadow: calc(var(--shift-button-depth) + 0.1rem) calc(var(--shift-button-depth) + 0.1rem) 0 rgb(var(--color-foreground));
+}
+
+.shift-section .button:not([disabled], [aria-disabled='true']):active,
+.shift-commerce .button:not([disabled], [aria-disabled='true']):active,
+.shift-tactile:active {
+  transform: translate(var(--shift-button-depth), var(--shift-button-depth));
+  box-shadow: 0 0 0 rgb(var(--color-foreground));
+}
+
+.shift-section .button:focus-visible,
+.shift-commerce .button:focus-visible,
+.shift-tactile:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shift-section .button,
+  .shift-commerce .button,
+  .shift-tactile {
+    transition: none;
+  }
+}

@@ -4,21 +4,11 @@
   <div class="shift-section__inner page-width">
     <header class="shift-ugc__header">
       <div class="shift-ugc__heading-group">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
         {%- if section.settings.heading != blank -%}
           <h2 class="shift-ugc__title">{{ section.settings.heading }}</h2>
         {%- endif -%}
       </div>
-      {%- if section.settings.intro != blank -%}
-        <div class="shift-ugc__intro rte">{{ section.settings.intro }}</div>
-      {%- endif -%}
     </header>
-
-    {%- if section.settings.demo_mode -%}
-      <p class="shift-ugc__demo-note">Demo content — replace images, names, and notes before launch.</p>
-    {%- endif -%}
 
     <div class="shift-ugc__grid" role="list">
       {%- for block in section.blocks -%}

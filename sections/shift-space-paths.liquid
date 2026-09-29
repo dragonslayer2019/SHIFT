@@ -3,7 +3,6 @@
 <section class="shift-section shift-section--paths color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner page-width">
     <header class="shift-paths__header">
-      {%- if section.settings.eyebrow != blank -%}<p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       {%- if section.settings.heading != blank -%}<h2 class="shift-paths__title">{{ section.settings.heading }}</h2>{%- endif -%}
       {%- if section.settings.text != blank -%}<div class="shift-lede rte">{{ section.settings.text }}</div>{%- endif -%}
     </header>
@@ -26,10 +25,9 @@
               {%- endif -%}
             </div>
             <div class="shift-path__content">
-              <span class="shift-path__number">{{ block.settings.context_label | escape }}</span>
               <h3 class="shift-path__heading">{{ block.settings.heading | escape }}</h3>
               <p class="shift-path__text">{{ block.settings.text | escape }}</p>
-              <span class="shift-path__cta">{{ block.settings.link_label | escape }} <span aria-hidden="true">→</span></span>
+              <span class="shift-path__cta shift-tactile">{{ block.settings.link_label | escape }} <span aria-hidden="true">→</span></span>
             </div>
           </a>
         </article>

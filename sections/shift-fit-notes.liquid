@@ -1,9 +1,8 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
 
-<section class="shift-section color-{{ section.settings.color_scheme }} gradient">
+<section class="shift-section shift-section--fit color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner page-width">
     <header class="shift-fit__header">
-      {%- if section.settings.eyebrow != blank -%}<p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       {%- if section.settings.heading != blank -%}<h2 class="shift-fit__title">{{ section.settings.heading }}</h2>{%- endif -%}
     </header>
 
@@ -24,14 +23,8 @@
             {%- endif -%}
           </div>
           <div class="shift-fit__copy">
-            {%- if block.settings.eyebrow != blank -%}<p class="shift-kicker">{{ block.settings.eyebrow | escape }}</p>{%- endif -%}
             <h3 class="shift-fit__heading">{{ block.settings.heading | escape }}</h3>
             <div class="shift-fit__text rte">{{ block.settings.text }}</div>
-            <dl class="shift-fit__facts">
-              <div class="shift-fit__fact"><dt>Fits</dt><dd>{{ block.settings.fits | escape }}</dd></div>
-              <div class="shift-fit__fact"><dt>Helps with</dt><dd>{{ block.settings.helps | escape }}</dd></div>
-              <div class="shift-fit__fact"><dt>Feels like</dt><dd>{{ block.settings.feels | escape }}</dd></div>
-            </dl>
             {%- if block.settings.link_label != blank -%}
               <div><a class="button button--secondary" {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}>{{ block.settings.link_label | escape }}</a></div>
             {%- endif -%}
