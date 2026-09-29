@@ -24,47 +24,6 @@
       "block_order": ["living", "desk"],
       "settings": { "eyebrow": "", "heading": "Shop by space", "text": "", "color_scheme": "scheme-2" }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Start with living spaces",
-        "heading_size": "h1",
-        "description": "<p>Current demo products for adding character and clearer landing spots to compact rooms.</p>",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "living-spaces",
-        "show_shift_empty_state": true,
-        "empty_state_heading": "The first SHIFT edit is being assembled.",
-        "empty_state_text": "<p>Products will appear here once a dedicated SHIFT launch collection is selected.</p>",
-        "products_to_show": 3,
-        "product_order": "collection",
-        "columns_desktop": 3,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "padding_top": 40,
-        "padding_bottom": 48
-      }
-    },
-    "fit_notes": {
-      "type": "shift-fit-notes",
-      "blocks": {
-        "living_use": { "type": "use_case", "settings": { "eyebrow": "", "heading": "A clearer place to land.", "text": "<p>Small goods help an open room feel settled without closing it in.</p>", "fits": "", "helps": "", "feels": "", "link_label": "Browse living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-use-case-living.jpg" } },
-        "desk_use": { "type": "use_case", "settings": { "eyebrow": "", "heading": "Clear the center. Change gears.", "text": "<p>Give everyday tools a landing spot, then reclaim the desk when work ends.</p>", "fits": "", "helps": "", "feels": "", "link_label": "Browse desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-use-case-desk.jpg" } }
-      },
-      "block_order": ["living_use", "desk_use"],
-      "settings": { "eyebrow": "", "heading": "", "color_scheme": "scheme-1" }
-    },
     "community_notes": {
       "type": "shift-ugc",
       "blocks": {
@@ -108,5 +67,5 @@
       }
     }
   },
-  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers"]
+  "order": ["shift_hero", "space_paths", "top_sellers", "community_notes"]
 }
