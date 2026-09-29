@@ -12,26 +12,6 @@
           <h2 class="shift-ugc__title">{{ section.settings.heading }}</h2>
         {%- endif -%}
       </div>
-      {%- if section.blocks.size > 1 -%}
-        <div class="shift-ugc__controls" aria-label="Community note carousel controls">
-          <div class="shift-ugc__dots" role="group" aria-label="Choose a community note">
-            {%- for block in section.blocks -%}
-              <button
-                class="shift-ugc__dot"
-                type="button"
-                data-carousel-dot
-                data-slide-index="{{ forloop.index0 }}"
-                aria-controls="ShiftCommunityTrack-{{ section.id }}"
-                aria-label="{% if forloop.first %}Pause community notes autoplay; current note {{ forloop.index }} of {{ forloop.length }}{% else %}Show community note {{ forloop.index }} of {{ forloop.length }}{% endif %}"
-                {% if forloop.first %}aria-current="true" aria-pressed="false"{% endif %}
-              ></button>
-            {%- endfor -%}
-          </div>
-          <span class="visually-hidden" data-carousel-status aria-live="polite" aria-atomic="true">
-            Community note 1 of {{ section.blocks.size }}
-          </span>
-        </div>
-      {%- endif -%}
     </header>
 
     <div
@@ -109,6 +89,27 @@
       {%- endfor -%}
       </div>
     </div>
+
+    {%- if section.blocks.size > 1 -%}
+      <div class="shift-ugc__controls" aria-label="Community note carousel controls">
+        <div class="shift-ugc__dots" role="group" aria-label="Choose a community note">
+          {%- for block in section.blocks -%}
+            <button
+              class="shift-ugc__dot"
+              type="button"
+              data-carousel-dot
+              data-slide-index="{{ forloop.index0 }}"
+              aria-controls="ShiftCommunityTrack-{{ section.id }}"
+              aria-label="{% if forloop.first %}Pause community notes autoplay; current note {{ forloop.index }} of {{ forloop.length }}{% else %}Show community note {{ forloop.index }} of {{ forloop.length }}{% endif %}"
+              {% if forloop.first %}aria-current="true" aria-pressed="false"{% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
+        <span class="visually-hidden" data-carousel-status aria-live="polite" aria-atomic="true">
+          Community note 1 of {{ section.blocks.size }}
+        </span>
+      </div>
+    {%- endif -%}
   </div>
 </shift-community-carousel>
 

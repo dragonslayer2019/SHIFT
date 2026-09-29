@@ -27,8 +27,9 @@
 
 .shift-ugc__controls {
   display: flex;
-  flex: 0 0 auto;
   align-items: center;
+  justify-content: center;
+  margin-top: var(--shift-space-xl);
 }
 
 .shift-ugc__dots {
@@ -132,8 +133,11 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(1.2rem);
-  transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1), transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(0.45rem);
+  transition:
+    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 480ms;
 }
 
 .shift-ugc__card.is-active {
@@ -141,7 +145,8 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  filter: blur(0);
+  transition-delay: 0s;
 }
 
 .shift-ugc__media {
@@ -249,10 +254,6 @@
     font-size: clamp(3.2rem, 10vw, 4.4rem);
   }
 
-  .shift-ugc__controls {
-    justify-self: end;
-  }
-
   .shift-ugc__media {
     aspect-ratio: 4 / 3;
   }
@@ -262,6 +263,10 @@
   .shift-ugc__image,
   .shift-ugc__card {
     transition: none;
+  }
+
+  .shift-ugc__card {
+    filter: none;
   }
 
   .shift-ugc__dot::before {
