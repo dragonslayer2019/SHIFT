@@ -37,8 +37,26 @@
 }
 
 .shift-hero__grid {
+  position: relative;
   display: grid;
-  gap: var(--shift-space-lg);
+  overflow: hidden;
+  border-radius: var(--shift-radius-md);
+  background: rgb(var(--color-foreground));
+  isolation: isolate;
+}
+
+.shift-hero__grid::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-foreground) / 0.7) 0%,
+    rgb(var(--color-foreground) / 0.4) 38%,
+    rgb(var(--color-foreground) / 0.06) 70%
+  );
+  pointer-events: none;
 }
 
 .shift-hero__merchandise {
@@ -50,9 +68,20 @@
   gap: var(--shift-space-lg);
   position: relative;
   z-index: 1;
-  padding: var(--shift-space-xl);
-  border-radius: var(--shift-radius-sm);
-  background: rgb(var(--color-background));
+  color: rgb(var(--color-background));
+  text-shadow: 0 0.1rem 0.8rem rgb(var(--color-foreground) / 0.24);
+}
+
+.shift-hero__copy .shift-lede {
+  color: rgb(var(--color-background) / 0.92);
+}
+
+.shift-hero__copy .shift-display {
+  color: rgb(var(--color-background));
+}
+
+.shift-hero__copy .button {
+  text-shadow: none;
 }
 
 .shift-hero__actions {
@@ -64,7 +93,6 @@
 .shift-hero__media {
   min-height: 32rem;
   overflow: hidden;
-  border-radius: var(--shift-radius-md);
   background: color-mix(in srgb, rgb(var(--color-foreground)) 7%, rgb(var(--color-background)));
 }
 
@@ -282,15 +310,14 @@
 
 @media screen and (min-width: 750px) {
   .shift-hero__grid {
-    grid-template: minmax(46rem, min(68vh, 66rem)) / minmax(0, 1fr);
+    grid-template: minmax(48rem, min(72vh, 68rem)) / minmax(0, 1fr);
   }
 
   .shift-hero__copy {
     grid-area: 1 / 1;
-    width: min(46rem, calc(100% - 6.4rem));
+    width: min(48rem, calc(100% - 6.4rem));
     align-self: end;
-    margin: var(--shift-space-2xl);
-    padding: var(--shift-space-2xl);
+    margin: clamp(var(--shift-space-2xl), 5vw, var(--shift-space-4xl));
   }
 
   .shift-hero__merchandise {
@@ -340,21 +367,45 @@
 
 @media screen and (max-width: 749px) {
   .shift-hero__inner {
-    padding-block: var(--shift-space-lg) var(--shift-space-2xl);
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .shift-hero__grid {
+    grid-template: minmax(56rem, calc(100svh - 9rem)) / minmax(0, 1fr);
+    border-radius: 0;
+  }
+
+  .shift-hero__grid::after {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--color-foreground) / 0.02) 20%,
+      rgb(var(--color-foreground) / 0.2) 50%,
+      rgb(var(--color-foreground) / 0.78) 100%
+    );
+  }
+
+  .shift-hero__merchandise,
+  .shift-hero__copy {
+    grid-area: 1 / 1;
   }
 
   .shift-hero__media {
-    height: clamp(25rem, 72vw, 31rem);
+    height: 100%;
     min-height: 0;
   }
 
   .shift-hero__copy {
+    width: min(100%, 48rem);
+    align-self: end;
     gap: var(--shift-space-md);
-    padding: var(--shift-space-lg);
+    padding: var(--shift-space-2xl) 8.8rem calc(var(--shift-space-2xl) + env(safe-area-inset-bottom)) var(--shift-space-lg);
   }
 
   .shift-display {
-    font-size: clamp(3.2rem, 10vw, 4.2rem);
+    max-width: 13ch;
+    font-size: clamp(3.4rem, 10vw, 4.4rem);
   }
 
   .shift-hero__actions .button {
@@ -401,8 +452,17 @@
 }
 
 @media screen and (max-width: 749px) and (max-height: 650px) {
-  .shift-hero__inner {
-    padding-block: var(--shift-space-2xl);
+  .shift-hero__grid {
+    grid-template-rows: minmax(50rem, calc(100svh - 7rem));
+  }
+
+  .shift-hero__copy {
+    gap: var(--shift-space-sm);
+    padding-block: var(--shift-space-lg);
+  }
+
+  .shift-display {
+    font-size: clamp(3rem, 9vw, 3.8rem);
   }
 }
 
@@ -414,7 +474,6 @@
   .shift-hero__copy {
     gap: var(--shift-space-lg);
     margin: var(--shift-space-xl);
-    padding: var(--shift-space-xl);
   }
 
   .shift-hero__media {
