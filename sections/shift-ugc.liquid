@@ -1,6 +1,10 @@
 {{ 'section-shift-ugc.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shift-community-carousel.js' | asset_url }}" defer="defer"></script>
 
-<section class="shift-section shift-ugc color-{{ section.settings.color_scheme }} gradient">
+<shift-community-carousel
+  class="shift-section shift-ugc color-{{ section.settings.color_scheme }} gradient"
+  data-slide-count="{{ section.blocks.size }}"
+>
   <div class="shift-section__inner page-width">
     <header class="shift-ugc__header">
       <div class="shift-ugc__heading-group">
@@ -8,9 +12,46 @@
           <h2 class="shift-ugc__title">{{ section.settings.heading }}</h2>
         {%- endif -%}
       </div>
+      {%- if section.blocks.size > 1 -%}
+        <div class="shift-ugc__controls" aria-label="Community note carousel controls">
+          <button
+            class="shift-ugc__control"
+            type="button"
+            data-carousel-previous
+            aria-controls="ShiftCommunityTrack-{{ section.id }}"
+            aria-label="Show previous community note"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <p class="shift-ugc__position" aria-live="polite" aria-atomic="true">
+            <span class="visually-hidden">Community note </span>
+            <span data-carousel-current>1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden"> of </span>
+            <span>{{ section.blocks.size }}</span>
+          </p>
+          <button
+            class="shift-ugc__control"
+            type="button"
+            data-carousel-next
+            aria-controls="ShiftCommunityTrack-{{ section.id }}"
+            aria-label="Show next community note"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      {%- endif -%}
     </header>
 
-    <div class="shift-ugc__grid" role="list">
+    <div
+      class="shift-ugc__viewport"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Community notes"
+      tabindex="0"
+      data-carousel-viewport
+    >
+      <div class="shift-ugc__track" id="ShiftCommunityTrack-{{ section.id }}">
       {%- for block in section.blocks -%}
         {%- liquid
           assign demo_image = 'shift-demo-ugc-living-corner.jpg'
@@ -21,7 +62,17 @@
               assign demo_image = 'shift-demo-ugc-entry-dropzone.jpg'
           endcase
         -%}
-        <article class="shift-ugc__card" role="listitem" {{ block.shopify_attributes }}>
+        <article
+          class="shift-ugc__card{% if forloop.first %} is-active{% endif %}"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Community note {{ forloop.index }} of {{ forloop.length }}"
+          aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+          data-carousel-slide
+          data-slide-index="{{ forloop.index0 }}"
+          {% unless forloop.first %}inert{% endunless %}
+          {{ block.shopify_attributes }}
+        >
           <div class="shift-ugc__media">
             {%- if block.settings.image != blank -%}
               {{
@@ -65,9 +116,10 @@
           </div>
         </article>
       {%- endfor -%}
+      </div>
     </div>
   </div>
-</section>
+</shift-community-carousel>
 
 {% schema %}
 {
