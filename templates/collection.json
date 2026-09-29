@@ -1,16 +1,6 @@
 {
   "sections": {
     "banner": { "type": "main-collection-banner", "settings": { "show_collection_description": true, "show_collection_image": true, "color_scheme": "scheme-1" } },
-    "guide": {
-      "type": "shift-collection-guide",
-      "blocks": {
-        "measure": { "type": "tip", "settings": { "label": "Measure first", "text": "Check each product's dimensions against the clear space you actually have." } },
-        "friction": { "type": "tip", "settings": { "label": "Shop the friction", "text": "Start with the daily problem: clutter, unclear zones, or a desk that has to do too much." } },
-        "fit": { "type": "tip", "settings": { "label": "Check the fit", "text": "Use Best for and Setup & care on the product page before adding to cart." } }
-      },
-      "block_order": ["measure", "friction", "fit"],
-      "settings": { "heading": "Choose by what your space needs.", "color_scheme": "scheme-2" }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -27,10 +17,10 @@
         "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 48,
+        "padding_top": 20,
         "padding_bottom": 64
       }
     }
   },
-  "order": ["banner", "guide", "product-grid"]
+  "order": ["banner", "product-grid"]
 }

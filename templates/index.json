@@ -63,7 +63,7 @@
         "desk_use": { "type": "use_case", "settings": { "eyebrow": "", "heading": "Clear the center. Change gears.", "text": "<p>Give everyday tools a landing spot, then reclaim the desk when work ends.</p>", "fits": "", "helps": "", "feels": "", "link_label": "Browse desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-use-case-desk.jpg" } }
       },
       "block_order": ["living_use", "desk_use"],
-      "settings": { "eyebrow": "", "heading": "Made for rooms that change gears.", "color_scheme": "scheme-1" }
+      "settings": { "eyebrow": "", "heading": "", "color_scheme": "scheme-1" }
     },
     "community_notes": {
       "type": "shift-ugc",
@@ -106,16 +106,7 @@
         "padding_top": 48,
         "padding_bottom": 56
       }
-    },
-    "closing": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": { "type": "heading", "settings": { "heading": "A smaller space should still feel like yours.", "heading_size": "h1" } },
-        "text": { "type": "text", "disabled": true, "settings": { "text": "<p>SHIFT looks for practical pieces with enough character to make everyday routines feel considered—not crowded.</p>" } }
-      },
-      "block_order": ["heading", "text"],
-      "settings": { "desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-3", "full_width": true, "padding_top": 72, "padding_bottom": 72 }
     }
   },
-  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers", "closing"]
+  "order": ["shift_hero", "space_paths", "featured_collection", "fit_notes", "community_notes", "top_sellers"]
 }
