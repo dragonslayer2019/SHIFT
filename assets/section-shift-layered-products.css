@@ -39,7 +39,8 @@
 
 .shift-layered__object {
   --shift-layer-progress: 1;
-  --shift-layer-offset: 0rem;
+  --shift-layer-offset-x: 0px;
+  --shift-layer-offset-y: 0px;
   --shift-layer-angle: 0deg;
   position: absolute;
   z-index: 1;
@@ -50,7 +51,7 @@
 
 .shift-layered.is-enhanced .shift-layered__object {
   opacity: var(--shift-layer-progress);
-  transform: translate3d(0, var(--shift-layer-offset), 0) rotate(var(--shift-layer-angle));
+  transform: translate3d(var(--shift-layer-offset-x), var(--shift-layer-offset-y), 0) rotate(var(--shift-layer-angle));
   will-change: transform, opacity;
 }
 
@@ -149,7 +150,7 @@
   }
 
   .shift-layered.is-enhanced .shift-layered__object {
-    transform: translate3d(0, var(--shift-layer-offset), 0);
+    transform: translate3d(var(--shift-layer-offset-x), var(--shift-layer-offset-y), 0);
   }
 
   .shift-layered__product-link {
