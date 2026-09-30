@@ -40,10 +40,12 @@
 
 .shift-motion-strip__group {
   display: flex;
+  width: 100vw;
   flex: none;
   align-items: center;
-  gap: clamp(2.8rem, 5vw, 7.2rem);
-  padding-right: clamp(2.8rem, 5vw, 7.2rem);
+  justify-content: space-around;
+  gap: clamp(1.2rem, 3vw, 4.8rem);
+  padding-inline: clamp(0.8rem, 2vw, 2.4rem);
 }
 
 .shift-motion-strip__object {
