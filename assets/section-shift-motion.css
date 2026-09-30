@@ -155,7 +155,7 @@
     transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .shift-commerce--motion .card__inner:hover {
+  .shift-commerce--motion .card-wrapper:hover .card__inner {
     z-index: 1;
     filter: drop-shadow(0 1rem 1.2rem rgb(var(--color-shadow) / 0.16));
     transform: translateY(-0.45rem) rotate(0.6deg);
@@ -166,15 +166,15 @@
     transition: opacity 440ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .shift-commerce--motion .card__inner:hover .media.media--hover-effect > img:first-child:only-child {
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
     transform: none;
   }
 
-  .shift-commerce--motion .card__inner:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
     opacity: 0;
   }
 
-  .shift-commerce--motion .card__inner:hover .media.media--hover-effect > img + img {
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img + img {
     opacity: 1;
     transform: none;
   }
