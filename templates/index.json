@@ -71,7 +71,22 @@
         "padding_top": 48,
         "padding_bottom": 56
       }
+    },
+    "layered_products": {
+      "type": "shift-layered-products",
+      "settings": {
+        "enable_section": true,
+        "heading": "A little better, together.",
+        "color_scheme": "scheme-1",
+        "background_image": "",
+        "product_1": "the-little-horizon",
+        "cutout_1": "",
+        "product_2": "the-pebble-pause",
+        "cutout_2": "",
+        "product_3": "the-cloud-rest",
+        "cutout_3": ""
+      }
     }
   },
-  "order": ["shift_hero", "space_paths", "moving_objects", "top_sellers", "community_notes"]
+  "order": ["shift_hero", "space_paths", "moving_objects", "top_sellers", "layered_products", "community_notes"]
 }
