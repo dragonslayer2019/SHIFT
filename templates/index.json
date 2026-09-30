@@ -24,6 +24,10 @@
       "block_order": ["living", "desk"],
       "settings": { "eyebrow": "", "heading": "Shop by space", "text": "", "color_scheme": "scheme-2" }
     },
+    "moving_objects": {
+      "type": "shift-motion-strip",
+      "settings": { "color_scheme": "scheme-2" }
+    },
     "community_notes": {
       "type": "shift-ugc",
       "blocks": {
@@ -58,6 +62,7 @@
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
+        "enable_shift_home_motion": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "standard",
@@ -67,5 +72,5 @@
       }
     }
   },
-  "order": ["shift_hero", "space_paths", "top_sellers", "community_notes"]
+  "order": ["shift_hero", "space_paths", "moving_objects", "top_sellers", "community_notes"]
 }

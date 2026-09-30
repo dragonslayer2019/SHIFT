@@ -1,0 +1,50 @@
+{{ 'section-shift-motion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shift-motion-strip.js' | asset_url }}" defer="defer"></script>
+
+<shift-motion-strip class="shift-motion-strip color-{{ section.settings.color_scheme }} gradient">
+  <button
+    class="shift-motion-strip__control"
+    type="button"
+    aria-label="Pause decorative object band"
+    aria-pressed="false"
+    data-shift-strip-control
+  >
+    <span class="shift-motion-strip__track" aria-hidden="true">
+      {%- for copy in (1..2) -%}
+        <span class="shift-motion-strip__group">
+          <span class="shift-motion-strip__object shift-motion-strip__object--coral">
+            <svg viewBox="0 0 48 40" focusable="false"><rect x="9" y="7" width="30" height="26" rx="6"/><path d="M16 15h16M16 21h10M16 27h13"/></svg>
+          </span>
+          <span class="shift-motion-strip__object shift-motion-strip__object--green">
+            <svg viewBox="0 0 48 40" focusable="false"><path d="M10 27h28l-3 6H13l-3-6Z"/><path d="M16 27V13h16v14M20 13V8h8v5"/></svg>
+          </span>
+          <span class="shift-motion-strip__object shift-motion-strip__object--cream">
+            <svg viewBox="0 0 48 40" focusable="false"><path d="M13 11h22v22H13z"/><path d="m18 18 5-4 7 6-5 6-7-8Z"/><circle cx="31" cy="14" r="2"/></svg>
+          </span>
+          <span class="shift-motion-strip__object shift-motion-strip__object--green">
+            <svg viewBox="0 0 48 40" focusable="false"><path d="M10 30h28M14 30V14h20v16M19 14V9h10v5"/><path d="M19 21h10"/></svg>
+          </span>
+          <span class="shift-motion-strip__object shift-motion-strip__object--coral">
+            <svg viewBox="0 0 48 40" focusable="false"><circle cx="24" cy="20" r="12"/><path d="M24 8v24M12 20h24M16 12l16 16M32 12 16 28"/></svg>
+          </span>
+          <span class="shift-motion-strip__object shift-motion-strip__object--cream">
+            <svg viewBox="0 0 48 40" focusable="false"><path d="M12 12h24v20H12z"/><path d="M17 12V8h14v4M18 20h12M18 25h8"/></svg>
+          </span>
+        </span>
+      {%- endfor -%}
+    </span>
+    <span class="shift-motion-strip__state" aria-hidden="true"></span>
+  </button>
+</shift-motion-strip>
+
+{% schema %}
+{
+  "name": "SHIFT moving objects",
+  "tag": "section",
+  "class": "section shift-motion-strip-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "SHIFT moving objects" }]
+}
+{% endschema %}

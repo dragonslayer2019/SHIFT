@@ -467,7 +467,6 @@
   }
 
   @supports (animation-timeline: view()) {
-    .shift-path__media,
     .shift-fit__media {
       animation: shift-scroll-image linear both;
       animation-range: entry 0% cover 38%;

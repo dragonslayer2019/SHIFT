@@ -1,4 +1,6 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-shift-motion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shift-home-motion.js' | asset_url }}" defer="defer"></script>
 
 <section class="shift-section shift-section--paths color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner page-width">
@@ -11,7 +13,11 @@
       {%- for block in section.blocks -%}
         <article class="shift-path" {{ block.shopify_attributes }}>
           <a class="shift-path__link" {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% else %}role="link" aria-disabled="true"{% endif %}>
-            <div class="shift-path__media">
+            <div
+              class="shift-path__media"
+              data-shift-reveal
+              style="--shift-reveal-order: {{ forloop.index0 }};"
+            >
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '400, 600, 900, 1200, 1400', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy', class: 'shift-path__image' }}
               {%- else -%}
