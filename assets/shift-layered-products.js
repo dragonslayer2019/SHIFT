@@ -84,7 +84,7 @@ if (!customElements.get('shift-layered-products')) {
         this.objects.forEach((object, index) => {
           const [start, end] = ranges[index];
           const linear = Math.min(1, Math.max(0, (overall - start) / (end - start)));
-          const progress = 1 - Math.pow(1 - linear, 3);
+          const progress = linear * linear * (3 - 2 * linear);
           const remaining = 1 - progress;
           object.style.setProperty('--shift-layer-progress', progress.toFixed(3));
           object.style.setProperty('--shift-layer-offset-x', `${(remaining * motion[index].x).toFixed(2)}px`);
