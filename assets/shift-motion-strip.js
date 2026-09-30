@@ -30,7 +30,7 @@ if (!customElements.get('shift-motion-strip')) {
         const paused = this.userPaused || this.focusPaused || this.motionPreference.matches;
         this.classList.toggle('is-paused', paused);
         this.control.setAttribute('aria-pressed', String(Boolean(this.userPaused)));
-        this.control.setAttribute('aria-label', this.userPaused ? 'Resume decorative object band' : 'Pause decorative object band');
+        this.control.setAttribute('aria-label', this.userPaused ? 'Resume scrolling keywords' : 'Pause scrolling keywords');
       }
     }
   );
