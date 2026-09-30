@@ -150,12 +150,15 @@
 }
 
 @media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
-  .shift-commerce--motion .card__inner {
+  .shift-commerce--motion .shift-product-reveal.is-shift-revealed .card__inner {
     transform-origin: 50% 65%;
-    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--shift-reveal-order, 0) * 100ms),
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .shift-commerce--motion .card-wrapper:hover .card__inner {
+  .shift-commerce--motion .shift-product-reveal.is-shift-revealed .card-wrapper:hover .card__inner {
     z-index: 1;
     filter: drop-shadow(0 1rem 1.2rem rgb(var(--color-shadow) / 0.16));
     transform: translateY(-0.45rem) rotate(0.6deg);
