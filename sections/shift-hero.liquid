@@ -1,4 +1,7 @@
 {{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.show_decorations -%}
+  <script src="{{ 'shift-hero-decor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 <section class="shift-section shift-section--hero color-{{ section.settings.color_scheme }} gradient">
   <div class="shift-section__inner shift-hero__inner page-width">
@@ -25,6 +28,12 @@
               <p class="shift-placeholder__text">Add an editable apartment scene in the theme editor.</p>
             </div>
           </div>
+        {%- endif -%}
+        {%- if section.settings.show_decorations and section.settings.image != blank -%}
+          <shift-hero-decor class="shift-hero__decor" aria-hidden="true">
+            <img class="shift-hero__decor-item shift-hero__decor-item--sun" src="{{ 'shift-hero-sun.svg' | asset_url }}" alt="" width="64" height="64" loading="eager">
+            <img class="shift-hero__decor-item shift-hero__decor-item--arch" src="{{ 'shift-hero-arch.svg' | asset_url }}" alt="" width="82" height="60" loading="eager">
+          </shift-hero-decor>
         {%- endif -%}
       </div>
 
@@ -72,6 +81,7 @@
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>" },
     { "type": "image_picker", "id": "image", "label": "Apartment scene" },
     { "type": "text", "id": "image_alt", "label": "Image alternative text", "default": "Warm compact apartment arranged for everyday living" },
+    { "type": "checkbox", "id": "show_decorations", "label": "Show floating decorations", "default": true },
     { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop living spaces" },
     { "type": "url", "id": "primary_link", "label": "Primary button link" },
     { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Shop desk spaces" },

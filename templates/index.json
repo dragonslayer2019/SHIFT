@@ -12,7 +12,8 @@
         "secondary_link": "",
         "color_scheme": "scheme-1",
         "image": "shopify://shop_images/shift-home-hero.jpg",
-        "image_alt": "Warm compact apartment arranged for everyday living"
+        "image_alt": "Warm compact apartment arranged for everyday living",
+        "show_decorations": true
       }
     },
     "space_paths": {
