@@ -160,7 +160,7 @@
 
   .shift-commerce--motion .shift-product-reveal.is-shift-revealed .card-wrapper:hover .card__inner {
     z-index: 1;
-    box-shadow: 0 1rem 2.4rem rgb(var(--color-foreground) / 0.14);
+    box-shadow: 0 1rem 2.4rem rgba(var(--color-foreground), 0.14);
     transform: translateY(-0.45rem) rotate(0.6deg);
   }
 
