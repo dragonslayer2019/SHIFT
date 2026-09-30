@@ -1,0 +1,167 @@
+.section + .shift-motion-strip-section,
+.shift-motion-strip-section + .section {
+  margin-top: 0;
+}
+
+.shift-motion-strip {
+  display: block;
+  overflow: hidden;
+  border-block: 0.1rem solid var(--shift-rule);
+  color: rgb(var(--color-foreground));
+  background: var(--gradient-background);
+}
+
+.shift-motion-strip__control {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 5.6rem;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.shift-motion-strip__control:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: -0.4rem;
+}
+
+.shift-motion-strip__track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  align-items: center;
+  animation: shift-object-flow 28s linear infinite;
+  will-change: transform;
+}
+
+.shift-motion-strip__group {
+  display: flex;
+  width: max-content;
+  min-width: 100vw;
+  flex: none;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: clamp(1.6rem, 2.4vw, 3.6rem);
+  padding-inline: clamp(1.6rem, 2.6vw, 4rem);
+}
+
+.shift-motion-strip__keyword,
+.shift-motion-strip__separator {
+  flex: none;
+  white-space: nowrap;
+}
+
+.shift-motion-strip__keyword {
+  font-size: clamp(1.25rem, 1.15vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.shift-motion-strip__separator {
+  color: var(--shift-accent);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.shift-motion-strip.is-paused .shift-motion-strip__track {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .shift-motion-strip:hover .shift-motion-strip__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes shift-object-flow {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.shift-motion-enhanced [data-shift-reveal]:not(.shift-product-reveal),
+  html.shift-motion-enhanced .shift-product-reveal .card__inner {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+
+  html.shift-motion-enhanced [data-shift-reveal]:not(.shift-product-reveal).is-shift-revealed,
+  html.shift-motion-enhanced .shift-product-reveal.is-shift-revealed .card__inner {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--shift-reveal-order, 0) * 100ms),
+      transform 500ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--shift-reveal-order, 0) * 100ms);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .shift-commerce--motion .shift-product-reveal.is-shift-revealed .card__inner {
+    transform-origin: 50% 65%;
+    transition:
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--shift-reveal-order, 0) * 100ms),
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .shift-commerce--motion .shift-product-reveal.is-shift-revealed .card-wrapper:hover .card__inner {
+    z-index: 1;
+    box-shadow: 0 1rem 2.4rem rgba(var(--color-foreground), 0.14);
+    transform: translateY(-0.45rem) rotate(0.6deg);
+  }
+
+  .shift-commerce--motion .media.media--hover-effect > img {
+    transform: none;
+    transition: opacity 440ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
+    transform: none;
+  }
+
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+    opacity: 0;
+  }
+
+  .shift-commerce--motion .card-wrapper:hover .media.media--hover-effect > img + img {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .shift-motion-strip__control {
+    height: 4.4rem;
+  }
+
+  .shift-motion-strip__group {
+    gap: 1.4rem;
+    padding-inline: 1.4rem;
+  }
+
+  .shift-motion-strip__keyword {
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shift-motion-strip__track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  [data-shift-reveal]:not(.shift-product-reveal),
+  .shift-product-reveal .card__inner,
+  .shift-commerce--motion .card__inner,
+  .shift-commerce--motion .media.media--hover-effect > img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
