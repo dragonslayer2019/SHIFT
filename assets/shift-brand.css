@@ -13,6 +13,91 @@
   --shift-radius-sm: 0.8rem;
   --shift-radius-md: 1.6rem;
   --shift-control-radius: 0.8rem;
+  --shift-font-display: var(--font-heading-family);
+  --shift-font-functional: var(--font-body-family);
+  --shift-weight-regular: var(--font-body-weight);
+  --shift-weight-medium: var(--font-body-weight-medium, 500);
+  --shift-weight-semibold: var(--font-body-weight-semibold, 600);
+  --shift-type-hero: 3.8rem;
+  --shift-type-section: 3rem;
+  --shift-type-product-title: 3rem;
+  --shift-type-card: 1.7rem;
+  --shift-type-body: 1.6rem;
+  --shift-type-price: 1.6rem;
+  --shift-type-ui: 1.5rem;
+  --shift-type-meta: 1.3rem;
+  --shift-leading-display: 1.08;
+  --shift-leading-section: 1.15;
+  --shift-leading-body: 1.6;
+  --shift-tracking-display: -0.015em;
+  --shift-tracking-ui: 0.035em;
+  --shift-tracking-meta: 0.075em;
+}
+
+@media screen and (min-width: 750px) {
+  :root {
+    --shift-type-hero: 6rem;
+    --shift-type-section: 3.8rem;
+    --shift-type-product-title: 3.8rem;
+  }
+}
+
+/* One semantic type system across Dawn and SHIFT components. Product and
+   commerce UI intentionally use the functional face even when their markup
+   includes Dawn heading utility classes. */
+.header__menu-item,
+.menu-drawer__menu-item,
+.button,
+.shopify-payment-button__button,
+.field__input,
+.select__select,
+.customer .field input {
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-ui);
+  font-weight: var(--shift-weight-medium);
+  letter-spacing: var(--shift-tracking-ui);
+}
+
+.card__heading,
+.cart-item__name,
+.cart-notification-product__name,
+.shift-layered__product-title {
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-card);
+  font-weight: var(--shift-weight-medium);
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.price,
+.price-item,
+.cart-item__price-wrapper,
+.totals__total-value,
+.shift-layered__product-price {
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-price);
+  font-weight: var(--shift-weight-regular);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.collection-hero__title,
+.product__title h1,
+.drawer__heading {
+  font-family: var(--shift-font-display);
+  font-size: var(--shift-type-product-title);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
+}
+
+.footer-block__heading {
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-card);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
 /* Recompute color semantics where Dawn applies each section's color scheme.

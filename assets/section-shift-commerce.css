@@ -5,9 +5,9 @@
 
 .shift-commerce .shift-kicker {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -26,9 +26,9 @@
 .shift-product-details__title {
   max-width: 18ch;
   margin: 0;
-  font-size: clamp(3.2rem, 5vw, 6.4rem);
-  letter-spacing: -0.035em;
-  line-height: 1;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-product-details__intro {
@@ -55,9 +55,9 @@
 .shift-collection-guide__label {
   display: block;
   margin-bottom: var(--shift-space-sm);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   text-transform: uppercase;
 }
 
@@ -75,9 +75,9 @@
 .shift-collection-guide__heading {
   max-width: 22ch;
   margin: 0 0 var(--shift-space-3xl);
-  font-size: clamp(2.8rem, 4vw, 4.8rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 @media screen and (min-width: 750px) {

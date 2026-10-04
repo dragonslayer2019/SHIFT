@@ -8,8 +8,9 @@
 
 .shift-layered__heading {
   margin: 0 0 clamp(1.4rem, 2vw, 2rem);
-  font-size: clamp(2.8rem, 4vw, 4.6rem);
-  line-height: 1.05;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-layered__layout {
@@ -109,14 +110,14 @@
 }
 
 .shift-layered__product-title {
-  font-size: clamp(1.7rem, 1.7vw, 2.1rem);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: var(--shift-type-card);
+  font-weight: var(--shift-weight-medium);
+  line-height: 1.35;
 }
 
 .shift-layered__product-price {
   color: var(--shift-muted);
-  font-size: 1.5rem;
+  font-size: var(--shift-type-price);
 }
 
 .shift-layered__product-link:hover .shift-layered__product-title {
@@ -137,7 +138,7 @@
 
   .shift-layered__heading {
     margin-bottom: 1.2rem;
-    font-size: clamp(2.6rem, 9vw, 3.6rem);
+    font-size: var(--shift-type-section);
   }
 
   .shift-layered__layout {

@@ -56,9 +56,9 @@
 }
 
 .shift-motion-strip__keyword {
-  font-size: clamp(1.25rem, 1.15vw, 1.55rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -145,7 +145,7 @@
   }
 
   .shift-motion-strip__keyword {
-    font-size: 1.15rem;
+    font-size: var(--shift-type-meta);
   }
 }
 

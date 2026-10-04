@@ -13,9 +13,10 @@
 
 .shift-kicker {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -23,17 +24,19 @@
 .shift-display {
   max-width: 15ch;
   margin: 0;
-  font-size: clamp(3.6rem, 4.5vw, 5.6rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-family: var(--shift-font-display);
+  font-size: var(--shift-type-hero);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-display);
 }
 
 .shift-lede {
   max-width: 58ch;
   margin: 0;
   color: var(--shift-muted);
-  font-size: clamp(1.7rem, 2vw, 2.2rem);
-  line-height: 1.5;
+  font-size: 1.8rem;
+  line-height: 1.55;
 }
 
 .shift-hero__grid {
@@ -165,9 +168,9 @@
 }
 
 .shift-placeholder__label {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   text-transform: uppercase;
 }
 
@@ -179,10 +182,10 @@
 .shift-placeholder__title {
   max-width: 18ch;
   color: rgb(var(--color-foreground));
-  font-size: clamp(2.4rem, 3vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
+  font-size: var(--shift-type-section);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-placeholder__text {
@@ -202,9 +205,9 @@
 .shift-product-details__title {
   max-width: 18ch;
   margin: 0;
-  font-size: clamp(3.2rem, 5vw, 6.4rem);
-  letter-spacing: -0.035em;
-  line-height: 1;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-paths__grid {
@@ -256,18 +259,18 @@
 
 .shift-path__number {
   color: var(--shift-muted);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 .shift-path__heading {
   margin: 0;
-  font-size: clamp(2.6rem, 4vw, 4.4rem);
-  letter-spacing: -0.025em;
-  line-height: 1.05;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-path__text {
@@ -290,7 +293,7 @@
   align-items: center;
   gap: var(--shift-space-sm);
   padding: 0.8rem 1.6rem;
-  font-weight: 700;
+  font-weight: var(--shift-weight-semibold);
 }
 
 .shift-path__link:focus-visible {
@@ -345,9 +348,9 @@
 .shift-fit__heading {
   max-width: 20ch;
   margin: 0;
-  font-size: clamp(2.4rem, 3vw, 3.6rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
 }
 
 .shift-fit__text {
@@ -452,7 +455,7 @@
 
   .shift-display {
     max-width: 13ch;
-    font-size: clamp(3.4rem, 10vw, 4.4rem);
+    font-size: var(--shift-type-hero);
   }
 
   .shift-hero__actions .button {
@@ -554,7 +557,7 @@
   }
 
   .shift-display {
-    font-size: clamp(3rem, 9vw, 3.8rem);
+    font-size: 3.4rem;
   }
 }
 
