@@ -83,18 +83,17 @@
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
-      {%- if section.settings.show_description
-        and section.settings.description != blank
-        or section.settings.show_description
-        and section.settings.collection.description != empty
-      -%}
-        <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {%- if section.settings.show_description -%}
-            {{ section.settings.collection.description }}
-          {%- else -%}
-            {{ section.settings.description -}}
-          {%- endif %}
-        </div>
+      {%- if section.settings.show_description -%}
+        {%- if section.settings.description != blank -%}
+          {%- assign featured_collection_description = section.settings.description -%}
+        {%- else -%}
+          {%- assign featured_collection_description = section.settings.collection.description -%}
+        {%- endif -%}
+        {%- if featured_collection_description != blank -%}
+          <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ featured_collection_description }}
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
 
