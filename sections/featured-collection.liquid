@@ -83,7 +83,8 @@
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
-      {%- if section.settings.description != blank
+      {%- if section.settings.show_description
+        and section.settings.description != blank
         or section.settings.show_description
         and section.settings.collection.description != empty
       -%}
