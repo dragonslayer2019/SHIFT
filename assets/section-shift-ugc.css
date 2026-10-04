@@ -177,7 +177,7 @@
   border-radius: 999rem;
   color: rgb(var(--color-background));
   background: rgb(var(--color-foreground));
-  font-size: 1rem;
+  font-size: var(--shift-type-meta);
   font-weight: var(--shift-weight-semibold);
   letter-spacing: var(--shift-tracking-meta);
   line-height: 1;

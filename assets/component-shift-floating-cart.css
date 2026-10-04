@@ -70,8 +70,9 @@
   border-radius: 999rem;
   color: rgb(var(--color-background));
   background: rgb(var(--color-foreground));
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--shift-font-functional);
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
   line-height: 1;
 }
 

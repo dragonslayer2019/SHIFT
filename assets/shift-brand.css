@@ -71,6 +71,8 @@
 
 .price,
 .price-item,
+.card-information .price,
+.card-information .price .price-item,
 .cart-item__price-wrapper,
 .totals__total-value,
 .shift-layered__product-price {

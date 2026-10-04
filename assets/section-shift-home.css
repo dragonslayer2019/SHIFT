@@ -248,7 +248,7 @@
 }
 
 .shift-path__placeholder .shift-placeholder__title {
-  font-size: clamp(2.2rem, 3vw, 3.4rem);
+  font-size: var(--shift-type-section);
 }
 
 .shift-path__content {
@@ -336,7 +336,7 @@
 }
 
 .shift-fit__placeholder .shift-placeholder__title {
-  font-size: clamp(2.2rem, 3vw, 3.4rem);
+  font-size: var(--shift-type-section);
 }
 
 .shift-fit__copy {
