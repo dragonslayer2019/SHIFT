@@ -4,8 +4,21 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "shop": {
+          "type": "link_list",
+          "settings": { "heading": "Shop", "menu": "shift-review-shop" }
+        },
+        "about": {
+          "type": "link_list",
+          "settings": { "heading": "About", "menu": "shift-review-about" }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": { "heading": "Help", "menu": "shift-review-help" }
+        }
+      },
+      "block_order": ["shop", "about", "help"],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
