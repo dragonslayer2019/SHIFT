@@ -56,15 +56,15 @@
   background:
     radial-gradient(
       ellipse 62% 82% at 20% 72%,
-      rgb(var(--color-foreground) / 0.9) 0%,
-      rgb(var(--color-foreground) / 0.78) 48%,
-      rgb(var(--color-foreground) / 0) 100%
+      rgba(var(--color-foreground), 0.9) 0%,
+      rgba(var(--color-foreground), 0.78) 48%,
+      rgba(var(--color-foreground), 0) 100%
     ),
     linear-gradient(
       90deg,
-      rgb(var(--color-foreground) / 0.78) 0%,
-      rgb(var(--color-foreground) / 0.52) 38%,
-      rgb(var(--color-foreground) / 0.03) 70%
+      rgba(var(--color-foreground), 0.78) 0%,
+      rgba(var(--color-foreground), 0.52) 38%,
+      rgba(var(--color-foreground), 0.03) 70%
     );
   pointer-events: none;
 }
@@ -444,9 +444,9 @@
   .shift-hero__scrim {
     background: linear-gradient(
       180deg,
-      rgb(var(--color-foreground) / 0.02) 20%,
-      rgb(var(--color-foreground) / 0.2) 50%,
-      rgb(var(--color-foreground) / 0.78) 100%
+      rgba(var(--color-foreground), 0.02) 20%,
+      rgba(var(--color-foreground), 0.2) 50%,
+      rgba(var(--color-foreground), 0.78) 100%
     );
   }
 
