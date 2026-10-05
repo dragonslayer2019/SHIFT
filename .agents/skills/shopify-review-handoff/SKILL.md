@@ -5,7 +5,7 @@ description: Deliver a completed round of Shopify storefront changes for remote 
 
 # Shopify review handoff
 
-Create one traceable review package in which the commit, Draft PR, Shopify preview theme, visitor link, screenshots, and reported checks all refer to the same code.
+Create one traceable review package in which the commit, Draft PR, Shopify preview theme, visitor link, and reported checks all refer to the same code.
 
 Never merge a PR, publish a theme, alter a live theme, or expose credentials. Explicit user instructions override this workflow.
 
@@ -15,7 +15,7 @@ Never merge a PR, publish a theme, alter a live theme, or expose credentials. Ex
 2. Identify the files and storefront routes changed in this review round. Preserve unrelated or pre-existing local modifications; never reset, discard, stash, or overwrite them.
 3. Do not deliver from the repository's default branch. If the work is on the default branch, create a descriptive work branch while carrying the current changes forward.
 4. Review the diff before staging. Commit only the intended files with a clear message. If ownership or scope is ambiguous, stop and ask instead of sweeping changes into the commit.
-5. Record the final commit with `git rev-parse HEAD`. Use a clean detached worktree at that SHA for Shopify checks, upload, and screenshots when the main worktree contains unrelated changes.
+5. Record the final commit with `git rev-parse HEAD`. Use a clean detached worktree at that SHA for Shopify checks and upload when the main worktree contains unrelated changes.
 
 Do not use broad cleanup commands such as `git reset --hard`, `git checkout -- .`, or an indiscriminate `git add -A` when unrelated changes exist.
 
@@ -37,7 +37,7 @@ Report only checks actually run. Mark unavailable data, browsers, devices, or in
 1. Push the current work branch and set its upstream when needed.
 2. Use an authenticated GitHub integration or GitHub CLI to find an open PR for the exact head branch.
 3. Create a Draft PR if none exists. If one exists, update it by pushing the branch and keep or convert it to Draft status.
-4. Put the change summary, actual checks, screenshots or artifact links, and known issues in the PR body or a comment.
+4. Put the change summary, actual checks, relevant non-image artifact links, and known issues in the PR body or a comment.
 5. Never merge, auto-merge, close, or mark the PR ready for review unless the user separately requests it.
 
 If no authenticated GitHub mechanism exists, keep the commit and checks, then report the minimum action required—connect GitHub or install/authenticate GitHub CLI. Do not invent a PR URL.
@@ -56,7 +56,7 @@ Use the local, Git-ignored state file `.shopify/review-handoff.json` to retain o
 }
 ```
 
-Never put login credentials, Theme Access passwords/tokens, cookies, or Admin API secrets in this file, the repository, a PR, screenshots, or the report.
+Never put login credentials, Theme Access passwords/tokens, cookies, or Admin API secrets in this file, the repository, a PR, validation artifacts, or the report.
 
 ### First delivery
 
@@ -85,7 +85,7 @@ After the upload and unpublished-role checks, generate a fresh Shopify visitor p
 1. Open Shopify Admin, go to **Online Store > Themes**, and preview the verified unpublished review theme.
 2. In the theme preview bar, use the share/copy-link control to create a visitor preview. Browser automation may perform these steps only in the already authorized merchant session and only for the verified review theme.
 3. Accept the result only when it is HTTPS and its hostname is `shopifypreview.com` or a subdomain of `shopifypreview.com`. Reject Admin URLs, shop-domain URLs containing `preview_theme_id`, and any URL whose theme cannot be tied back to the recorded theme ID.
-4. If the visitor link cannot be generated automatically, ask the user to copy the visitor link from that Shopify Admin preview bar and paste it into the conversation. Preserve the completed commit, PR, upload, and theme ID while waiting; after the user supplies the link, continue unauthenticated verification and matching screenshots.
+4. If the visitor link cannot be generated automatically, ask the user to copy the visitor link from that Shopify Admin preview bar and paste it into the conversation. Preserve the completed commit, PR, upload, and theme ID while waiting; after the user supplies the link, continue unauthenticated verification.
 
 Visitor preview links can expire, so create a new one for every handoff rather than reusing a prior link.
 
@@ -93,21 +93,10 @@ Validate the URL in a new unauthenticated browser context with no Shopify Admin 
 
 - Confirm the requested page loads the recorded theme ID and does not redirect to Admin or a login page.
 - Confirm representative assets and page content load.
-- Use the copied link as delivered for reporting. A `pb=0` query parameter may be added to a working copy for clean screenshots, but it does not create or authenticate a visitor preview.
+- Use the copied link as delivered for reporting. Query parameters do not create or authenticate a visitor preview.
 - If the store password, authentication, expiry, or another barrier prevents guest access, report the blocker and the smallest merchant action needed. Do not fabricate or hand-edit a link and claim it works.
 
-## 6. Capture matching screenshots
-
-When browser automation is available, capture affected routes from the verified visitor URL after the upload:
-
-- Desktop: use a representative width such as 1440 px.
-- Mobile: use a representative phone viewport such as 390 × 844.
-- First handoff: include homepage, collection, and product screenshots at both sizes.
-- Later handoffs: include every affected route and state, plus any comparison view needed to explain an unresolved issue.
-
-Keep screenshots out of the theme payload unless they are intentional site assets. Ensure their page content, commit SHA, and preview theme all correspond to the same upload. If screenshots cannot be automated, say so rather than substituting stale images.
-
-## 7. Deliver one consolidated report
+## 6. Deliver one consolidated report
 
 Return these fields together:
 
@@ -117,7 +106,6 @@ Return these fields together:
 - Preview theme ID, name, and verified `unpublished` role
 - Verified guest preview URL
 - Generation time with timezone
-- Desktop and mobile screenshots grouped by route
 - Commands/checks actually run and their results
 - Browser routes, viewports, interactions, and console/network findings
 - Unresolved issues, skipped checks, blockers, and the minimum next action
