@@ -29,13 +29,16 @@
             </div>
           </div>
         {%- endif -%}
-        {%- if section.settings.show_decorations and section.settings.image != blank -%}
-          <shift-hero-decor class="shift-hero__decor" aria-hidden="true">
-            <img class="shift-hero__decor-item shift-hero__decor-item--sun" src="{{ 'shift-hero-sun.svg' | asset_url }}" alt="" width="64" height="64" loading="eager">
-            <img class="shift-hero__decor-item shift-hero__decor-item--arch" src="{{ 'shift-hero-arch.svg' | asset_url }}" alt="" width="82" height="60" loading="eager">
-          </shift-hero-decor>
-        {%- endif -%}
       </div>
+
+      <span class="shift-hero__scrim" aria-hidden="true"></span>
+
+      {%- if section.settings.show_decorations and section.settings.image != blank -%}
+        <shift-hero-decor class="shift-hero__decor" aria-hidden="true">
+          <img class="shift-hero__decor-item shift-hero__decor-item--sun" src="{{ 'shift-hero-sun.svg' | asset_url }}" alt="" width="64" height="64" loading="eager">
+          <img class="shift-hero__decor-item shift-hero__decor-item--arch" src="{{ 'shift-hero-arch.svg' | asset_url }}" alt="" width="82" height="60" loading="eager">
+        </shift-hero-decor>
+      {%- endif -%}
 
       <div class="shift-hero__copy">
         {%- if section.settings.eyebrow != blank -%}
