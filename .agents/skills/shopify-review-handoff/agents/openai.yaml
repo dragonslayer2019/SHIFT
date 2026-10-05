@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify Review Handoff"
+  short_description: "Deliver reviewable Shopify changes safely"
+  default_prompt: "Use $shopify-review-handoff to deliver the completed storefront changes for remote review."

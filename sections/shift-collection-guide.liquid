@@ -1,0 +1,38 @@
+{{ 'section-shift-commerce.css' | asset_url | stylesheet_tag }}
+
+<section class="shift-commerce color-{{ section.settings.color_scheme }} gradient" aria-labelledby="ShiftCollectionGuide-{{ section.id }}">
+  <div class="shift-collection-guide__inner page-width">
+    <h2 class="shift-collection-guide__heading" id="ShiftCollectionGuide-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+    <div class="shift-collection-guide__grid">
+      {%- for block in section.blocks -%}
+        <div class="shift-collection-guide__item" {{ block.shopify_attributes }}>
+          <span class="shift-collection-guide__label">{{ block.settings.label | escape }}</span>
+          <p class="shift-collection-guide__text">{{ block.settings.text | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT collection guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose by what your space needs." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "tip",
+      "name": "Shopping cue",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Measure first" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Check the dimensions on each product page against the clear space you actually have." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SHIFT collection guide", "blocks": [{ "type": "tip", "settings": { "label": "Measure first", "text": "Check each product's dimensions against the clear space you actually have." } }, { "type": "tip", "settings": { "label": "Shop the friction", "text": "Start with the daily problem: clutter, unclear zones, or a desk that has to do too much." } }, { "type": "tip", "settings": { "label": "Check the fit", "text": "Use Best for and Setup & care on the product page before adding to cart." } }] }]
+}
+{% endschema %}

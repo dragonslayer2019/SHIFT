@@ -1,349 +1,92 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Make Home A Soft Reset</strong>",
-            "heading_size": "h0"
-          }
-        },
-        "text_KNLDU7": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Turn everyday corners into spaces that hold how you feel.</strong>",
-            "text_style": "subtitle"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Find Your Soft Reset",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text_KNLDU7",
-        "button"
-      ],
+    "shift_hero": {
+      "type": "shift-hero",
       "settings": {
-        "image": "shopify://shop_images/jimeng-2026-01-17-1414-_Kim_Jung_Gi_....png",
-        "image_overlay_opacity": 10,
-        "image_height": "large",
-        "image_behavior": "ambient",
-        "desktop_content_position": "bottom-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "left",
-        "show_text_below": false
+        "eyebrow": "",
+        "heading": "Small-space goods that earn their place.",
+        "text": "<p>Useful pieces for rental living rooms and hardworking desks.</p>",
+        "primary_label": "Shop the catalog",
+        "primary_link": "shopify://collections/catalog",
+        "secondary_label": "",
+        "secondary_link": "",
+        "color_scheme": "scheme-1",
+        "image": "shopify://shop_images/shift-home-hero.jpg",
+        "image_alt": "Warm compact apartment arranged for everyday living",
+        "show_decorations": true
       }
     },
-    "scene_shift": {
-      "type": "scene-shift",
+    "space_paths": {
+      "type": "shift-space-paths",
       "blocks": {
-        "scene_1": {
-          "type": "scene_card",
-          "settings": {
-            "desktop_base_image": "shopify://shop_images/20260413230131_15_32.jpg",
-            "desktop_shift_image": "shopify://shop_images/20260413230203_16_32.jpg",
-            "scene_title": "A Quiet Bedroom Corner",
-            "scene_caption": "A few soft essentials that turn rest into ritual.",
-            "button_label": "Explore the Space",
-            "button_link": ""
-          }
-        },
-        "scene_2": {
-          "type": "scene_card",
-          "settings": {
-            "scene_title": "A Living Room That Breathes",
-            "scene_caption": "Where the light, the texture, and the warmth finally align.",
-            "button_label": "See the Full Setup",
-            "button_link": ""
-          }
-        },
-        "scene_3": {
-          "type": "scene_card",
-          "settings": {
-            "scene_title": "Your Reading Nook, Awakened",
-            "scene_caption": "The corner you always had — now holding exactly how you feel.",
-            "button_label": "Enter This Mood",
-            "button_link": ""
-          }
-        }
+        "living": { "type": "space", "settings": { "heading": "Living spaces", "text": "Shop the smaller goods; the room image is inspiration, not furniture for sale.", "context_label": "", "link_label": "Shop living spaces", "link": "shopify://collections/living-spaces", "image": "shopify://shop_images/shift-living-spaces.jpg" } },
+        "desk": { "type": "space", "settings": { "heading": "Desk spaces", "text": "Find useful companions for work, study, and whatever comes after.", "context_label": "", "link_label": "Shop desk spaces", "link": "shopify://collections/desk-spaces", "image": "shopify://shop_images/shift-desk-spaces.jpg" } }
       },
-      "block_order": [
-        "scene_1",
-        "scene_2",
-        "scene_3"
-      ],
-      "settings": {
-        "heading": "Where the Shift Begins",
-        "subheading": "Small, thoughtful changes that turn everyday corners into spaces that hold how you feel.",
-        "autoplay": true,
-        "autoplay_interval": 8,
-        "initial_pause": 1,
-        "breathe_duration": 2000,
-        "transition_duration": 800,
-        "show_arrows": true,
-        "show_dots": true,
-        "card_radius": 24,
-        "card_shadow": 70
-      }
+      "block_order": ["living", "desk"],
+      "settings": { "eyebrow": "", "heading": "Shop by space", "text": "", "color_scheme": "scheme-2" }
     },
-    "image_with_text_9NVVk6": {
-      "type": "image-with-text",
+    "moving_objects": {
+      "type": "shift-motion-strip",
+      "settings": { "color_scheme": "scheme-2" }
+    },
+    "community_notes": {
+      "type": "shift-ugc",
       "blocks": {
-        "heading_khVKc9": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_VWwARg": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_UUDRHK": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
+        "demo_living": { "type": "story", "settings": { "demo_image": "living", "alt_text": "Demo compact studio living corner with a sofa, lamp, and narrow storage", "display_name": "Maya R. · Brooklyn rental", "note": "<p>The sofa finally feels like a room of its own—even when the bed is only a few steps away.</p>", "product": "" } },
+        "demo_desk": { "type": "story", "settings": { "demo_image": "desk", "alt_text": "Demo shared desk arranged for work and evening downtime", "display_name": "Jordan K. · Chicago studio", "note": "<p>Everything for work has a landing spot, so the desk can switch back to music and games after six.</p>", "product": "" } },
+        "demo_entry": { "type": "story", "settings": { "demo_image": "entry", "alt_text": "Demo narrow rental entry with a shelf, hooks, and a tucked-away stool", "display_name": "Lena P. · Portland apartment", "note": "<p>A six-inch-deep drop zone keeps keys, mail, and the daily tote from reaching the kitchen table.</p>", "product": "" } }
       },
-      "block_order": [
-        "heading_khVKc9",
-        "text_VWwARg",
-        "button_UUDRHK"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["demo_living", "demo_desk", "demo_entry"],
+      "settings": { "eyebrow": "", "heading": "Community notes", "intro": "", "demo_mode": true, "color_scheme": "scheme-2" }
     },
-    "featured_collection": {
+    "top_sellers": {
       "type": "featured-collection",
-      "name": "Scene Card",
       "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
+        "title": "Top sellers",
+        "heading_size": "h1",
+        "description": "<p>Three desk-space picks from the current dev catalog.</p>",
         "show_description": false,
         "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "collection": "desk-spaces",
+        "show_shift_empty_state": true,
+        "empty_state_heading": "Choose a Top sellers collection.",
+        "empty_state_text": "<p>Select a collection in the theme editor to populate this section.</p>",
+        "products_to_show": 3,
+        "product_order": "collection",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
+        "enable_shift_home_motion": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 56
       }
     },
-    "multirow_Dgynic": {
-      "type": "multirow",
-      "blocks": {
-        "row_GX9W3B": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_YaUGhL": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_xGf87F": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_GX9W3B",
-        "row_YaUGhL",
-        "row_xGf87F"
-      ],
-      "name": "UGC",
+    "layered_products": {
+      "type": "shift-layered-products",
       "settings": {
-        "image_height": "medium",
-        "desktop_image_width": "medium",
-        "image_layout": "alternate-left",
-        "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "row_color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_m9nAUU": {
-      "type": "featured-collection",
-      "name": "所有商品",
-      "settings": {
-        "collection": "",
-        "products_to_show": 4,
-        "title": "Featured collection",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_blog_WAeWiz": {
-      "type": "featured-blog",
-      "name": "品牌文化宣传",
-      "settings": {
-        "blog": "",
-        "post_limit": 3,
-        "heading": "Blog posts",
-        "heading_size": "h1",
-        "columns_desktop": 3,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_XpmFMH": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_N3K6BC": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_YL6h9J": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_UJGPQD": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_N3K6BC",
-        "text_YL6h9J",
-        "button_UJGPQD"
-      ],
-      "name": "品牌媒体宣传页",
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "enable_section": true,
+        "heading": "A little better, together.",
+        "color_scheme": "scheme-1",
+        "background_image": "",
+        "product_1": "the-little-horizon",
+        "cutout_1": "",
+        "product_2": "the-pebble-pause",
+        "cutout_2": "",
+        "product_3": "the-cloud-rest",
+        "cutout_3": ""
       }
     }
   },
-  "order": [
-    "image_banner",
-    "scene_shift",
-    "image_with_text_9NVVk6",
-    "featured_collection",
-    "multirow_Dgynic",
-    "featured_collection_m9nAUU",
-    "featured_blog_WAeWiz",
-    "image_with_text_XpmFMH"
-  ]
+  "order": ["shift_hero", "space_paths", "moving_objects", "top_sellers", "layered_products", "community_notes"]
 }

@@ -1,0 +1,100 @@
+{{ 'section-shift-home.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.show_decorations -%}
+  <script src="{{ 'shift-hero-decor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<section class="shift-section shift-section--hero color-{{ section.settings.color_scheme }} gradient">
+  <div class="shift-section__inner shift-hero__inner page-width">
+    <div class="shift-hero__grid">
+      <div class="shift-hero__merchandise">
+        {%- if section.settings.image != blank -%}
+          <div class="shift-hero__media">
+            {{
+              section.settings.image
+              | image_url: width: 2000
+              | image_tag:
+                widths: '550, 750, 1100, 1500, 2000',
+                sizes: '(min-width: 990px) calc(100vw - 10rem), 100vw',
+                fetchpriority: 'high',
+                class: 'shift-hero__image',
+                alt: section.settings.image_alt
+            }}
+          </div>
+        {%- else -%}
+          <div class="shift-hero__media shift-hero__placeholder shift-placeholder" role="img" aria-label="Products not configured">
+            <span class="shift-placeholder__label">Scene image not configured</span>
+            <div>
+              <p class="shift-placeholder__title">Show small-space life.</p>
+              <p class="shift-placeholder__text">Add an editable apartment scene in the theme editor.</p>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <span class="shift-hero__scrim" aria-hidden="true"></span>
+
+      {%- if section.settings.show_decorations and section.settings.image != blank -%}
+        <shift-hero-decor class="shift-hero__decor" aria-hidden="true">
+          <img class="shift-hero__decor-item shift-hero__decor-item--sun" src="{{ 'shift-hero-sun.svg' | asset_url }}" alt="" width="64" height="64" loading="eager">
+          <img class="shift-hero__decor-item shift-hero__decor-item--arch" src="{{ 'shift-hero-arch.svg' | asset_url }}" alt="" width="82" height="60" loading="eager">
+        </shift-hero-decor>
+      {%- endif -%}
+
+      <div class="shift-hero__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="shift-kicker">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h1 class="shift-display">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="shift-lede rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        <div class="shift-hero__actions">
+          {%- if section.settings.primary_label != blank -%}
+            <a
+              class="button"
+              {% if section.settings.primary_link != blank %}href="{{ section.settings.primary_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            >
+              {{ section.settings.primary_label | escape }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank -%}
+            <a
+              class="button button--secondary"
+              {% if section.settings.secondary_link != blank %}href="{{ section.settings.secondary_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            >
+              {{ section.settings.secondary_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SHIFT hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Small-space goods, chosen with purpose" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Make more room for your life." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Useful, good-looking pieces for rental living rooms and hardworking desks—selected to make limited space feel easier to use.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Apartment scene" },
+    { "type": "text", "id": "image_alt", "label": "Image alternative text", "default": "Warm compact apartment arranged for everyday living" },
+    { "type": "checkbox", "id": "show_decorations", "label": "Show floating decorations", "default": true },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop living spaces" },
+    { "type": "url", "id": "primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Shop desk spaces" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "presets": [
+    {
+      "name": "SHIFT hero"
+    }
+  ]
+}
+{% endschema %}

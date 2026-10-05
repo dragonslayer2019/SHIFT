@@ -1,0 +1,100 @@
+{{ 'section-shift-layered-products.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shift-layered-products.js' | asset_url }}" defer="defer"></script>
+
+{%- if section.settings.enable_section -%}
+  <shift-layered-products
+    class="shift-layered shift-section color-{{ section.settings.color_scheme }} gradient"
+    data-section-id="{{ section.id }}"
+  >
+    <div class="shift-layered__inner page-width">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="shift-layered__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      <div class="shift-layered__layout">
+        <div class="shift-layered__scene" aria-hidden="true">
+          {%- if section.settings.background_image != blank -%}
+            {{ section.settings.background_image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 750px) 62vw, 100vw', loading: 'lazy', class: 'shift-layered__background', alt: '' }}
+          {%- else -%}
+            <img class="shift-layered__background" src="{{ 'shift-layered-desk-background.png' | asset_url }}" alt="" width="1536" height="1024" loading="lazy">
+          {%- endif -%}
+
+          {%- if section.settings.product_1 != blank -%}
+            <div class="shift-layered__object shift-layered__object--one" data-layered-object>
+              {%- if section.settings.cutout_1 != blank -%}
+                {{ section.settings.cutout_1 | image_url: width: 900 | image_tag: widths: '300, 500, 700, 900', sizes: '(min-width: 750px) 20vw, 34vw', loading: 'lazy', alt: '' }}
+              {%- else -%}
+                <img src="{{ 'shift-layered-little-horizon.png' | asset_url }}" alt="" width="1254" height="1254" loading="lazy">
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.product_2 != blank -%}
+            <div class="shift-layered__object shift-layered__object--two" data-layered-object>
+              {%- if section.settings.cutout_2 != blank -%}
+                {{ section.settings.cutout_2 | image_url: width: 900 | image_tag: widths: '300, 500, 700, 900', sizes: '(min-width: 750px) 24vw, 40vw', loading: 'lazy', alt: '' }}
+              {%- else -%}
+                <img src="{{ 'shift-layered-pebble-pause.png' | asset_url }}" alt="" width="1536" height="1024" loading="lazy">
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.product_3 != blank -%}
+            <div class="shift-layered__object shift-layered__object--three" data-layered-object>
+              {%- if section.settings.cutout_3 != blank -%}
+                {{ section.settings.cutout_3 | image_url: width: 900 | image_tag: widths: '300, 500, 700, 900', sizes: '(min-width: 750px) 22vw, 38vw', loading: 'lazy', alt: '' }}
+              {%- else -%}
+                <img src="{{ 'shift-layered-cloud-rest.png' | asset_url }}" alt="" width="1254" height="1254" loading="lazy">
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <ul class="shift-layered__products" role="list">
+          {%- for product_setting in (1..3) -%}
+            {%- liquid
+              case product_setting
+                when 1
+                  assign product = section.settings.product_1
+                when 2
+                  assign product = section.settings.product_2
+                when 3
+                  assign product = section.settings.product_3
+              endcase
+            -%}
+            {%- if product != blank -%}
+              <li class="shift-layered__product">
+                <a class="shift-layered__product-link" href="{{ product.url }}">
+                  <span class="shift-layered__product-title">{{ product.title | escape }}</span>
+                  <span class="shift-layered__product-price">{{ product.price | money }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </shift-layered-products>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SHIFT layered products",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "enable_section", "label": "Show section", "default": true },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "A little better, together." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Scene" },
+    { "type": "image_picker", "id": "background_image", "label": "Desk background" },
+    { "type": "product", "id": "product_1", "label": "Product 1" },
+    { "type": "image_picker", "id": "cutout_1", "label": "Product 1 transparent cutout" },
+    { "type": "product", "id": "product_2", "label": "Product 2" },
+    { "type": "image_picker", "id": "cutout_2", "label": "Product 2 transparent cutout" },
+    { "type": "product", "id": "product_3", "label": "Product 3" },
+    { "type": "image_picker", "id": "cutout_3", "label": "Product 3 transparent cutout" }
+  ],
+  "presets": [
+    { "name": "SHIFT layered products" }
+  ]
+}
+{% endschema %}
