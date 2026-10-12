@@ -467,6 +467,7 @@
     align-self: end;
     gap: var(--shift-space-md);
     padding: var(--shift-space-2xl) 8.8rem calc(var(--shift-space-2xl) + env(safe-area-inset-bottom)) var(--shift-space-lg);
+    text-shadow: 0 0.1rem 0.8rem rgba(var(--color-foreground), 0.24);
   }
 
   .shift-display {
