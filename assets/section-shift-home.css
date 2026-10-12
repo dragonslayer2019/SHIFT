@@ -55,16 +55,18 @@
   display: block;
   background:
     radial-gradient(
-      ellipse 62% 82% at 20% 72%,
-      rgba(var(--color-foreground), 0.9) 0%,
-      rgba(var(--color-foreground), 0.78) 48%,
+      ellipse 56% 74% at 18% 76%,
+      rgba(var(--color-foreground), 0.72) 0%,
+      rgba(var(--color-foreground), 0.5) 42%,
+      rgba(var(--color-foreground), 0.14) 72%,
       rgba(var(--color-foreground), 0) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(var(--color-foreground), 0.78) 0%,
-      rgba(var(--color-foreground), 0.52) 38%,
-      rgba(var(--color-foreground), 0.03) 70%
+      rgba(var(--color-foreground), 0.38) 0%,
+      rgba(var(--color-foreground), 0.16) 34%,
+      rgba(var(--color-foreground), 0.02) 58%,
+      rgba(var(--color-foreground), 0) 72%
     );
   pointer-events: none;
 }
@@ -81,7 +83,7 @@
   position: relative;
   z-index: 3;
   color: rgb(var(--color-background));
-  text-shadow: 0 0.1rem 0.8rem rgb(var(--color-foreground) / 0.24);
+  text-shadow: 0 0.1rem 0.4rem rgba(var(--color-foreground), 0.14);
 }
 
 .shift-hero__copy .shift-lede {
