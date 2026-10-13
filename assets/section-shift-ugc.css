@@ -1,0 +1,282 @@
+.shift-ugc__header {
+  display: flex;
+  gap: var(--shift-space-lg);
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: var(--shift-space-2xl);
+}
+
+.shift-ugc__heading-group {
+  display: grid;
+  gap: var(--shift-space-lg);
+}
+
+.shift-ugc__title {
+  max-width: 14ch;
+  margin: 0;
+  font-size: var(--shift-type-section);
+  letter-spacing: var(--shift-tracking-display);
+  line-height: var(--shift-leading-section);
+}
+
+.shift-ugc__intro {
+  max-width: 52ch;
+  color: var(--shift-muted);
+  font-size: var(--shift-type-body);
+}
+
+.shift-ugc__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--shift-space-xl);
+}
+
+.shift-ugc__dots {
+  display: flex;
+  align-items: center;
+}
+
+.shift-ugc__dot {
+  --shift-carousel-progress: 0;
+  position: relative;
+  display: inline-grid;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  color: rgb(var(--color-foreground));
+  background: transparent;
+  cursor: pointer;
+}
+
+.shift-ugc__dot::before,
+.shift-ugc__dot::after {
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+}
+
+.shift-ugc__dot::before {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: conic-gradient(
+    currentColor calc(var(--shift-carousel-progress) * 1turn),
+    color-mix(in srgb, currentColor 18%, transparent) 0
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 0.15rem), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 0.15rem), #000 0);
+  opacity: 0.5;
+}
+
+.shift-ugc__dot::after {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: color-mix(in srgb, currentColor 40%, transparent);
+  transition: width 160ms ease, height 160ms ease, background-color 160ms ease;
+}
+
+.shift-ugc__dot[aria-current='true']::before {
+  opacity: 1;
+}
+
+.shift-ugc__dot[aria-current='true']::after {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.1rem;
+  background: linear-gradient(
+    90deg,
+    currentColor 0 32%,
+    transparent 32% 68%,
+    currentColor 68% 100%
+  );
+}
+
+.shift-ugc.is-user-paused .shift-ugc__dot[aria-current='true']::after {
+  width: 0;
+  height: 0;
+  border-top: 0.55rem solid transparent;
+  border-bottom: 0.55rem solid transparent;
+  border-left: 0.85rem solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  transform: translateX(0.1rem);
+}
+
+.shift-ugc__dot:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: -0.2rem;
+  border-radius: 50%;
+}
+
+.shift-ugc__viewport:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: 0.4rem;
+}
+
+.shift-ugc__viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.shift-ugc__track {
+  display: grid;
+}
+
+.shift-ugc__card {
+  grid-area: 1 / 1;
+  display: grid;
+  min-width: 0;
+  gap: var(--shift-space-lg);
+  align-content: start;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(0.45rem);
+  transition:
+    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 480ms;
+}
+
+.shift-ugc__card.is-active {
+  z-index: 1;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  filter: blur(0);
+  transition-delay: 0s;
+}
+
+.shift-ugc__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--shift-radius-sm);
+  background: color-mix(in srgb, rgb(var(--color-foreground)) 7%, rgb(var(--color-background)));
+}
+
+.shift-ugc__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shift-ugc__card:hover .shift-ugc__image {
+  transform: scale(1.015);
+}
+
+.shift-ugc__badge {
+  position: absolute;
+  top: var(--shift-space-md);
+  left: var(--shift-space-md);
+  padding: 0.6rem 0.9rem;
+  border-radius: 999rem;
+  color: rgb(var(--color-background));
+  background: rgb(var(--color-foreground));
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.shift-ugc__content {
+  display: grid;
+  gap: var(--shift-space-sm);
+}
+
+.shift-ugc__name,
+.shift-ugc__note {
+  margin: 0;
+}
+
+.shift-ugc__name {
+  font-size: var(--shift-type-meta);
+  font-weight: var(--shift-weight-semibold);
+  letter-spacing: var(--shift-tracking-meta);
+  text-transform: uppercase;
+}
+
+.shift-ugc__note {
+  max-width: 36ch;
+  color: var(--shift-muted);
+  font-size: var(--shift-type-body);
+  line-height: var(--shift-leading-body);
+}
+
+.shift-ugc__product-link {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 4.4rem;
+  align-items: center;
+  gap: var(--shift-space-sm);
+  border-bottom: 0.1rem solid currentColor;
+  color: inherit;
+  font-weight: var(--shift-weight-semibold);
+  text-decoration: none;
+}
+
+.shift-ugc__product-link:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: 0.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .shift-ugc__card {
+    grid-template-columns: minmax(28rem, 1.15fr) minmax(24rem, 0.85fr);
+    align-items: center;
+    gap: clamp(var(--shift-space-2xl), 5vw, var(--shift-space-4xl));
+  }
+
+  .shift-ugc__media {
+    height: clamp(26rem, 26vw, 34rem);
+    aspect-ratio: auto;
+  }
+
+  .shift-ugc__content {
+    align-content: center;
+    padding-right: clamp(0rem, 3vw, var(--shift-space-3xl));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .shift-ugc__header {
+    display: grid;
+    align-items: start;
+    gap: var(--shift-space-lg);
+  }
+
+  .shift-ugc__title {
+    font-size: var(--shift-type-section);
+  }
+
+  .shift-ugc__media {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shift-ugc__image,
+  .shift-ugc__card {
+    transition: none;
+  }
+
+  .shift-ugc__card {
+    filter: none;
+  }
+
+  .shift-ugc__dot::before {
+    background: transparent;
+    border: 0.1rem solid color-mix(in srgb, currentColor 35%, transparent);
+    -webkit-mask: none;
+    mask: none;
+  }
+
+  .shift-ugc__dot::after {
+    transition: none;
+  }
+}

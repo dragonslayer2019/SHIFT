@@ -1,0 +1,77 @@
+{{ 'section-shift-commerce.css' | asset_url | stylesheet_tag }}
+
+{%- capture details_content -%}
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign detail_value = blank
+      case block.settings.source
+        when 'dimensions'
+          assign detail_value = product.metafields.custom.dimensions
+        when 'material'
+          assign detail_value = product.metafields.custom.material
+        when 'best_for'
+          assign detail_value = product.metafields.custom.best_for
+        when 'setup'
+          assign detail_value = product.metafields.custom.setup_and_care
+      endcase
+    -%}
+    {%- if detail_value != blank and block.settings.label != blank -%}
+      <details class="shift-product-details__item" {{ block.shopify_attributes }}>
+        <summary class="shift-product-details__summary">
+          <span>{{ block.settings.label | escape }}</span>
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </summary>
+        <div class="shift-product-details__value rte">{{ detail_value | metafield_tag }}</div>
+      </details>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture policy_links -%}
+  {%- if shop.shipping_policy != blank -%}
+    <a href="{{ shop.shipping_policy.url }}">Shipping policy</a>
+  {%- endif -%}
+  {%- if shop.refund_policy != blank -%}
+    <a href="{{ shop.refund_policy.url }}">Returns policy</a>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if details_content != blank or policy_links != blank -%}
+  <section class="shift-commerce color-{{ section.settings.color_scheme }} gradient" aria-labelledby="ShiftProductDetails-{{ section.id }}">
+    <div class="shift-product-details__inner page-width">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="shift-product-details__title" id="ShiftProductDetails-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if details_content != blank -%}
+        <div class="shift-product-details__list">{{ details_content }}</div>
+      {%- endif -%}
+      {%- if policy_links != blank -%}
+        <nav class="shift-product-details__policies" aria-label="Shipping and returns">{{ policy_links }}</nav>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SHIFT product details",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Good to know" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "detail",
+      "name": "Detail",
+      "settings": [
+        { "type": "select", "id": "source", "label": "Product metafield", "options": [{ "value": "dimensions", "label": "custom.dimensions" }, { "value": "material", "label": "custom.material" }, { "value": "best_for", "label": "custom.best_for" }, { "value": "setup", "label": "custom.setup_and_care" }], "default": "dimensions" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Dimensions" },
+        { "type": "paragraph", "content": "This row stays hidden until the selected product metafield has a value." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SHIFT product details", "blocks": [{ "type": "detail", "settings": { "source": "dimensions", "label": "Dimensions" } }, { "type": "detail", "settings": { "source": "material", "label": "Material" } }, { "type": "detail", "settings": { "source": "best_for", "label": "Best for" } }, { "type": "detail", "settings": { "source": "setup", "label": "Installation & care" } }] }]
+}
+{% endschema %}

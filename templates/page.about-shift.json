@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "shift-about",
+      "settings": {
+        "image_alt": "A warm compact apartment arranged for living and working",
+        "heading": "About SHIFT",
+        "text": "<p>SHIFT began with the experience of moving from China to Japan and rebuilding the rhythms of everyday life in a smaller home.</p><p>When one room has to hold living, working, and unwinding, every object needs a clear reason to be there. The useful things can still bring color, character, and a little joy.</p><p>We look for pieces that earn their place: practical for limited space, easy to live with, and good to see every day.</p>",
+        "living_label": "Shop living spaces",
+        "living_link": "/collections/living-spaces",
+        "desk_label": "Shop desk spaces",
+        "desk_link": "/collections/desk-spaces",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": ["main"]
+}

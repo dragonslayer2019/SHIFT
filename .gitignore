@@ -1,6 +1,13 @@
 # Impeccable skills (all AI tool config directories)
+.shopify/
 .adal/
 .agents/
+!.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/shopify-review-handoff/
+!.agents/skills/shopify-review-handoff/**
 .augment/
 .bob/
 .claude/
