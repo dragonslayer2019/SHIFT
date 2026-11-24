@@ -1,0 +1,37 @@
+{%- assign catalog_url = routes.collections_url | append: '/catalog' -%}
+<shift-wishlist-page class="shift-wishlist shift-section color-{{ section.settings.color_scheme }} gradient" data-root="{{ routes.root_url }}" data-currency="{{ cart.currency.iso_code | default: shop.currency }}" data-locale="{{ request.locale.iso_code }}" data-remove-text="{{ 'wishlist.remove' | t | escape }}" data-remove-label="{{ 'wishlist.remove_product_placeholder' | t | escape }}" data-loaded-text="{{ 'wishlist.loaded_count' | t | escape }}">
+  <div class="page-width">
+    <h1 class="shift-wishlist__heading">{{ section.settings.heading | escape }}</h1>
+    <p class="visually-hidden" role="status" aria-live="polite" data-wishlist-status></p>
+    <div class="shift-wishlist__loading" data-wishlist-loading aria-label="{{ 'wishlist.loading' | t | escape }}">
+      <span class="shift-wishlist__skeleton"></span><span class="shift-wishlist__skeleton"></span><span class="shift-wishlist__skeleton"></span><span class="shift-wishlist__skeleton"></span>
+    </div>
+    <ul class="shift-wishlist__grid" data-wishlist-grid></ul>
+    <div class="shift-wishlist__empty" data-wishlist-empty hidden>
+      <h2>{{ section.settings.empty_heading | escape }}</h2>
+      <p>{{ section.settings.empty_text | escape }}</p>
+      <a class="button" href="{{ section.settings.cta_link | default: catalog_url }}">{{ section.settings.cta_label | escape }}</a>
+    </div>
+    <noscript>
+      <div class="shift-wishlist__empty">
+        <h2>{{ 'wishlist.javascript_heading' | t }}</h2>
+        <p>{{ 'wishlist.javascript_text' | t }}</p>
+        <a class="button" href="{{ catalog_url }}">{{ section.settings.cta_label | escape }}</a>
+      </div>
+    </noscript>
+  </div>
+</shift-wishlist-page>
+
+{% schema %}
+{
+  "name": "SHIFT wishlist",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Saved pieces" },
+    { "type": "text", "id": "empty_heading", "label": "Empty state heading", "default": "Nothing saved yet." },
+    { "type": "textarea", "id": "empty_text", "label": "Empty state text", "default": "Keep the pieces you want to come back to here." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Browse the catalog" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

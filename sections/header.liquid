@@ -299,6 +299,15 @@
         {%- endcase -%}
       {%- endfor -%}
 
+      <a href="{{ routes.root_url }}pages/wishlist" class="header__icon header__icon--wishlist link focus-inset" aria-label="{{ 'wishlist.view_saved' | t | escape }}">
+        <span class="svg-wrapper">{% render 'icon-heart' %}</span>
+        <span class="visually-hidden">{{ 'wishlist.view_saved' | t }}</span>
+        <span class="shift-wishlist-count-bubble" data-wishlist-count data-count-label="{{ 'wishlist.count_placeholder' | t | escape }}" aria-live="polite" hidden>
+          <span aria-hidden="true"></span>
+          <span class="visually-hidden"></span>
+        </span>
+      </a>
+
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
           <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
