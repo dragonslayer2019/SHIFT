@@ -6,7 +6,7 @@
 .shift-wishlist-button__icon, .shift-wishlist-button__icon .icon-heart { display: block; width: 2rem; height: 2rem; }
 .shift-wishlist-button__icon .icon-heart path { fill: transparent; }
 .shift-wishlist-button--product { margin-top: 1.2rem; }
-.shift-wishlist-button--product .shift-wishlist-button__control { width: 100%; border: 0; border-radius: var(--shift-control-radius); background: transparent; box-shadow: none; }
+.shift-wishlist-button--product .shift-wishlist-button__control { width: 100%; border: 0; border-radius: var(--shift-control-radius); color: rgb(var(--color-foreground)); background: transparent; box-shadow: none; }
 .shift-wishlist-button--product .shift-wishlist-button__control:hover { background: rgba(var(--color-foreground), 0.04); }
 .header__icon--wishlist { position: relative; }
 .header__icon--wishlist .icon-heart { width: 2rem; height: 2rem; }
