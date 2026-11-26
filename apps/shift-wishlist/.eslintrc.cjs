@@ -37,7 +37,7 @@ module.exports = {
       ],
       settings: {
         react: {
-          version: "detect",
+          version: "18.3",
         },
         formComponents: ["Form"],
         linkComponents: [

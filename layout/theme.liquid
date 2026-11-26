@@ -320,16 +320,10 @@
     </script>
   </head>
 
-  <body
-    class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}"
-    data-wishlist-authenticated="{% if customer %}true{% else %}false{% endif %}"
-    data-wishlist-endpoint="{{ routes.root_url }}apps/shift-wishlist"
-    data-wishlist-limit-message="{{ 'wishlist.limit_reached' | t | escape }}"
-  >
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
-    <p class="visually-hidden" role="status" aria-live="polite" data-wishlist-feedback></p>
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
@@ -410,6 +404,5 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <script src="{{ 'shift-wishlist.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

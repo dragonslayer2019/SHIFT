@@ -59,18 +59,8 @@
   },
   "wishlist": {
     "save": "Save",
-    "saved": "Saved",
     "save_product": "Save {{ title }}",
-    "remove_product": "Remove {{ title }} from saved items",
-    "remove_product_placeholder": "Remove [title] from saved items",
-    "view_saved": "View saved pieces",
-    "count_placeholder": "[count] saved pieces",
-    "remove": "Remove",
-    "loading": "Loading saved pieces",
-    "loaded_count": "[count] saved pieces loaded",
-    "limit_reached": "You can save up to 100 products.",
-    "javascript_heading": "Saved pieces need JavaScript.",
-    "javascript_text": "Turn on JavaScript to view items saved in this browser."
+    "view_saved": "View saved pieces"
   },
   "newsletter": {
     "label": "Email",

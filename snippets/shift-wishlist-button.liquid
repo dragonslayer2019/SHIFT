@@ -1,5 +1,5 @@
 {% doc %}
-  Renders a progressively enhanced wishlist toggle.
+  Renders a link that saves a product in the Customer Account extension.
 
   @param {product} product - Product represented by the button.
   @param {string} [context] - Visual context: card or product.
@@ -10,19 +10,19 @@
   assign save_label = 'wishlist.save_product' | t: title: product.title
 -%}
 
-<shift-wishlist-button
-  class="shift-wishlist-button shift-wishlist-button--{{ button_context }} no-js-hidden"
-  data-product-handle="{{ product.handle | escape }}"
-  data-product-title="{{ product.title | escape }}"
-  data-save-label="{{ save_label | escape }}"
-  data-remove-label="{{ 'wishlist.remove_product' | t: title: product.title | escape }}"
-  data-save-text="{{ 'wishlist.save' | t | escape }}"
-  data-saved-text="{{ 'wishlist.saved' | t | escape }}"
->
-  <button type="button" class="shift-wishlist-button__control{% if button_context == 'product' %} button button--secondary{% endif %}" aria-label="{{ save_label | escape }}" aria-pressed="false">
+{%- capture saved_pieces_url -%}
+  {%- render 'shift-wishlist-url', product_handle: product.handle -%}
+{%- endcapture -%}
+
+<span class="shift-wishlist-button shift-wishlist-button--{{ button_context }}">
+  <a
+    href="{{ saved_pieces_url | strip }}"
+    class="shift-wishlist-button__control{% if button_context == 'product' %} button button--secondary{% endif %}"
+    aria-label="{{ save_label | escape }}"
+  >
     <span class="shift-wishlist-button__icon">{% render 'icon-heart' %}</span>
     {%- if button_context == 'product' -%}
-      <span class="shift-wishlist-button__label" data-wishlist-label>{{ 'wishlist.save' | t }}</span>
+      <span class="shift-wishlist-button__label">{{ 'wishlist.save' | t }}</span>
     {%- endif -%}
-  </button>
-</shift-wishlist-button>
+  </a>
+</span>

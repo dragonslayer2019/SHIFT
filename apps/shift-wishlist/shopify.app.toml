@@ -2,39 +2,21 @@
 
 client_id = "1d0de376d28bb97514083b7e948d9e06"
 name = "shift-wishlist"
-application_url = "https://example.com"
+application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
 [build]
-automatically_update_urls_on_dev = true
-include_config_on_deploy = true
+automatically_update_urls_on_dev = false
 
 [webhooks]
 api_version = "2026-10"
 
-  [[webhooks.subscriptions]]
-  topics = [ "app/uninstalled" ]
-  uri = "/webhooks/app/uninstalled"
-
-  [[webhooks.subscriptions]]
-  topics = [ "app/scopes_update" ]
-  uri = "/webhooks/app/scopes_update"
-
-  [[webhooks.subscriptions]]
-  compliance_topics = [ "customers/data_request", "customers/redact", "shop/redact" ]
-  uri = "/webhooks/compliance"
-
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_app_proxy,read_customers,write_customers"
+scopes = "write_customers,customer_read_customers,customer_write_customers"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
-
-[app_proxy]
-prefix = "apps"
-subpath = "shift-wishlist"
-url = "/app-proxy/wishlist"
+redirect_urls = []
 
 [customer.metafields.app.wishlist]
 type = "json"

@@ -1,0 +1,20 @@
+{
+  "title": "Saved pieces",
+  "savedCount": "{{count}} piece saved",
+  "savedCount_plural": "{{count}} pieces saved",
+  "loading": "Loading saved pieces",
+  "emptyTitle": "Nothing saved yet.",
+  "emptyBody": "Save the pieces you want to come back to.",
+  "browseCatalog": "Browse the catalog",
+  "viewProduct": "View product",
+  "remove": "Remove",
+  "saved": "Saved",
+  "alreadySaved": "Already saved",
+  "removed": "Removed",
+  "invalidSaveIntent": "That save link is not valid.",
+  "productUnavailable": "This piece is no longer available.",
+  "limitReached": "You can save up to 100 pieces.",
+  "loadError": "Saved pieces could not be loaded. Try again.",
+  "productLoadError": "Some product details could not be loaded.",
+  "saveError": "Your changes could not be saved. Try again."
+}

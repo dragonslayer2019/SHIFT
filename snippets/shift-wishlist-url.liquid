@@ -1,0 +1,29 @@
+{% doc %}
+  Outputs the Shopify Customer Account Saved pieces URL.
+
+  @param {string} [product_handle] - Product handle to save after authentication.
+{% enddoc %}
+
+{%- liquid
+  assign account_url_parts = routes.account_url | split: '?'
+  assign account_base_url = account_url_parts | first
+  assign account_query = blank
+  if account_url_parts.size > 1
+    assign account_query = account_url_parts | last
+  endif
+
+  echo account_base_url
+  echo '/pages/01a212f7-8374-7d5f-bf93-ee2e69d8cdf4'
+
+  if product_handle != blank
+    echo '?action=save&product='
+    echo product_handle | url_encode
+    if account_query != blank
+      echo '&'
+      echo account_query
+    endif
+  elsif account_query != blank
+    echo '?'
+    echo account_query
+  endif
+-%}
