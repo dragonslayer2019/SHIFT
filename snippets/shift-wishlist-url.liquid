@@ -5,25 +5,16 @@
 {% enddoc %}
 
 {%- liquid
-  assign account_url_parts = routes.account_url | split: '?'
-  assign account_base_url = account_url_parts | first
-  assign account_query = blank
-  if account_url_parts.size > 1
-    assign account_query = account_url_parts | last
-  endif
+  # This is the static direct URL copied from the enabled Saved pieces page in
+  # the Shopify Customer Account editor. Using the Shopify-hosted account URL
+  # is required here because this store's routes.account_url resolves to the
+  # storefront /account route for logged-out theme requests.
+  assign saved_pieces_url = 'https://shopify.com/76906004516/account/pages/01a212f7-8374-7d5f-bf93-ee2e69d8cdf4'
 
-  echo account_base_url
-  echo '/pages/01a212f7-8374-7d5f-bf93-ee2e69d8cdf4'
+  echo saved_pieces_url
 
   if product_handle != blank
     echo '?action=save&product='
     echo product_handle | url_encode
-    if account_query != blank
-      echo '&'
-      echo account_query
-    endif
-  elsif account_query != blank
-    echo '?'
-    echo account_query
   endif
 -%}
