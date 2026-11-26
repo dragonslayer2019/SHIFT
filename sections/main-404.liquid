@@ -1,3 +1,5 @@
+{%- assign shift_catalog_url = collections['catalog'].url | default: routes.all_products_collection_url -%}
+
 <style type="text/css">
   .template-404 .title + * {
     margin-top: 1rem;
@@ -17,7 +19,7 @@
   <h1 class="title">
     {{ 'templates.404.title' | t }}
   </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
+  <a href="{{ shift_catalog_url }}" class="button">
     {{ 'general.continue_shopping' | t }}
   </a>
 </div>

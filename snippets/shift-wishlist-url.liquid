@@ -1,0 +1,20 @@
+{% doc %}
+  Outputs the Shopify Customer Account Saved pieces URL.
+
+  @param {string} [product_handle] - Product handle to save after authentication.
+{% enddoc %}
+
+{%- liquid
+  # This is the static direct URL copied from the enabled Saved pieces page in
+  # the Shopify Customer Account editor. Using the Shopify-hosted account URL
+  # is required here because this store's routes.account_url resolves to the
+  # storefront /account route for logged-out theme requests.
+  assign saved_pieces_url = 'https://shopify.com/76906004516/account/pages/01a212f7-8374-7d5f-bf93-ee2e69d8cdf4'
+
+  echo saved_pieces_url
+
+  if product_handle != blank
+    echo '?action=save&product='
+    echo product_handle | url_encode
+  endif
+-%}

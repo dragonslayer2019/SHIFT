@@ -1,0 +1,39 @@
+{{ 'section-shift-motion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'shift-motion-strip.js' | asset_url }}" defer="defer"></script>
+
+<shift-motion-strip class="shift-motion-strip color-{{ section.settings.color_scheme }} gradient">
+  <button
+    class="shift-motion-strip__control"
+    type="button"
+    aria-label="Pause scrolling keywords"
+    aria-pressed="false"
+    data-shift-strip-control
+  >
+    <span class="shift-motion-strip__track" aria-hidden="true">
+      {%- for copy in (1..2) -%}
+        <span class="shift-motion-strip__group">
+          <span class="shift-motion-strip__keyword">Small space, good mood</span>
+          <span class="shift-motion-strip__separator">•</span>
+          <span class="shift-motion-strip__keyword">Living spaces</span>
+          <span class="shift-motion-strip__separator">•</span>
+          <span class="shift-motion-strip__keyword">Desk spaces</span>
+          <span class="shift-motion-strip__separator">•</span>
+          <span class="shift-motion-strip__keyword">Everyday little joys</span>
+          <span class="shift-motion-strip__separator">•</span>
+        </span>
+      {%- endfor -%}
+    </span>
+  </button>
+</shift-motion-strip>
+
+{% schema %}
+{
+  "name": "SHIFT keyword band",
+  "tag": "section",
+  "class": "section shift-motion-strip-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "SHIFT keyword band" }]
+}
+{% endschema %}

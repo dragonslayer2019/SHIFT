@@ -1,1 +1,35 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"text","settings":{"text":"{{ product.vendor }}","text_style":"uppercase"}},"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"description":{"type":"description","settings":{}},"share":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["vendor","title","price","variant_picker","quantity_selector","buy_buttons","description","share"],"settings":{"enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":true,"media_fit":"contain","gallery_layout":"stacked","mobile_thumbnails":"hide","media_position":"left","image_zoom":"lightbox","hide_variants":true,"enable_video_looping":false,"padding_top":36,"padding_bottom":12}},"related-products":{"type":"related-products","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"columns_mobile":"2","color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"padding_top":36,"padding_bottom":28}}},"order":["main","related-products"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": { "type": "title" },
+        "price": { "type": "price" },
+        "description": { "type": "description" },
+        "inventory": { "type": "inventory", "settings": { "text_style": "body", "inventory_threshold": 5, "show_inventory_quantity": false } },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
+        "quantity_selector": { "type": "quantity_selector" },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true, "show_gift_card_recipient": true } }
+      },
+      "block_order": ["title", "price", "description", "inventory", "variant_picker", "quantity_selector", "buy_buttons"],
+      "settings": { "enable_sticky_info": true, "color_scheme": "scheme-1", "media_position": "left", "gallery_layout": "stacked", "media_size": "large", "constrain_to_viewport": true, "media_fit": "contain", "image_zoom": "lightbox", "mobile_thumbnails": "show", "hide_variants": true, "enable_video_looping": false, "padding_top": 36, "padding_bottom": 24 }
+    },
+    "space_details": {
+      "type": "shift-product-details",
+      "blocks": {
+        "dimensions": { "type": "detail", "settings": { "source": "dimensions", "label": "Dimensions" } },
+        "material": { "type": "detail", "settings": { "source": "material", "label": "Material" } },
+        "best_for": { "type": "detail", "settings": { "source": "best_for", "label": "Best for" } },
+        "setup": { "type": "detail", "settings": { "source": "setup", "label": "Installation & care" } }
+      },
+      "block_order": ["dimensions", "material", "best_for", "setup"],
+      "settings": { "heading": "Good to know", "color_scheme": "scheme-2" }
+    },
+    "product_story": { "type": "shift-product-story", "settings": { "heading": "See it in the space.", "color_scheme": "scheme-2" } },
+    "related-products": {
+      "type": "related-products",
+      "settings": { "heading": "You may also like", "heading_size": "h2", "products_to_show": 4, "columns_desktop": 4, "color_scheme": "scheme-1", "image_ratio": "square", "image_shape": "default", "show_secondary_image": true, "show_vendor": false, "show_rating": false, "columns_mobile": "2", "padding_top": 40, "padding_bottom": 48 }
+    }
+  },
+  "order": ["main", "product_story", "space_details", "related-products"]
+}

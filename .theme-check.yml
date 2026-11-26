@@ -1,0 +1,6 @@
+ignore:
+  - apps/**
+MatchingTranslations:
+  enabled: false
+TemplateLength:
+  enabled: false

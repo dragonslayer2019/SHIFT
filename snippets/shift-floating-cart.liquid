@@ -1,0 +1,23 @@
+{{ 'component-shift-floating-cart.css' | asset_url | stylesheet_tag }}
+
+<shift-floating-cart class="shift-floating-cart color-{{ settings.cart_color_scheme }}">
+  <button
+    class="shift-floating-cart__button"
+    type="button"
+    aria-haspopup="dialog"
+    aria-controls="CartDrawer"
+    aria-label="Open cart, {{ cart.item_count }} items"
+  >
+    <span class="shift-floating-cart__icon svg-wrapper" aria-hidden="true">
+      {{- 'icon-cart.svg' | inline_asset_content -}}
+    </span>
+    <span class="shift-floating-cart__count" aria-hidden="true">
+      {%- if cart.item_count > 99 -%}99+{%- else -%}{{ cart.item_count }}{%- endif -%}
+    </span>
+    <span class="visually-hidden" data-cart-live-text aria-live="polite" aria-atomic="true">
+      Cart contains {{ cart.item_count }} items
+    </span>
+  </button>
+</shift-floating-cart>
+
+<script src="{{ 'shift-floating-cart.js' | asset_url }}" defer="defer"></script>

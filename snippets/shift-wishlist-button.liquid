@@ -1,0 +1,28 @@
+{% doc %}
+  Renders a link that saves a product in the Customer Account extension.
+
+  @param {product} product - Product represented by the button.
+  @param {string} [context] - Visual context: card or product.
+{% enddoc %}
+
+{%- liquid
+  assign button_context = context | default: 'card'
+  assign save_label = 'wishlist.save_product' | t: title: product.title
+-%}
+
+{%- capture saved_pieces_url -%}
+  {%- render 'shift-wishlist-url', product_handle: product.handle -%}
+{%- endcapture -%}
+
+<span class="shift-wishlist-button shift-wishlist-button--{{ button_context }}">
+  <a
+    href="{{ saved_pieces_url | strip }}"
+    class="shift-wishlist-button__control{% if button_context == 'product' %} button button--secondary{% endif %}"
+    aria-label="{{ save_label | escape }}"
+  >
+    <span class="shift-wishlist-button__icon">{% render 'icon-heart' %}</span>
+    {%- if button_context == 'product' -%}
+      <span class="shift-wishlist-button__label">{{ 'wishlist.save' | t }}</span>
+    {%- endif -%}
+  </a>
+</span>

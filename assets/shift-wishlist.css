@@ -1,0 +1,14 @@
+.shift-wishlist-button { display: block; }
+.shift-wishlist-button--card { position: absolute; z-index: 3; top: 0.8rem; right: 0.8rem; }
+.shift-wishlist-button__control { display: inline-flex; min-width: 4.4rem; min-height: 4.4rem; align-items: center; justify-content: center; gap: 0.8rem; margin: 0; padding: 0; border: 0.1rem solid rgba(var(--color-foreground), 0.2); border-radius: 50%; color: rgb(var(--color-foreground)); background: rgba(var(--color-background), 0.92); box-shadow: 0 0.2rem 0.8rem rgba(var(--color-shadow), 0.12); cursor: pointer; text-decoration: none; transition: color 150ms ease, background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease; }
+.shift-wishlist-button__control:hover { background: rgb(var(--color-background)); box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow), 0.16); }
+.shift-wishlist-button__control:focus-visible { outline: 0.2rem solid rgb(var(--color-foreground)); outline-offset: 0.2rem; }
+.shift-wishlist-button__icon, .shift-wishlist-button__icon .icon-heart { display: block; width: 2rem; height: 2rem; }
+.shift-wishlist-button__icon .icon-heart path { fill: transparent; }
+.shift-wishlist-button--product { margin-top: 1.2rem; }
+.shift-wishlist-button--product .shift-wishlist-button__control { width: 100%; border: 0; border-radius: var(--shift-control-radius); color: rgb(var(--color-foreground)); background: transparent; box-shadow: none; }
+.shift-wishlist-button--product .shift-wishlist-button__control:hover { background: rgba(var(--color-foreground), 0.04); }
+.header__icon--wishlist { position: relative; }
+.header__icon--wishlist .icon-heart { width: 2rem; height: 2rem; }
+@media screen and (max-width: 749px) { .shift-wishlist-button--card { top: 0.6rem; right: 0.6rem; } }
+@media (prefers-reduced-motion: reduce) { .shift-wishlist-button__control { transition: none; } }

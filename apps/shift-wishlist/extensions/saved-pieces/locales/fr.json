@@ -1,0 +1,20 @@
+{
+  "title": "Articles enregistrés",
+  "savedCount": "{{count}} article enregistré",
+  "savedCount_plural": "{{count}} articles enregistrés",
+  "loading": "Chargement des articles enregistrés",
+  "emptyTitle": "Aucun article enregistré.",
+  "emptyBody": "Enregistrez les articles que vous souhaitez retrouver.",
+  "browseCatalog": "Parcourir le catalogue",
+  "viewProduct": "Voir le produit",
+  "remove": "Supprimer",
+  "saved": "Enregistré",
+  "alreadySaved": "Déjà enregistré",
+  "removed": "Supprimé",
+  "invalidSaveIntent": "Ce lien d’enregistrement n’est pas valide.",
+  "productUnavailable": "Cet article n’est plus disponible.",
+  "limitReached": "Vous pouvez enregistrer jusqu’à 100 articles.",
+  "loadError": "Impossible de charger les articles enregistrés. Réessayez.",
+  "productLoadError": "Certains détails du produit n’ont pas pu être chargés.",
+  "saveError": "Impossible d’enregistrer vos modifications. Réessayez."
+}
